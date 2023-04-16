@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Daily Paper Summary</title>
+    <link rel="icon" href="./favicon.ico" type="image/x-icon">
+	  <script src="https://code.jquery.com/jquery-3.6.3.js"></script>
+	<script src="static/js/paperList.js"></script>
+	<script> const qamap = new Map();</script>
+<style>
+.paper {
+  border-radius: 25px;
+  background: #cfd1d0;
+  padding: 20px;
+}
+
+/* Style the tab */
+.tab {
+  overflow: hidden;
+  border: 1px solid #ccc;
+  background-color: #f1f1f1;
+}
+
+/* Style the buttons inside the tab */
+.tab button {
+  background-color: inherit;
+  float: left;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 14px 16px;
+  transition: 0.3s;
+  font-size: 17px;
+}
+
+/* Change background color of buttons on hover */
+.tab button:hover {
+  background-color: #ddd;
+}
+
+/* Create an active/current tablink class */
+.tab button.active {
+  background-color: #ccc;
+}
+
+/* Style the tab content */
+.tabcontent {
+  display: none;
+  padding: 6px 12px;
+  border: 1px solid #ccc;
+  border-top: none;
+}
+/* Define the spinner animation */
+@keyframes spinner {
+to {transform: rotate(360deg);}
+}
+.spinner {
+	margin: auto;
+	border: 5px solid #f3f3f3;
+	border-top: 5px solid #3498db;
+	border-radius: 50%;
+	width: 30px;
+	height: 30px;
+	animation: spinner 1s linear infinite;
+}
+</style>
+  </head>
+<script>
+function openCat(evt, catName) {
+  var i, tabcontent, tablinks;
+  tabcontent = document.getElementsByClassName("tabcontent");
+  for (i = 0; i < tabcontent.length; i++) {
+    tabcontent[i].style.display = "none";
+  }
+  tablinks = document.getElementsByClassName("tablinks");
+  for (i = 0; i < tablinks.length; i++) {
+    tablinks[i].className = tablinks[i].className.replace(" active", "");
+  }
+  document.getElementById(catName).style.display = "block";
+  evt.currentTarget.className += " active";
+}
+</script>
+<body><h1>Summary of papers published on 2023-04-13</h1>        <div class="tab"><button class="tablinks" onclick="openCat(event, 'astro-ph.CO')">Cosmology and Nongalactic Astrophysics</button>
+<button class="tablinks" onclick="openCat(event, 'astro-ph.EP')">Earth and Planetary Astrophysics</button>
+<button class="tablinks" onclick="openCat(event, 'astro-ph.GA')">Astrophysics of Galaxies</button>
+<button class="tablinks" onclick="openCat(event, 'astro-ph.HE')">High Energy Astrophysical Phenomena</button>
+<button class="tablinks" onclick="openCat(event, 'astro-ph.IM')">Instrumentation and Methods for Astrophysics</button>
+<button class="tablinks" onclick="openCat(event, 'astro-ph.SR')">Solar and Stellar Astrophysics</button>
+</div>
+
+<div id="paperList">
+</div>
+
+<script>formatAllTabs();</script>
+
