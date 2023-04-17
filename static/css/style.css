@@ -2,9 +2,15 @@
   opacity: 0.6;
   cursor: not-allowed;
 }
-.advancedMode-btn {
+.fullTextMode{
+	background-color: #4ba834;
+}
+
+.fetchMode-btn{
   /* Button background color */
   background-color: #2196F3;
+}
+.advancedMode-btn {
   
   /* Button text color */
   color: #fff;

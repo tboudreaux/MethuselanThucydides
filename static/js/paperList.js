@@ -15,13 +15,13 @@ async function getSummary(paper_id) {
 }
 
 async function activateAdvancedMode(arxivID) {
-	console.log("HERE")
+	let advancedModeBtn = document.getElementById(arxivID + '_advancedMode');
+	advancedModeBtn.classList.add('disabled');
 	let response = await fetch('/api/fetch/ID/' + arxivID + '/long');
 	let data = await response.json();
 
-	let advancedModeBtn = document.getElementById(arxivID + '_advancedMode');
-	advancedModeBtn.innerHTML = 'Full Text Mode';
-	advancedModeBtn.classList.add('disabled');
+	advancedModeBtn.innerHTML = 'Full Text Mode!';
+	advancedModeBtn.classList.add('fullTextMode')
 	return data
 }
 
@@ -53,11 +53,13 @@ async function format_paper(paper) {
 
 	mode = await checkMode(paper.arxiv_id);
 	if (mode['hasFullText'] === true) {
-		advancedMode.innerHTML = 'Full Text Mode';
+		advancedMode.innerHTML = 'Full Text Mode!';
 		advancedMode.classList.add('disabled');
+		advancedMode.classList.add('fullTextMode')
 	}
 	else {
-		advancedMode.innerHTML = 'Abstract Only Mode';
+		advancedMode.innerHTML = 'Fetch Full Text';
+		advancedMode.classList.add('fetchMode-btn');
 	}
 	// advancedMode.addEventListener('click', async function() {await activateAdvancedMode(paper.arxiv_id)});
 	advancedMode.addEventListener('click', async () => {
