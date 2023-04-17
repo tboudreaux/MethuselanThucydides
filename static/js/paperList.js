@@ -1,5 +1,5 @@
 async function getPaperList(category) {
-	let response = await fetch('/api/papers/category/' + category);
+	let response = await fetch('/api/papers/date/category/latest/' + category);
 	let data = await response.json();
 	return data;
 }

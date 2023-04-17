@@ -19,9 +19,14 @@ def fetch_latest():
         TDELT = 2
     elif currentWeekday == 6:
         TDELT = 3
+    elif currentWeekday == 0:
+        TDELT = 3
     else:
         TDELT = 1
+    i = 0
+    log = list()
     for cat in arxivCategories:
+        print(cat)
         r = arxiv.Search(
             query = f"cat:{cat}",
             id_list = [],
@@ -32,13 +37,12 @@ def fetch_latest():
 
         engine = create_engine(uri)
 
-        i = 0
-        log = list()
         with engine.connect() as connection:
             metadata = MetaData()
             metadata.reflect(connection)
             arxivsummary = metadata.tables['arxivsummary']
             for result in r.results():
+
                 if result.published.date() == dt.datetime.today().date() - dt.timedelta(TDELT):
                     ID = result.get_short_id()
 

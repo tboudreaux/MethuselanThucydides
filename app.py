@@ -47,10 +47,12 @@ def papers_date_today():
 
 @app.route('/api/papers/date/latest')
 def papers_date_latest():
-    if dt.datetime.today().weekday() == 6:
-        TD = 3
-    elif dt.datetime.today().weekday() == 5:
+    if dt.datetime.today().weekday() == 5:
         TD = 2
+    elif dt.datetime.today().weekday() == 6:
+        TD = 3
+    elif dt.datetime.today().weekday() == 0:
+        TD = 3
     else:
         TD = 1
     papers = Paper.query.filter_by(published_date=dt.datetime.today().date()-dt.timedelta(TD)).all()
@@ -75,10 +77,12 @@ def papers_date_category(date, category):
 
 @app.route('/api/papers/date/category/latest/<category>')
 def papers_date_category_latest(category):
-    if dt.datetime.today().weekday() == 6:
-        TD = 3
-    elif dt.datetime.today().weekday() == 5:
+    if dt.datetime.today().weekday() == 5:
         TD = 2
+    elif dt.datetime.today().weekday() == 6:
+        TD = 3
+    elif dt.datetime.today().weekday() == 0:
+        TD = 3
     else:
         TD = 1
     papers = Paper.query.filter_by(published_date=dt.datetime.today().date()-dt.timedelta(TD), subjects=category).all()
@@ -88,6 +92,7 @@ def papers_date_category_latest(category):
 
 @app.route('/api/papers/date/category/today/<category>')
 def papers_date_category_today(category):
+    print(category)
     papers = Paper.query.filter_by(published_date=dt.datetime.today().date()-dt.timedelta(1), subjects=category).all()
     papers = [paper.__dict__ for paper in papers]
     papers = [dict(filter(lambda x: x[0] != '_sa_instance_state', d.items())) for d in papers]
