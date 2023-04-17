@@ -30,12 +30,14 @@ commands to build and deploy Methuselan Thucydides
 ```bash
 git clone git@github.com:tboudreaux/MethuselanThucydides.git
 cd MethuselanThucydides
+cp config.py.user config.py
+vim config.py # Edit the file as needed
+export OPENAI_API_KEY=<Your API KEY>
+export BEARER_TOKEN=<Your Bearer Token>
+export DATASTORE="milvus"
 docker build -t mt:v0.5 .
 docker run -p 5516:5000 -d --restart always -e "BEARER_TOKEN=$BEARER_TOKEN" -e "OPENAI_API_KEY=$OPENAI_API_KEY" -e "DATASTORE=\'milvus\'" --name MethuselanThucydides mt:v0.5
 ```
-
-This assumes you have put your OPENAI_API_KEY and BEARER_TOKEN in an
-environmental variable.
 
 The website will be accessible at localhost:5516
 
