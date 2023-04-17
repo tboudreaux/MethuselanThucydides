@@ -19,14 +19,23 @@ from queryArxiv import fetch_latest, fetch_arxix_id
 
 @app.route('/')
 def index():
+    """
+    Render the index page
+    """
     return render_template("index.html")
 
 @app.route('/api/online')
 def online():
+    """
+    Check if the API is online
+    """
     return jsonify({'online':True})
 
 @app.route('/api/papers/all')
 def papers_all():
+    """
+    Return all papers in the database
+    """
     papers = Paper.query.all()
     papers = [paper.__dict__ for paper in papers]
     papers = [dict(filter(lambda x: x[0] != '_sa_instance_state', d.items())) for d in papers]
@@ -34,6 +43,9 @@ def papers_all():
 
 @app.route('/api/papers/date/<date>')
 def papers_date(date):
+    """
+    Return all papers in the database for a given date
+    """
     papers = Paper.query.filter_by(published_date=date).all()
     papers = [paper.__dict__ for paper in papers]
     papers = [dict(filter(lambda x: x[0] != '_sa_instance_state', d.items())) for d in papers]
@@ -41,6 +53,9 @@ def papers_date(date):
 
 @app.route('/api/papers/date/today')
 def papers_date_today():
+    """
+    Return all papers in the database for today
+    """
     papers = Paper.query.filter_by(published_date=dt.datetime.today().date()-dt.timedelta(1)).all()
     papers = [paper.__dict__ for paper in papers]
     papers = [dict(filter(lambda x: x[0] != '_sa_instance_state', d.items())) for d in papers]
@@ -48,6 +63,9 @@ def papers_date_today():
 
 @app.route('/api/papers/date/latest')
 def papers_date_latest():
+    """
+    Return all papers in the database for the latest date
+    """
     if dt.datetime.today().weekday() == 5:
         TD = 2
     elif dt.datetime.today().weekday() == 6:
@@ -63,7 +81,9 @@ def papers_date_latest():
 
 @app.route('/api/papers/category/<category>')
 def papers_category(category):
-    print(category)
+    """
+    Return all papers in the database for a given category
+    """
     papers = Paper.query.filter_by(subjects=category).all()
     papers = [paper.__dict__ for paper in papers]
     papers = [dict(filter(lambda x: x[0] != '_sa_instance_state', d.items())) for d in papers]
@@ -71,6 +91,9 @@ def papers_category(category):
 
 @app.route('/api/papers/date/category/<date>/<category>')
 def papers_date_category(date, category):
+    """
+    Return all papers in the database for a given date and a given category
+    """
     papers = Paper.query.filter_by(published_date=date, subjects=category).all()
     papers = [paper.__dict__ for paper in papers]
     papers = [dict(filter(lambda x: x[0] != '_sa_instance_state', d.items())) for d in papers]
@@ -78,6 +101,9 @@ def papers_date_category(date, category):
 
 @app.route('/api/papers/date/category/latest/<category>')
 def papers_date_category_latest(category):
+    """
+    Return all papers in the database for the latest date and in a given category
+    """
     if dt.datetime.today().weekday() == 5:
         TD = 2
     elif dt.datetime.today().weekday() == 6:
@@ -93,7 +119,9 @@ def papers_date_category_latest(category):
 
 @app.route('/api/papers/date/category/today/<category>')
 def papers_date_category_today(category):
-    print(category)
+    """
+    Return all papers in the database for today and in a given category
+    """
     papers = Paper.query.filter_by(published_date=dt.datetime.today().date()-dt.timedelta(1), subjects=category).all()
     papers = [paper.__dict__ for paper in papers]
     papers = [dict(filter(lambda x: x[0] != '_sa_instance_state', d.items())) for d in papers]
@@ -101,6 +129,9 @@ def papers_date_category_today(category):
 
 @app.route('/api/papers/id/<arxiv_id>')
 def papers_id(arxiv_id):
+    """
+    Return a paper in the database for a given arxiv_id
+    """
     paper = Paper.query.filter_by(arxiv_id=arxiv_id).first()
     paper = paper.__dict__
     paper = dict(filter(lambda x: x[0] != '_sa_instance_state', paper.items()))
@@ -108,6 +139,9 @@ def papers_id(arxiv_id):
 
 @app.route('/api/papers/title/<title>')
 def papers_title(title):
+    """
+    Return all papers in the database for a given title
+    """
     papers = Paper.query.filter_by(title=title).all()
     papers = [paper.__dict__ for paper in papers]
     papers = [dict(filter(lambda x: x[0] != '_sa_instance_state', d.items())) for d in papers]
@@ -115,6 +149,11 @@ def papers_title(title):
 
 @app.route('/api/summarize/<arxiv_id>')
 def summarize(arxiv_id):
+    """
+    Return a GPT summary for a given arxiv_id.
+    If the paper has not been summarized before, it will be summarized and stored in the database.
+    If the paper has been summarized before, the stored summary will be returned.
+    """
     paper = Paper.query.filter_by(arxiv_id=arxiv_id).first()
 
     if paper.gpt_summary_long is not None:
@@ -134,6 +173,11 @@ def summarize(arxiv_id):
 
 @app.route('/api/summarize/<arxiv_id>/force')
 def summarize_force(arxiv_id):
+    """
+    Return a GPT summary for a given arxiv_id.
+    If the paper has not been summarized before, it will be summarized and stored in the database.
+    If the paper has been summarized before, the stored summary will be overwritten and a new summary will be returned.
+    """
     paper = Paper.query.filter_by(arxiv_id=arxiv_id).first()
 
     query = f"Please summarize, in 1-2 sentences, the paper titled {paper.title}."
@@ -148,6 +192,9 @@ def summarize_force(arxiv_id):
 
 @app.route('/api/summarize/<arxiv_id>/clear')
 def summarize_clear(arxiv_id):
+    """
+    Clear the stored GPT summary for a given arxiv_id.
+    """
     paper = Paper.query.filter_by(arxiv_id=arxiv_id).first()
 
     paper.gpt_summary_long = None
@@ -157,6 +204,10 @@ def summarize_clear(arxiv_id):
 
 @app.route('/api/query/simple/<arxiv_id>', methods=['POST'])
 def query_simple(arxiv_id):
+    """
+    Return a GPT answer for a given arxiv_id and question.
+    Will not fetch the full page text if it has not been fetched before.
+    """
     question = request.form['query']
     paper = Paper.query.filter_by(arxiv_id=arxiv_id).first()
     query = f"Please the most recent question about the following question about the paper titled {paper.title}. Previous questions and answers have been provided as context for you. {question}"
@@ -168,6 +219,10 @@ def query_simple(arxiv_id):
 
 @app.route('/api/query/complex/<arxiv_id>', methods=['POST'])
 def query_complex(arxiv_id):
+    """
+    Return a GPT answer for a given arxiv_id and question.
+    Will fetch the full page text if it has not been fetched before.
+    """
     fetch_arxiv_long_api(arxiv_id)
     paper = Paper.query.filter_by(arxiv_id=arxiv_id).first()
     question = request.form['query']
@@ -180,22 +235,38 @@ def query_complex(arxiv_id):
 
 @app.route('/api/categories')
 def categories():
+    """
+    Return all categories in the database
+    """
     categories = Paper.query.with_entities(Paper.subjects).distinct().all()
     categories = [category[0] for category in categories]
     return jsonify({'categories':categories})
 
 @app.route('/api/fetch/latest')
 def fetch_latest_api():
+    """
+    Fetch the latest papers from arxiv and store them in the database.
+    """
     fetchResult = fetch_latest()
     return jsonify(fetchResult)
 
 @app.route('/api/fetch/ID/<arxiv_id>/short')
 def fetch_arxiv_api(arxiv_id):
+    """
+    Fetch a paper from arxiv and store it in the database.
+    Only fetch the basic information (title, author, abstract, subjects, etc.)
+    not the full text.
+    """
     fetchResult = fetch_arxix_id(arxiv_id)
     return jsonify(fetchResult)
 
 @app.route('/api/fetch/ID/<arxiv_id>/long')
 def fetch_arxiv_long_api(arxiv_id):
+    """
+    Fetch a paper from arxiv and store it in the database.
+    Fetch the basic information (title, author, abstract, subjects, etc.)
+    and the full text.
+    """
     fetchResult = fetch_arxix_id(arxiv_id)
     try:
         load_full_text(arxiv_id)
@@ -206,6 +277,17 @@ def fetch_arxiv_long_api(arxiv_id):
     return jsonify(fetchResult)
 
 def load_full_text(arxiv_id):
+    """
+    Load the full text of a paper from arxiv and store it in the database.
+
+    Parameters
+    ----------
+        arxiv_id : str
+
+    Returns
+    -------
+        None
+    """
     paper = Paper.query.filter_by(arxiv_id=arxiv_id).first()
     if not paper.full_page_text:
         tmpDir = tempfile.TemporaryDirectory()
@@ -229,6 +311,9 @@ def load_full_text(arxiv_id):
 
 @app.route('/api/fetch/ID/<arxiv_id>/hasFullText')
 def has_full_text(arxiv_id):
+    """
+    Check if a paper has full text stored in the database.
+    """
     paper = Paper.query.filter_by(arxiv_id=arxiv_id).first()
     if paper.full_page_text:
         return jsonify({'hasFullText':True})
