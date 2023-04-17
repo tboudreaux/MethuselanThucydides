@@ -1,6 +1,17 @@
 # Methuselan Thucydides
-A more feature rich implementation of Paper.GPT. This is a webserver which 
-summarizes ever paper in arxiv categories every morning and allows you to ask questions of them.
+A more feature rich implementation of Paper.GPT. This is a webserver which
+summarizes ever paper in arxiv categories every morning and allows you to ask
+questions of them.
+
+The name is a bit of a joke (albeit an extremley bad one). This app summarized
+what has been been put on the arxiv, somewhat of a recent history of the
+literature if you will. Thucydides, being one of the earliest rigorus historian
+in western culture, seemed to fit. However, Thucydides famously lived <em>a
+long time ago</em> so would be extremley old and likely physically incabable of
+summarizing modern academic literature. Methusela was famously very old.... 
+
+The joke is stretched and the metaphor is poor; however, what you can't say is
+that its not a unique name.
 
 # Installation
 Much of the install is handled by the Dockerfile. However, in addition to 
@@ -11,7 +22,8 @@ docker you will need
 	3) GPT-Retrival-API
 
 Place the configuration information for these in the config.py file before
-building the docker container. Once those are setup
+building the docker container. Once those are setup you can run the following
+commands to build and deploy Methuselan Thucydides
 
 ```bash
 docker build -t mt:v0.5 .
