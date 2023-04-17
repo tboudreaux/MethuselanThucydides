@@ -36,7 +36,7 @@ export OPENAI_API_KEY=<Your API KEY>
 export BEARER_TOKEN=<Your Bearer Token>
 export DATASTORE="milvus"
 docker build -t mt:v0.5 .
-docker run -p 5516:5000 -d --restart always -e "BEARER_TOKEN=$BEARER_TOKEN" -e "OPENAI_API_KEY=$OPENAI_API_KEY" -e "DATASTORE=\'milvus\'" --name MethuselanThucydides mt:v0.5
+docker run -p 5516:5000 -d --restart always -e "BEARER_TOKEN=$BEARER_TOKEN" -e "OPENAI_API_KEY=$OPENAI_API_KEY" -e "DATASTORE=$DATASTORE" --name MethuselanThucydides mt:v0.5
 ```
 
 The website will be accessible at localhost:5516
