@@ -6,10 +6,24 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Daily Paper Summary</title>
 	<link rel="stylesheet" href="static/css/style.css">
-	  <script src="https://code.jquery.com/jquery-3.6.3.js"></script>
+	<script src="https://code.jquery.com/jquery-3.6.3.js"></script>
+	<script>
+MathJax = {
+  tex: {
+    inlineMath: [['$', '$'], ['\\(', '\\)']]
+  },
+  svg: {
+    fontCache: 'global'
+  }
+};
+</script>
+<script type="text/javascript" id="MathJax-script" async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js">
+</script>
 	<script src="static/js/paperList.js"></script>
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 	<script> const qamap = new Map();</script>
+
   </head>
 <script>
 function openCat(evt, catName) {
