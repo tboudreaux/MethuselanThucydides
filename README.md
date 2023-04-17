@@ -28,6 +28,10 @@ Note that there is currently no authentication. Therefore, anyone can ask
 questions and CHAREGE YOUR API KEY. This is a top priority for me, but be aware
 of that!
 
+## Reverse Proxy
+I have tested this running behind a nginx reverse proxy. Its quite
+straigtfoward and no special configuration was needed.
+
 ## Screenshot
 Simple demo of the state of the app in mid April 2023
 ![Example Photo](/imgs/demo.png?raw=true "Demo")
@@ -43,9 +47,13 @@ A slightly more complex example
 	3) Papers are currently not pulled automatically every day. A call to the
 	   /api/fetch/latest must be made manually to fetch the latest papers. This
 	   will be added as an automated job to the docker container. However for now
-	   this should be pretty easy to impliment in cron
+	   this should be pretty easy to impliment in cron (See below)
 	4) I want to have chat memory stored server side for users once user
 	   authentication is enabled. 
+
+Basic crontab configuration to tell the server to fetch the latest papers
+every day at 5 am. This assumes that your server is running at
+https://example.com
 
 ```cron
 0 5 * * * curl -v https://example.com/api/fetch/latest
