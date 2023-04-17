@@ -15,7 +15,7 @@ that its not a unique name.
 
 # Installation
 
-## Docker
+## Docker Installation
 Much of the install is handled by the Dockerfile. However, in addition to 
 docker you will need 
 
@@ -39,7 +39,7 @@ environmental variable.
 
 The website will be accessible at localhost:5516
 
-## Dev
+## Development Installation
 Setup the databases and retrieval plugin in the same manner which you would have
 for the docker installation. Then 
 
@@ -47,6 +47,8 @@ for the docker installation. Then
 git clone git@github.com:tboudreaux/MethuselanThucydides.git
 cd MethuselanThucydides
 pip install -r requirments.txt
+cp config.py.user config.py
+vim config.py # Edit the file as needed
 export OPENAI_API_KEY=<Your API KEY>
 export BEARER_TOKEN=<Your Bearer Token>
 export DATASTORE="milvus"
