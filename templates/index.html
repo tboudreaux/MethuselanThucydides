@@ -5,71 +5,101 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Daily Paper Summary</title>
-	<link rel="stylesheet" href="static/css/style.css">
-	<script src="https://code.jquery.com/jquery-3.6.3.js"></script>
-	<script>
-MathJax = {
-  tex: {
-    inlineMath: [['$', '$'], ['\\(', '\\)']]
-  },
-  svg: {
-    fontCache: 'global'
-  }
-};
-</script>
-<script type="text/javascript" id="MathJax-script" async
-  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js">
-</script>
-	<script src="static/js/paperList.js"></script>
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-	<script> const qamap = new Map();</script>
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 
+
+    <script src="https://code.jquery.com/jquery-3.6.3.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link rel="stylesheet", href="static/css/style.css">
+	<script src="/static/js/bootstrapOverlay.js"></script>
+    <script> const qamap = new Map();</script>
   </head>
-<script>
-function openCat(evt, catName) {
-  var i, tabcontent, tablinks;
-  tabcontent = document.getElementsByClassName("tabcontent");
-  for (i = 0; i < tabcontent.length; i++) {
-    tabcontent[i].style.display = "none";
-  }
-  tablinks = document.getElementsByClassName("tablinks");
-  for (i = 0; i < tablinks.length; i++) {
-    tablinks[i].className = tablinks[i].className.replace(" active", "");
-  }
-  document.getElementById(catName).style.display = "block";
-  evt.currentTarget.className += " active";
-}
-</script>
-<body><h1 id="primary_title">Summary of papers published on 2023-04-13</h1>
-<div class="content">
-	<div class="tab-panel">
-	  <h3 id="SidePanelTitle"> Categories </h3>
-	  <div class="tab">
+  <body>
+    <div class="container-fluid">
+
+    
+      <div class="row">
+          <div class="col-md-3", id='sidebar-container'>
+	    <div class="sidebar">
+            <h3 id="SidePanelTitle"> Categories </h3>
+
+            <div id="categoryList" class="list-group">
 		<button class="tablinks" onclick="openCat(event, 'astro-ph.CO')"><i class="fa fa-database" aria-hidden="true"></i> Cosmology and Nongalactic Astrophysics</button>
 		<button class="tablinks" onclick="openCat(event, 'astro-ph.EP')"><i class="fa fa-database" aria-hidden="true"></i> Earth and Planetary Astrophysics</button>
 		<button class="tablinks" onclick="openCat(event, 'astro-ph.GA')"><i class="fa fa-database" aria-hidden="true"></i> Astrophysics of Galaxies</button>
 		<button class="tablinks" onclick="openCat(event, 'astro-ph.HE')"><i class="fa fa-database" aria-hidden="true"></i> High Energy Astrophysical Phenomena</button>
 		<button class="tablinks" onclick="openCat(event, 'astro-ph.IM')"><i class="fa fa-database" aria-hidden="true"></i> Instrumentation and Methods for Astrophysics</button>
 		<button class="tablinks" onclick="openCat(event, 'astro-ph.SR')"><i class="fa fa-database" aria-hidden="true"></i> Solar and Stellar Astrophysics</button>
-		  <div class="panel-footer">
-			  <p><a href="https://github.com/tboudreaux"><i class="fa fa-github" aria-hidden="true"></i></a></p>
+            </div>
+          <div class="panel-footer">
+			  <span><p><a href="https://github.com/tboudreaux/MethuselanThucydides"><i class="fa fa-github" aria-hidden="true"></i></a></p>
+			<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#login">
+			<i class="fa fa-sign-in" aria-hidden="true"></i>
+				</button></span>
+
+          </div>
+		  </div>
+        </div>
+		<div class="col-md-1">
+		</div>
+        <div class="col-md-7">
+          <h1 id="primary_title"></h1>
+			<script>
+				const timeElapsed = Date.now();
+				const today = new Date(timeElapsed);
+
+				document.getElementById("primary_title").innerHTML = "Daily Paper Summary for " + today.toDateString();
+			</script>
+          <div id="paperList" class="row">
+          </div>
+        </div>
+      </div>
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="staticBackdropLabel">Note to Beta Users</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+		  Please be limited in the GPT queries as this is a test version of the website. Thank you!
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Understood</button>
+      </div>
+    </div>
   </div>
-	  </div>
-	</div>
-
-<!-- <div class="tab"> -->
-<!-- 	<button class="tablinks" onclick="openCat(event, 'astro-ph.CO')">Cosmology and Nongalactic Astrophysics</button> -->
-<!-- 	<button class="tablinks" onclick="openCat(event, 'astro-ph.EP')">Earth and Planetary Astrophysics</button> -->
-<!-- 	<button class="tablinks" onclick="openCat(event, 'astro-ph.GA')">Astrophysics of Galaxies</button> -->
-<!-- 	<button class="tablinks" onclick="openCat(event, 'astro-ph.HE')">High Energy Astrophysical Phenomena</button> -->
-<!-- 	<button class="tablinks" onclick="openCat(event, 'astro-ph.IM')">Instrumentation and Methods for Astrophysics</button> -->
-<!-- 	<button class="tablinks" onclick="openCat(event, 'astro-ph.SR')">Solar and Stellar Astrophysics</button> -->
-<!-- </div> -->
-
-	<div id="paperList">
-	</div>
 </div>
-
-<script>formatAllTabs();</script>
-	
+<div class="modal fade" id="login" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="login" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+		  <h1 class="modal-title fs-5" id="staticBackdropLabel">Login</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+		  <div id="loginForm">
+			  <input type="text" id="username" placeholder="Username" class="queryBox" style="padding: 10px;">
+			  <input type="password" id="password" placeholder="Password" class="queryBox" style="padding: 10px;">
+		  </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">cancel</button>
+        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Login</button>
+      </div>
+    </div>
+  </div>
+</div>
+    </div>
+    <script src="static/js/paperList.js"></script>
+    <script>formatAllTabs();</script>
+	<script>
+		myModal = new bootstrap.Modal(document.getElementById('staticBackdrop'), {
+			keyboard: false
+		});
+		myModal.toggle();
+	</script>
+  </body>
+</html>
 

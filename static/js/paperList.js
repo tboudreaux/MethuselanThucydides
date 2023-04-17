@@ -158,6 +158,7 @@ async function formatTab(category){
 	let tab = document.createElement('div');
 	tab.id = category;
 	tab.classList.add('tabcontent');
+	tab.id = category + '-list';
 	container.appendChild(tab);
 
 	await displayPapers(category, tab);

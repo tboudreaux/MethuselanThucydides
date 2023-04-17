@@ -24,6 +24,13 @@ def index():
     """
     return render_template("index.html")
 
+# @app.route('/ui')
+# def indexUI():
+#     """
+#     Render the index page
+#     """
+#     return render_template("indexBS.html")
+
 @app.route('/api/online')
 def online():
     """
