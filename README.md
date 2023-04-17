@@ -39,7 +39,7 @@ docker build -t mt:v0.5 .
 docker run -p 5516:5000 -d --restart always -e "BEARER_TOKEN=$BEARER_TOKEN" -e "OPENAI_API_KEY=$OPENAI_API_KEY" -e "DATASTORE=$DATASTORE" --name MethuselanThucydides mt:v0.5
 ```
 
-The website will be accessible at localhost:5516
+The website will be accessible at 0.0.0.0:5516 (accessible at localhost:5516)
 
 ## Development Installation
 Setup the databases and retrieval plugin in the same manner which you would have
@@ -57,7 +57,7 @@ export DATASTORE="milvus"
 python app.py
 ```
 
-This will run a server in development mode at 0.0.0.0:5515
+This will run a server in development mode at 0.0.0.0:5515 (accessible at localhost:5516)
 
 
 ## IMPORTANT
