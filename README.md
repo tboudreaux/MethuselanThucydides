@@ -41,7 +41,11 @@ A slightly more complex example
 	2) I need to rework the memory model for a single chat to make it more 
 	   robust
 	3) Papers are currently not pulled automatically every day. A call to the
-	   /api/fetch/latest must be made manually to fetch the latest papers. 
-	   This will be added as an automated job to the docker container.
+	   /api/fetch/latest must be made manually to fetch the latest papers. This
+	   will be added as an automated job to the docker container. However for now
+	   this should be pretty easy to impliment in cron
+	   ```cron
+0 5 * * * curl -v https://example.com/api/fetch/latest
+	   ```
 	4) I want to have chat memory stored server side for users once user
 	   authentication is enabled. 
