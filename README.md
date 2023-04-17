@@ -31,3 +31,17 @@ of that!
 ## Screenshot
 Simple demo of the state of the app in mid April 2023
 ![Example Photo](/imgs/demo.png?raw=true "Demo")
+
+A slightly more complex example
+![Example Photo 2](/imgs/demo2.png$raw=true "Demo 2")
+
+## Notes
+	1) Currently there is a bug in how I have implimented the arxiv API
+	   such that it does not actually grab all the papers from a given day.
+	2) I need to rework the memory model for a single chat to make it more 
+	   robust
+	3) Papers are currently not pulled automatically every day. A call to the
+	   /api/fetch/latest must be made manually to fetch the latest papers. 
+	   This will be added as an automated job to the docker container.
+	4) I want to have chat memory stored server side for users once user
+	   authentication is enabled. 
