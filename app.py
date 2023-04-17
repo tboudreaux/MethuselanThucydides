@@ -16,6 +16,7 @@ from setup import app, db
 from queryArxiv import fetch_latest, fetch_arxix_id
 
 
+
 @app.route('/')
 def index():
     return render_template("index.html")
