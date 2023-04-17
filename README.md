@@ -33,7 +33,7 @@ Simple demo of the state of the app in mid April 2023
 ![Example Photo](/imgs/demo.png?raw=true "Demo")
 
 A slightly more complex example
-![Example Photo 2](/imgs/demo2.png$raw=true "Demo 2")
+![Example Photo 2](/imgs/demo2.png?raw=true "Demo 2")
 
 ## Notes
 	1) Currently there is a bug in how I have implimented the arxiv API
