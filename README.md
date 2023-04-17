@@ -57,7 +57,7 @@ export DATASTORE="milvus"
 python app.py
 ```
 
-This will run a server in development mode at 0.0.0.0:5515 (accessible at localhost:5516)
+This will run a server in development mode at 0.0.0.0:5515 (accessible at localhost:5515)
 
 
 ## IMPORTANT
