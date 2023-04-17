@@ -14,12 +14,58 @@ async function getSummary(paper_id) {
 	return data;
 }
 
+async function activateAdvancedMode(arxivID) {
+	console.log("HERE")
+	let response = await fetch('/api/fetch/ID/' + arxivID + '/long');
+	let data = await response.json();
+
+	let advancedModeBtn = document.getElementById(arxivID + '_advancedMode');
+	advancedModeBtn.innerHTML = 'Full Text Mode';
+	advancedModeBtn.classList.add('disabled');
+	return data
+}
+
+async function checkMode(arxivID) {
+	let response = await fetch('/api/fetch/ID/' + arxivID + '/hasFullText');
+	let data = await response.json();
+	return data;
+}
+
 
 async function format_paper(paper) {
-	console.log(paper);
 	let paper_div = document.createElement('div');
 	paper_div.classList.add('paper');
 	paper_div.id = paper.arxiv_id;
+
+	let paper_div_header = document.createElement('div');
+	paper_div_header.classList.add('paper_header');
+	paper_div.appendChild(paper_div_header);
+
+	let waitSpinner = document.createElement('div');
+	waitSpinner.classList.add('spinner');
+	waitSpinner.id = paper.arxiv_id + '_waitSpinner';
+	paper_div_header.appendChild(waitSpinner);
+	waitSpinner.style.display = 'none';
+
+	let advancedMode = document.createElement('button');
+	advancedMode.id = paper.arxiv_id + '_advancedMode';
+	advancedMode.classList.add('advancedMode-btn');
+
+	mode = await checkMode(paper.arxiv_id);
+	if (mode['hasFullText'] === true) {
+		advancedMode.innerHTML = 'Full Text Mode';
+		advancedMode.classList.add('disabled');
+	}
+	else {
+		advancedMode.innerHTML = 'Abstract Only Mode';
+	}
+	// advancedMode.addEventListener('click', async function() {await activateAdvancedMode(paper.arxiv_id)});
+	advancedMode.addEventListener('click', async () => {
+		console.log("Activating advanced mode for " + paper.arxiv_id);
+		await activateAdvancedMode(paper.arxiv_id);
+		console.log("Advanced mode activated for " + paper.arxiv_id);
+	});
+	paper_div_header.appendChild(advancedMode);
 
 	let title = document.createElement('h3');
 	title.classList.add('ptitle');
@@ -57,23 +103,17 @@ async function format_paper(paper) {
 	inputLine.id = paper.arxiv_id + '_inputLine';
 	inputLine.classList.add('inputLine');
 
-	// let advancedMode = document.createElement('input');
-	// advancedMode.type = 'checkbox';
-	// advancedMode.id = paper.arxiv_id + '_advancedMode';
-	// advancedMode.classList.add('advancedMode');
-	// inputLine.appendChild(advancedMode);
+	let queryBoxWrapper = document.createElement('div');
+	queryBoxWrapper.classList.add('queryBoxWrapper');
+	inputLine.appendChild(queryBoxWrapper);
 
 	let queryBox = document.createElement('input');
 	queryBox.type = 'text';
 	queryBox.id = paper.arxiv_id + '_queryBox';
 	queryBox.placeholder = 'Ask a question about this paper';
-	inputLine.appendChild(queryBox);
+	queryBox.classList.add('queryBox');
+	queryBoxWrapper.appendChild(queryBox);
 
-	let waitSpinner = document.createElement('div');
-	waitSpinner.classList.add('spinner');
-	waitSpinner.id = paper.arxiv_id + '_waitSpinner';
-	inputLine.appendChild(waitSpinner);
-	waitSpinner.style.display = 'none';
 
 
 	chatBox.appendChild(inputLine);
@@ -82,8 +122,14 @@ async function format_paper(paper) {
 	submitButton.type = 'submit';
 	submitButton.value = 'Ask';
 	submitButton.id = paper.arxiv_id + '_submitButton';
-	submitButton.onclick = function() {submitQuery(paper.arxiv_id)};
+	submitButton.classList.add('submitChatButton');
+	submitButton.onclick = await function() {submitQuery(paper.arxiv_id)};
 	inputLine.appendChild(submitButton);
+
+	let icon = document.createElement('i');
+	icon.classList.add('fa');
+	icon.classList.add('fa-paper-plane');
+	submitButton.appendChild(icon);
 
 	paper_div.appendChild(chatBox);
 
@@ -91,6 +137,7 @@ async function format_paper(paper) {
 
 	return paper_div;
 }
+
 
 async function displayPapers(category, container) {
   const paperList = await getPaperList(category);
@@ -123,19 +170,18 @@ async function formatAllTabs(){
 
 
 
-function submitQuery(arxivID) {
-	// let advancedMode = document.getElementById(arxivID + '_advancedMode').checked;
-	// console.log(advancedMode)
-	var endpoint = '/api/query/simple/' + arxivID;
-	// if (advancedMode === true) {
-	// 	console.log("Using advanced mode")
-	// 	endpoint = '/api/query/complex/' + arxivID;
-	// }
-	// else {
-	// 	console.log("Using simple mode")
-	// 	endpoint = '/api/query/simple/' + arxivID;
-	// }
-	console.log(endpoint)
+async function submitQuery(arxivID) {
+	modeCheck = await checkMode(arxivID);
+	console.log(modeCheck);
+	if (modeCheck['hasFullText'] === false) {
+		console.log("Using simple mode");
+		endpoint = '/api/query/simple/' + arxivID;
+	}
+	else{
+		console.log("Using advanced mode");
+		endpoint = '/api/query/complex/' + arxivID;
+	}
+	console.log(endpoint);
     var http = new XMLHttpRequest();
     http.open("POST", endpoint, true);
     http.setRequestHeader("Content-type","application/x-www-form-urlencoded");
@@ -152,24 +198,24 @@ function submitQuery(arxivID) {
     http.send(params);
 	// Show the spinner
 	waitSpinner = document.getElementById(arxivID + '_waitSpinner');
+	submitQueryButton = document.getElementById(arxivID + '_submitButton');
 	waitSpinner.style.display = 'block';
-    // $('#' + arxivID + '_waitSpinner').show();
-	$('#' + arxivID + '_queryBox').prop('disabled', true);
-	$('#' + arxivID + '_submitButton').prop('disabled', true);
+	submitQueryButton.classList.add('disabled');
 
 	let chat = document.getElementById(arxivID + '_chat');
-	let queryMessage = document.createElement('p');
-	queryMessage.classList.add('chatElement');
+	let userMessage = document.createElement('p');
+	userMessage.classList.add('user');
 
-	queryMessage.innerHTML = '[User]: ' + query;
-	chat.appendChild(queryMessage);
+	userMessage.innerHTML = '<i class="fa fa-user" aria-hidden="true"></i>  ' + query;
+	chat.appendChild(userMessage);
 	document.getElementById(arxivID + '_queryBox').value = '';
 
     http.onload = function() {
 		let responseOBJ = JSON.parse(http.responseText);
 		let responseMessage = document.createElement('p');
 		responseMessage.classList.add('chatElement');
-		responseMessage.innerHTML = '[GPT]: ' + responseOBJ['answer'];
+		responseMessage.innerHTML = '<i class="fa fa-server" aria-hidden="true"></i>  ' + responseOBJ['answer'];
+		responseMessage.classList.add('bot');
 		chat.appendChild(responseMessage);
 		let currentState = [[query, responseOBJ['answer']]];
 		if (qamap.has(arxivID)) {
@@ -179,8 +225,7 @@ function submitQuery(arxivID) {
 			qamap.set(arxivID, currentState);
 		}
 		waitSpinner.style.display = 'none';
-		$('#' + arxivID + '_queryBox').prop('disabled', false);
-		$('#' + arxivID + '_submitButton').prop('disabled', false);
+		submitQueryButton.classList.remove('disabled');
 
 
     }

@@ -13,6 +13,8 @@ from utils import upsert
 from models import Paper
 from setup import app, db
 
+from queryArxiv import fetch_latest, fetch_arxix_id
+
 
 @app.route('/')
 def index():
@@ -155,12 +157,49 @@ def query_simple(arxiv_id):
     paper.last_used = dt.datetime.now().date()
     db.session.commit()
 
-    answer = ask(query)
-    return jsonify({'answer':answer})
+    answer = ask(query, document_id=arxiv_id)
+    return jsonify({'query': question, 'answer':answer})
 
 @app.route('/api/query/complex/<arxiv_id>', methods=['POST'])
 def query_complex(arxiv_id):
+    fetch_arxiv_long_api(arxiv_id)
+    paper = Paper.query.filter_by(arxiv_id=arxiv_id).first()
     question = request.form['query']
+    query = f"Please the most recent question about the following question about the paper titled {paper.title}. Previous questions and answers have been provided as context for you. {question}"
+    paper.last_used = dt.datetime.now().date()
+    db.session.commit()
+
+    answer = ask(query, document_id=arxiv_id)
+    return jsonify({'query': question, 'answer':answer})
+
+@app.route('/api/categories')
+def categories():
+    categories = Paper.query.with_entities(Paper.subjects).distinct().all()
+    categories = [category[0] for category in categories]
+    return jsonify({'categories':categories})
+
+@app.route('/api/fetch/latest')
+def fetch_latest_api():
+    fetchResult = fetch_latest()
+    return jsonify(fetchResult)
+
+@app.route('/api/fetch/ID/<arxiv_id>/short')
+def fetch_arxiv_api(arxiv_id):
+    fetchResult = fetch_arxix_id(arxiv_id)
+    return jsonify(fetchResult)
+
+@app.route('/api/fetch/ID/<arxiv_id>/long')
+def fetch_arxiv_long_api(arxiv_id):
+    fetchResult = fetch_arxix_id(arxiv_id)
+    try:
+        load_full_text(arxiv_id)
+        fetchResult['full_text'] = "Loaded full text"
+    except Exception as e:
+        fetchResult['full_text'] = "Failed to load full text"
+        fetchResult['error'] = str(e)
+    return jsonify(fetchResult)
+
+def load_full_text(arxiv_id):
     paper = Paper.query.filter_by(arxiv_id=arxiv_id).first()
     if not paper.full_page_text:
         tmpDir = tempfile.TemporaryDirectory()
@@ -177,21 +216,20 @@ def query_complex(arxiv_id):
             text += page.extract_text()
         cleanText = text.replace("\x00", "")
         paper.full_page_text = cleanText
-        upsert(arxiv_id, cleanText)
+        upsert(arxiv_id, cleanText, paper.subjects)
         db.session.commit()
-    query = f"Please the most recent question about the following question about the paper titled {paper.title}. Previous questions and answers have been provided as context for you. {question}"
-    paper.last_used = dt.datetime.now().date()
-    db.session.commit()
+    else:
+        print("Already have full text")
 
-    answer = ask(query)
-    return jsonify({'answer':answer})
-
-@app.route('/api/categories')
-def categories():
-    categories = Paper.query.with_entities(Paper.subjects).distinct().all()
-    categories = [category[0] for category in categories]
-    return jsonify({'categories':categories})
+@app.route('/api/fetch/ID/<arxiv_id>/hasFullText')
+def has_full_text(arxiv_id):
+    paper = Paper.query.filter_by(arxiv_id=arxiv_id).first()
+    if paper.full_page_text:
+        return jsonify({'hasFullText':True})
+    else:
+        return jsonify({'hasFullText':False})
 
 if __name__ == '__main__':
     port = os.environ.get("FLASK_PORT", 5515)
     app.run("0.0.0.0", int(port), debug=True)
+

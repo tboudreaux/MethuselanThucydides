@@ -10,7 +10,7 @@ SEARCH_TOP_K = 3
 DATABASE_INTERFACE_BEARER_TOKEN = os.environ["BEARER_TOKEN"]
 
 
-def upsert(id: str, content: str, sourceID:str, createdAt: str, author:str, subject:str, source_url: str):
+def upsert(id: str, content: str, subject:str):
     """
     Upload one piece of text to the database with associated metadata
     """
@@ -26,11 +26,7 @@ def upsert(id: str, content: str, sourceID:str, createdAt: str, author:str, subj
             "id": id,
             "text": content,
             "metadata": {
-                "source_id": sourceID,
-                "created_at": createdAt,
-                "author": author,
                 "subject": subject,
-                "source_url": source_url
             }
         }]
     }

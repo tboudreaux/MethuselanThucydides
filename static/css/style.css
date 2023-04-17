@@ -1,0 +1,257 @@
+.disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+.advancedMode-btn {
+  /* Button background color */
+  background-color: #2196F3;
+  
+  /* Button text color */
+  color: #fff;
+  
+  /* Button padding */
+  padding: 10px 20px;
+  
+  /* Button border radius */
+  border-radius: 5px;
+  
+  /* Button border */
+  border: none;
+  
+  /* Button shadow */
+  box-shadow: 0 2px 5px rgba(0,0,0,0.5);
+  
+  /* Button transition */
+  transition: box-shadow 0.3s ease-in-out;
+}
+
+.advancedMode-btn:hover {
+  /* Button shadow on hover */
+  box-shadow: 0 4px 8px rgba(0,0,0,0.5);
+}
+
+.inputLine {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  /* Other styles for the input line */
+}
+
+.submitChatButton {
+  width: 4%;
+  height: 40px;
+  font-size: 16px;
+  border: none;
+  /* Button background color */
+  background-color: #2196F3;
+  
+  /* Button text color */
+  color: #fff;
+  
+  /* Button border radius */
+  border-radius: 5px;
+  
+  /* Button border */
+  border: none;
+  
+  /* Button shadow */
+  box-shadow: 0 2px 5px rgba(0,0,0,0.5);
+  
+  /* Button transition */
+  transition: box-shadow 0.3s ease-in-out;
+  /* Other styles for the button */
+}
+
+.submitChatButton:hover {
+  /* Button shadow on hover */
+  box-shadow: 0 4px 8px rgba(0,0,0,0.5);
+}
+
+.queryBoxWrapper {
+  flex: 1;
+  margin-left: 2%;
+  /* Other styles for the query box wrapper */
+}
+
+.queryBox {
+  width: 96%;
+  border: none;
+  padding: 10px;
+  font-size: 16px;
+  box-sizing: border-box;
+  background-color: #f5f5f5;
+  border-radius: 5px;
+  /* Other styles for the query box */
+}
+.paper_header {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  /* Other styles for the header div */
+}
+
+.advancedMode-btn {
+  margin-left: auto; /* Align button to the right */
+  /* Other styles for the button */
+}
+
+.paper {
+  border-radius: 25px;
+  background: #cfd1d0;
+  padding: 20px;
+}
+
+
+.tab {
+  display: block;
+  margin: 0;
+  padding: 10px 20px;
+}
+
+.tablinks {
+  display: block;
+  width: 100%;
+  border: none;
+  background-color: transparent;
+  text-align: left;
+  font-size: 16px;
+  color: #333;
+  cursor: pointer;
+  padding: 10px;
+}
+
+.tablinks:hover {
+  background-color: #ddd;
+  border-radius: 10px;
+}
+
+.tablinks.active {
+  background-color: #333;
+  color: #fff;
+}
+
+#SidePanelTitle{
+	margin: 20px 0;
+}
+
+/* /* Style the tab */ */
+/* .tab { */
+/*   overflow: hidden; */
+/*   border: 1px solid #ccc; */
+/*   background-color: #f1f1f1; */
+/* } */
+/*  */
+/* /* Style the buttons inside the tab */ */
+/* .tab button { */
+/*   background-color: inherit; */
+/*   float: left; */
+/*   border: none; */
+/*   outline: none; */
+/*   cursor: pointer; */
+/*   padding: 14px 16px; */
+/*   transition: 0.3s; */
+/*   font-size: 17px; */
+/* } */
+/*  */
+/* /* Change background color of buttons on hover */ */
+/* .tab button:hover { */
+/*   background-color: #ddd; */
+/* } */
+/*  */
+/* /* Create an active/current tablink class */ */
+/* .tab button.active { */
+/*   background-color: #ccc; */
+/* } */
+/*  */
+/* /* Style the tab content */ */
+/* .tabcontent { */
+/*   display: none; */
+/*   padding: 6px 12px; */
+/*   border: 1px solid #ccc; */
+/*   border-top: none; */
+/* } */
+/* Define the spinner animation */
+@keyframes spinner {
+to {transform: rotate(360deg);}
+}
+
+.spinner {
+  margin-right: auto; /* Align spinner to the left */
+  border: 5px solid #f3f3f3;
+  border-top: 5px solid #3498db;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  animation: spinner 1s linear infinite;
+  display: none;
+}
+
+@media (max-width: 600px) {
+  .spinner {
+    width: 20px; /* Smaller size for smaller screens */
+    height: 20px;
+    border-width: 3px;
+  }
+}
+
+.chat-box {
+  background-color: #f7f7f7; /* Light grey background color */
+}
+
+.user {
+  background-color: #e9e9e9; /* Slightly darker background color for user responses */
+  padding: 5px 10px; /* Add some padding to the user responses */
+  border-radius: 10px; /* Add rounded corners to the user responses */
+  margin: 10px 0; /* Add some margin between each user response and the chat-box container */
+}
+
+.bot {
+  padding: 5px 10px; /* Add some padding to the bot responses */
+  border-radius: 10px; /* Add rounded corners to the bot responses */
+  margin: 10px 0; /* Add some margin between each bot response and the chat-box container */
+}
+
+.content {
+  display: flex;
+  width: 100%;
+  flex-direction: row;
+}
+
+/* .tab-panel { */
+/*   position: fixed; */
+/*   top: 0; */
+/*   left: 0; */
+/*   width: 20%; */
+/*   height: 100%; */
+/*   background-color: #f7f7f7; */
+/*   box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); */
+/* } */
+.tab-panel {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 20%;
+  height: 100%;
+  background-color: #f7f7f7;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  display: flex;
+  flex-direction: column;
+  /* justify-content: flex-start; */
+  align-items: center;
+}
+.panel-footer {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 20px;
+}
+
+#paperList {
+  flex: 1;
+  background-color: #fff;
+  margin-left: calc(20% + 2vw); /* Adjust as needed */
+}
+#primary_title {
+  margin-left: calc(20% + 2vw); /* Adjust as needed */
+}
