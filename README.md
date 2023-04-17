@@ -1,9 +1,9 @@
 # Methuselan Thucydides
-A more feature ritch implimentation of Paper.GPT. This is a webserver which 
-summariezes ever paper in arxiv categories every morning and allows you to ask questions of them.
+A more feature rich implementation of Paper.GPT. This is a webserver which 
+summarizes ever paper in arxiv categories every morning and allows you to ask questions of them.
 
 # Installation
-Much of the install is handeled by the Dockerfile. However, in addition to 
+Much of the install is handled by the Dockerfile. However, in addition to 
 docker you will need 
 
 	1) milvis
@@ -19,18 +19,41 @@ docker run -p 5516:5000 -d --restart always -e "BEARER_TOKEN=$BEARER_TOKEN" -e "
 ```
 
 This assumes you have put your OPENAI_API_KEY and BEARER_TOKEN in an
-enviromental variable.
+environmental variable.
 
-The website will be accesable at localhost:5515
+The website will be accessible at localhost:5515
 
 
 Note that there is currently no authentication. Therefore, anyone can ask
-questions and CHAREGE YOUR API KEY. This is a top priority for me, but be aware
+questions and CHARGE YOUR API KEY. This is a top priority for me, but be aware
 of that!
+
+## Basic Usage
+Basic usage should be self explanatory. The idea is that the website served
+provides a brief summary of each paper posted to the arxiv on the previous day
+(or over the weekend / Friday). These summaries are generated using gpt-3.5-tubo
+and the abstract of the paper as listed on arxiv. The interface will default to
+showing you all papers; however, category filters are shown in a sidebar. 
+
+More complex behavior is enabled through the chat box associated to each paper.
+This chat box is connected to gpt-3.5-turbo and a vector database storing all
+the currently cached information about the paper (by using the
+openai-textembedding-ada002 model). When you ask a question the most relevant
+cached information about that paper is passed to the gpt model along with the
+question and its response is printed out to the screen. Because by default only
+the abstract and title are cached the responses gpt can give are limited.
+However, if you click the "Abstract Mode Only" button and wait a few seconds
+you will see that it changes to "Full Text Mode" and is no longer clickable.
+Behind the scenes the full pdf of that paper has been downloaded and parsed
+into text. That is then embedded into the same vector database. Now when you ask
+questions the gpt model has far more context to answer them on. Because the
+full text is stored in the database after anyone clicks the "Abstract Mode
+Only" button one time it will always be greyed out in the future as that chat
+box will always then default to considering the entire paper.
 
 ## Reverse Proxy
 I have tested this running behind a nginx reverse proxy. Its quite
-straigtfoward and no special configuration was needed.
+straightforward and no special configuration was needed.
 
 ## Screenshot
 Simple demo of the state of the app in mid April 2023
