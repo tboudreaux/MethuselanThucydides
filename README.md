@@ -14,6 +14,8 @@ The joke is stretched and the metaphor is poor; however, what you can't say is
 that its not a unique name.
 
 # Installation
+
+## Docker
 Much of the install is handled by the Dockerfile. However, in addition to 
 docker you will need 
 
@@ -26,6 +28,8 @@ building the docker container. Once those are setup you can run the following
 commands to build and deploy Methuselan Thucydides
 
 ```bash
+git clone git@github.com:tboudreaux/MethuselanThucydides.git
+cd MethuselanThucydides
 docker build -t mt:v0.5 .
 docker run -p 5516:5000 -d --restart always -e "BEARER_TOKEN=$BEARER_TOKEN" -e "OPENAI_API_KEY=$OPENAI_API_KEY" -e "DATASTORE=\'milvus\'" --name MethuselanThucydides mt:v0.5
 ```
@@ -33,12 +37,36 @@ docker run -p 5516:5000 -d --restart always -e "BEARER_TOKEN=$BEARER_TOKEN" -e "
 This assumes you have put your OPENAI_API_KEY and BEARER_TOKEN in an
 environmental variable.
 
-The website will be accessible at localhost:5515
+The website will be accessible at localhost:5516
+
+## Dev
+Setup the databases and retrieval plugin in the same manner which you would have
+for the docker installation. Then 
+
+```bash
+git clone git@github.com:tboudreaux/MethuselanThucydides.git
+cd MethuselanThucydides
+pip install -r requirments.txt
+export OPENAI_API_KEY=<Your API KEY>
+export BEARER_TOKEN=<Your Bearer Token>
+export DATASTORE="milvus"
+python app.py
+```
+
+This will run a server in development mode at 0.0.0.0:5515
 
 
+## IMPORTANT
 Note that there is currently no authentication. Therefore, anyone can ask
 questions and CHARGE YOUR API KEY. This is a top priority for me, but be aware
 of that!
+
+Also, I am an astronomer, not a security researcher or even software engineer.
+This is a hobby project which I am working on and would like to have at least
+somewhat okay security. However, do not deploy in a low trust environment as I
+am not willing to guarantee that I am following best security practices.
+
+# Other Information
 
 ## Basic Usage
 Basic usage should be self explanatory. The idea is that the website served
