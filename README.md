@@ -59,6 +59,30 @@ python app.py
 
 This will run a server in development mode at 0.0.0.0:5515 (accessible at localhost:5515)
 
+## postgresql Setup
+In postgresql make a database called arxivsummary. Within that database then make a table with the following schema
+
+```sql
+CREATE TABLE arxivSummary 
+(id SERIAL PRIMARY KEY, 
+title VARCHAR(200) NOT NULL, 
+first_author VARCHAR(100) NULL, 
+author_list VARCHAR(5000) NULL, 
+url VARCHAR(100) NOT NULL, 
+abstract VARCHAR(5000) NULL, 
+comments VARCHAR(5000), 
+published_date DATE NOT NULL, 
+added_date DATE NOT NULL DEFAULT CURRENT_DATE, 
+last_used DATE NULL, 
+arxiv_id VARCHAR(30) NULL, 
+doi VARCHAR(100) NULL, 
+subjects VARCHAR(200) NULL, 
+hasTex BOOLEAN NULL,
+gpt_summary_sort TEXT NULL,
+gpt_summary_long TEXT NULL,
+full_page_text TEXT NULL)
+```
+
 
 ## IMPORTANT
 Note that there is currently no authentication. Therefore, anyone can ask
