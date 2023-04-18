@@ -110,14 +110,14 @@ straightforward and no special configuration was needed.
 
 ## Screenshot
 Some screenshots of the web interface as of April 18th 2023
-![Example Photo](/imgs/Screenshot/A.png?raw=true "Demo A")
-![Example Photo](/imgs/Screenshot/B.png?raw=true "Demo A")
-![Example Photo](/imgs/Screenshot/C.png?raw=true "Demo A")
-![Example Photo](/imgs/Screenshot/D.png?raw=true "Demo A")
-![Example Photo](/imgs/Screenshot/E.png?raw=true "Demo A")
-![Example Photo](/imgs/Screenshot/F.png?raw=true "Demo A")
-![Example Photo](/imgs/Screenshot/G.png?raw=true "Demo A")
-![Example Photo](/imgs/Screenshot/H.png?raw=true "Demo A")
+![Example Photo](/imgs/screenshot/A.png?raw=true "Demo A")
+![Example Photo](/imgs/screenshot/B.png?raw=true "Demo A")
+![Example Photo](/imgs/screenshots/C.png?raw=true "Demo A")
+![Example Photo](/imgs/screenshots/D.png?raw=true "Demo A")
+![Example Photo](/imgs/screenshots/E.png?raw=true "Demo A")
+![Example Photo](/imgs/screenshots/F.png?raw=true "Demo A")
+![Example Photo](/imgs/screenshots/G.png?raw=true "Demo A")
+![Example Photo](/imgs/screenshots/H.png?raw=true "Demo A")
 
 ## Notes
 	1) Currently there is a bug in how I have implimented the arxiv API
