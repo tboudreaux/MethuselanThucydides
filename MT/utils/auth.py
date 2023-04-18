@@ -1,5 +1,5 @@
-from models import User
-from setup import app
+from MT.models.models import User
+from MT.setup import app
 from flask import jsonify, request
 from functools import wraps
 import jwt

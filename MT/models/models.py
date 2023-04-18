@@ -1,4 +1,5 @@
-from setup import db
+from MT.setup import db
+
 import uuid
 from sqlalchemy.dialects.postgresql import TEXT
 from sqlalchemy.sql import func
@@ -10,7 +11,7 @@ class Paper(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(200), nullable=False)
     first_author = db.Column(db.String(100))
-    author_list = db.Column(db.String(5000))
+    num_authors = db.Column(db.Integer)
     url = db.Column(db.String(100))
     abstract = db.Column(db.String(5000))
     comments = db.Column(db.String(5000))
@@ -24,6 +25,27 @@ class Paper(db.Model):
     gpt_summary_short = db.Column(TEXT)
     gpt_summary_long = db.Column(TEXT)
     full_page_text = db.Column(TEXT)
+
+    def init(self, title, first_author, num_authors, url, abstract, comments, published_date, added_date, last_used, arxiv_id, doi, subjects, hastex, gpt_summary_short, gpt_summary_long, full_page_text):
+        self.title = title
+        self.first_author = first_author
+        self.num_authors = num_authors
+        self.url = url
+        self.abstract = abstract
+        self.comments = comments
+        self.published_date = published_date
+        self.added_date = added_date
+        self.last_used = last_used
+        self.arxiv_id = arxiv_id
+        self.doi = doi
+        self.subjects = subjects
+        self.hastex = hastex
+        self.gpt_summary_short = gpt_summary_short
+        self.gpt_summary_long = gpt_summary_long
+        self.full_page_text = full_page_text
+
+    def __repr__(self):
+        return f'<Paper: {self.title}, arxiv_id: {self.arxiv_id}>'
 
 class User(db.Model):
     __tablename__ = 'users'
@@ -48,6 +70,22 @@ class User(db.Model):
     admin = db.Column(db.Boolean, default=False)
     salt = db.Column(db.String(100), nullable=False)
 
+    def init(self, username, email, password, ip=None, user_agent=None, country=None, city=None, timezone=None, admin=False, enabled=True):
+        checkUser = User.query.filter_by(username=username).first()
+        if checkUser:
+            return False
+        self.username = username
+        self.email = email
+        self.password, self.salt = self.hash_plain_password(password)
+        self.last_ip = ip
+        self.last_user_agent = user_agent
+        self.last_country = country
+        self.last_city = city
+        self.last_timezone = timezone
+        self.admin = admin
+        self.enabled = enabled
+        return True
+
     def hash_plain_password(self, plain_password, salt=None):
         if not salt:
             salt = bcrypt.gensalt().decode('utf-8')
@@ -60,26 +98,35 @@ class User(db.Model):
     def __repr__(self):
         return f'<User: {self.username}>'
 
-def enroll_user(username, email, plain_password, ip=None, user_agent=None, country=None, city=None, timezone=None, admin=False, enabled=True):
-    print(f'enrolling user: {admin}, {enabled}')
-    user = User()
-    user.username = username
-    user.email = email
-    user.password, user.salt = user.hash_plain_password(plain_password)
-    user.last_ip = ip
-    user.last_user_agent = user_agent
-    user.last_country = country
-    user.last_city = city
-    user.last_timezone = timezone
-    user.admin = admin
-    user.enabled = enabled
-    return user
+class author(db.Model):
+    __tablename__ = 'authors'
+    uuid = db.Column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4)
+    full_name = db.Column(db.String(100), nullable=False)
+    first_name = db.Column(db.String(100), nullable=False)
 
-
-
-
-
+    def init(self, full_name, first_name):
+        self.full_name = full_name
+        self.first_name = first_name
 
     def __repr__(self):
-        return f'<Paper {self.title}>'
+        return f'<Author: {self.name}>'
+
+class author_papers(db.Model):
+    __tablename__ = 'authorpapers'
+    uuid = db.Column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4)
+    paper_id = db.Column(db.Integer, db.ForeignKey('arxivsummary.id'))
+    author_id = db.Column(db.Integer, db.ForeignKey('authors.uuid'))
+
+    def init(self, paper_id, author_id):
+        self.paper_id = paper_id
+        self.author_id = author_id
+
+    def __repr__(self):
+        return f'<PaperAuthor: {self.paper_id}, {self.author_id}>'
+
+
+
+
+
+
 

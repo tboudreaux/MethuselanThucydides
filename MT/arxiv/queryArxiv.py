@@ -1,3 +1,9 @@
+from MT.setup import db
+from MT.utils.utils import upsert
+from MT.config import arxivCategories
+from MT.config import uri
+from MT.models.models import Paper
+
 import arxiv
 from arxiv import SortCriterion
 from arxiv import SortOrder
@@ -6,11 +12,10 @@ from sqlalchemy import create_engine
 from sqlalchemy import text
 from sqlalchemy import insert, select
 from sqlalchemy import MetaData
+import pypdf
+import os
+import tempfile
 
-from config import arxivCategories
-
-from utils import upsert
-from config import uri
 
 
 def fetch_latest():
@@ -26,7 +31,6 @@ def fetch_latest():
     i = 0
     log = list()
     for cat in arxivCategories:
-        print(cat)
         r = arxiv.Search(
             query = f"cat:{cat}",
             id_list = [],
@@ -112,3 +116,35 @@ def enroll_paper_short(paper, table, connection):
 
     upsert(ID, vecInput, subject)
 
+def load_full_text(arxiv_id):
+    """
+    Load the full text of a paper from arxiv and store it in the database.
+
+    Parameters
+    ----------
+        arxiv_id : str
+
+    Returns
+    -------
+        None
+    """
+    paper = Paper.query.filter_by(arxiv_id=arxiv_id).first()
+    if not paper.full_page_text:
+        tmpDir = tempfile.TemporaryDirectory()
+        locatePaper = arxiv.Search(
+            id_list = [arxiv_id],
+            max_results = 1,
+            )
+        singlePaper = next(locatePaper.results())
+        singlePaper.download_pdf(tmpDir.name, "paper.pdf")
+
+        reader = pypdf.PdfReader(os.path.join(tmpDir.name, "paper.pdf"))
+        text = "Paper Title: " + paper.title + "\n"
+        for page in reader.pages:
+            text += page.extract_text()
+        cleanText = text.replace("\x00", "")
+        paper.full_page_text = cleanText
+        upsert(arxiv_id, cleanText, paper.subjects)
+        db.session.commit()
+    else:
+        print("Already have full text")

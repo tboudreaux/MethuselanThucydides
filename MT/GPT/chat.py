@@ -1,10 +1,10 @@
+from MT.config import retrivalAPI_IP, retrivalAPI_Port
 from typing import Any, List, Dict
 import openai
 import requests
 import logging
 import os
 import datetime as dt
-from config import retrivalAPI_IP, retrivalAPI_Port
 
 DATABASE_INTERFACE_BEAR_TOKEN = os.environ.get("BEARER_TOKEN", None)
 OPENAI_API_KEY = os.environ.get("OPENAI_API_KEY", None)

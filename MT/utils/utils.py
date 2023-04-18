@@ -1,9 +1,9 @@
+from MT.config import retrivalAPI_IP, retrivalAPI_Port
 from typing import Any, Dict
 import requests
 import os
 import sys
 
-from config import retrivalAPI_IP, retrivalAPI_Port
 
 SEARCH_TOP_K = 3
 
