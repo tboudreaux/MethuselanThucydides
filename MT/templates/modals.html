@@ -1,0 +1,140 @@
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="staticBackdropLabel">Note to Beta Users</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+		  Please be limited in the GPT queries as this is a test version of the website. Thank you!
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Understood</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<div class="modal fade" id="login" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="login" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+		  <h1 class="modal-title fs-5" id="staticBackdropLabel">Login</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+		  <div id="loginForm">
+			  <div class="container">
+				  <div class="column">
+					  <div class="row">
+			  <input type="text" id="username" placeholder="Username" class="queryBox">
+					  </div>
+					  <div class="row">
+					  </div>
+					  <div class="row">
+			  <input type="password" id="password" placeholder="Password" class="queryBox">
+					  </div>
+				  </div>
+			  </div>
+		  </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">cancel</button>
+        <button type="button" class="btn btn-primary" data-bs-dismiss="modal" onclick="login()">Login</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Add New User Modal-->
+<!-- This model is used when an authorized used adds a new user-->
+<div class="modal fade" id="newUser" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="newUser" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+		  <h1 class="modal-title fs-5" id="staticBackdropLabel">Login</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+		  <div id="newUserForm">
+			  <div class="container">
+				  <div class="row">
+					  <div class="col">
+			  <input type="text" id="newUserUsername" placeholder="Username" class="queryBox">
+					  </div>
+					  <div class="col">
+			  <input type="password" id="newUserPassword" placeholder="Password" class="queryBox">
+					  </div>
+				  </div>
+				  <div class="row">
+					  <div class="col">
+						  <input type="email" id="newUserEmail" placeholder="Email" class="queryBox">
+					  </div>
+					  <div class="col">
+						  <div class="row">
+							  <div class="col">
+								<label class="switch">
+								<input type="checkbox" id="newUserIsAdmin">
+								<span class="slider round"></span>
+								</label>
+							  </div>
+							  <div class="col">
+								  <p>Admin?</p>
+							  </div>
+						  </div>
+					  </div>
+
+
+				  </div>
+			  </div>
+		  </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">cancel</button>
+        <button type="button" class="btn btn-primary" data-bs-dismiss="modal" onclick="enroll_user()">Add User!</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- Self Register New User Modal-->
+<!-- This model is used when an authorized used adds a new user-->
+<div class="modal fade" id="selfRegisterNewUser" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="selfRegisterNewUser" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+		  <h1 class="modal-title fs-5" id="staticBackdropLabel">Login</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+		  <div id="newUserForm">
+			  <div class="container">
+				  <div class="row">
+					  <div class="col">
+						  <input type="text" id="selfNewUserUsername" placeholder="Username" class="queryBox">
+					  </div>
+					  <div class="col">
+						  <input type="password" id="selfNewUserPassword" placeholder="Password" class="queryBox">
+					  </div>
+				  </div>
+				  <div class="row">
+					  <div class="col">
+						  <input type="email" id="selfNewUserEmail" placeholder="email" class="queryBox">
+					  </div>
+					  <div class="col">
+						  <input type="text" id="selfNewUserSecret" placeholder="secret" class="queryBox">
+					  </div>
+				  </div>
+			  </div>
+		  </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">cancel</button>
+        <button type="button" class="btn btn-primary" data-bs-dismiss="modal" onclick="self_enroll_user()">Register!</button>
+      </div>
+    </div>
+  </div>
+</div>

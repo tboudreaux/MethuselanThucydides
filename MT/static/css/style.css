@@ -35,6 +35,31 @@
   /* Button shadow on hover */
   box-shadow: 0 4px 8px rgba(0,0,0,0.5);
 }
+.categoryButton {
+  
+  /* Button text color */
+  color: #fff;
+  background-color: transparent;
+  
+  /* Button padding */
+  padding: 10px 20px;
+  
+  /* Button border radius */
+  border-radius: 5px;
+  
+  /* Button border */
+  border: none;
+  
+  /* Button transition */
+  transition: box-shadow 0.1s ease-in-out;
+  transition: background-color 0.1s ease-in-out;
+}
+
+.categoryButton:hover {
+  /* Button shadow on hover */
+	background-color: rgba(100, 100, 100, 1);
+  box-shadow: 0 4px 8px rgba(100,100,100,0.5);
+}
 
 .inputLine {
   display: flex;
@@ -253,11 +278,10 @@ to {transform: rotate(360deg);}
   padding: 20px;
 }
 
-/* #paperList { */
-/*   flex: 1; */
-/*   background-color: #fff; */
-/*   margin-left: calc(20% + 2vw); /* Adjust as needed */ */
-/* } */
+#paperList {
+	height: 100vh;
+	overflow-y: auto;
+}
 .sidebar {
 position: fixed;
 top: 0;
@@ -409,4 +433,13 @@ input:checked + .slider:before {
 
 .slider.round:before {
   border-radius: 50%;
+}
+
+.circleIcon{
+	color: #000000;
+	width: 50px;
+	height: 50px;
+	border-radius: 50%;
+	background-color: #f7f7f7;
+	aspect-ratio: 1/1;
 }

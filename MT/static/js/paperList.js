@@ -1,3 +1,4 @@
+
 async function getPaperList(category) {
 	let response = await fetch('/api/papers/date/category/latest/' + category);
 	let data = await response.json();
@@ -36,19 +37,24 @@ async function formatSingleCatButton(key, name) {
 
 	let button = document.createElement('button');
 	button.classList.add('categoryButton');
+	button.classList.add('px-0');
+	button.classList.add('align-middle');
 	button.id = "categoryButton_" + key;
 	
 	button.addEventListener('click', function(event) { openCat(event, key); });
 
+	let icon = document.createElement('tt');
+	icon.innerHTML = " " + key.split('.')[1];
+	icon.classList.add('circleIcon');
 
 	let navNameContainer = document.createElement('span');
-	navNameContainer.innerHTML = name;
+	navNameContainer.innerHTML = key;
+	navNameContainer.classList.add('ms-1');
+	navNameContainer.classList.add('d-none');
+	navNameContainer.classList.add('d-sm-inline');
 
-	let icon = document.createElement('i');
-	icon.classList.add('fas');
-	icon.classList.add('fa-book');
 
-	navNameContainer.appendChild(icon);
+	button.appendChild(icon);
 	button.appendChild(navNameContainer);
 	navItem.appendChild(button);
 
@@ -56,6 +62,7 @@ async function formatSingleCatButton(key, name) {
 }
 
 async function formatCategoryButtonList() {
+	console.log(paths);
 	let categories = await getCategories();
 	categoryMenu = document.getElementById('cat-menu');
 	console.log(categoryMenu);

@@ -37,7 +37,7 @@ def summarize(arxiv_id):
 
 @app.route('/api/gpt/summarize/<arxiv_id>/force')
 @token_required
-def summarize_force(arxiv_id):
+def summarize_force(current_user, arxiv_id):
     """
     Return a GPT summary for a given arxiv_id.
     If the paper has not been summarized before, it will be summarized and stored in the database.
@@ -57,7 +57,7 @@ def summarize_force(arxiv_id):
 
 @app.route('/api/gpt/summarize/<arxiv_id>/clear')
 @token_required
-def summarize_clear(arxiv_id):
+def summarize_clear(current_user, arxiv_id):
     """
     Clear the stored GPT summary for a given arxiv_id.
     """
@@ -70,12 +70,14 @@ def summarize_clear(arxiv_id):
 
 @app.route('/api/gpt/query/simple/<arxiv_id>', methods=['POST'])
 @token_required
-def query_simple(arxiv_id):
+def query_simple(current_user, arxiv_id):
     """
     Return a GPT answer for a given arxiv_id and question.
     Will not fetch the full page text if it has not been fetched before.
     """
     question = request.form['query']
+    user = User.query.filter_by(uuid=current_user.uuid).first()
+    user.num_queries += 1
     paper = Paper.query.filter_by(arxiv_id=arxiv_id).first()
     query = f"Please the most recent question about the following question about the paper titled {paper.title}. Previous questions and answers have been provided as context for you. {question}"
     paper.last_used = dt.datetime.now().date()
@@ -93,7 +95,7 @@ def query_complex(current_user, arxiv_id):
     """
     fetch_arxiv_long_api(arxiv_id)
     paper = Paper.query.filter_by(arxiv_id=arxiv_id).first()
-    user = User.query.filter_by(username=current_user.username).first()
+    user = User.query.filter_by(uuid=current_user.uuid).first()
     user.num_queries += 1
     question = request.form['query']
     query = f"Please the most recent question about the following question about the paper titled {paper.title}. Previous questions and answers have been provided as context for you. {question}"

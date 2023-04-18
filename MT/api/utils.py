@@ -1,6 +1,6 @@
 from MT.setup import app
 from MT.config import catNameLookup
-from MT.models.models import Paper
+from MT.models.models import Paper, User
 
 from flask import jsonify
 
@@ -22,3 +22,14 @@ def has_full_text(arxiv_id):
         return jsonify({'hasFullText':True})
     else:
         return jsonify({'hasFullText':False})
+
+@app.route('/api/utils/first_time_setup')
+def first_time_setup():
+    """
+    Run the first time setup script.
+    """
+    # Count if there are any users in the database
+    if User.query.count() == 0:
+        return jsonify({'ft': True});
+    else:
+        return jsonify({'ft': False});

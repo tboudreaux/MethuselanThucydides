@@ -51,16 +51,15 @@ async function login() {
 		console.log("Login successful");
 		json = await response.json();
 		localStorage.setItem("token", json.token);
-		loginStyleUpdate(userName);
 	} else {
 		console.log("Login failed");
-		logoutStyleUpdate();
 	}
+	await formatUserButton();
 }
 
 async function logout(){
 	localStorage.removeItem("token");
-	logoutStyleUpdate();
+	await formatUserButton();
 }
 
 async function unauthorized_user_warn() {
@@ -73,33 +72,10 @@ async function unauthorized_user_warn() {
 			keyboard: false
 		});
 		myModal.toggle();
-		logoutStyleUpdate();
 	} else {
 		console.log("Authorized user");
 		userName = await get_user_from_token();
-		loginStyleUpdate(userName);
 	}
+	await formatUserButton()
 }
 
-function loginStyleUpdate(userName){
-		signInButton = document.getElementById("signIn-btn");
-		signInButton.style.display = "none";
-		signOutButton = document.getElementById("signOut-btn");
-		signOutButton.style.display = "block";
-		userText = document.getElementById("user");
-		userText.innerHTML = userName;
-		newUser = document.getElementById("newUser-btn");
-	    newUser.style.display = "block";
-	// TODO Only display this when the user is an admin
-}
-
-function logoutStyleUpdate(){
-		signInButton = document.getElementById("signIn-btn");
-		signInButton.style.display = "block";
-		signOutButton = document.getElementById("signOut-btn");
-		signOutButton.style.display = "none";
-		userText = document.getElementById("user");
-		userText.innerHTML = "Guest (Query Disabled)";
-		newUser = document.getElementById("newUser-btn");
-	    newUser.style.display = "none";
-}
