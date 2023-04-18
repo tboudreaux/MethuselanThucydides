@@ -36,8 +36,13 @@ export OPENAI_API_KEY=<Your API KEY>
 export BEARER_TOKEN=<Your Bearer Token>
 export DATASTORE="milvus"
 docker build -t mt:v0.5 .
-docker run -p 5516:5000 -d --restart always -e "BEARER_TOKEN=$BEARER_TOKEN" -e "OPENAI_API_KEY=$OPENAI_API_KEY" -e "DATASTORE=$DATASTORE" --name MethuselanThucydides mt:v0.5
+docker run -p 5516:5000 -d --restart always -e "BEARER_TOKEN=$BEARER_TOKEN" -e "OPENAI_API_KEY=$OPENAI_API_KEY" -e "DATASTORE=$DATASTORE" -e "MT_NEW_USER_SECRET=$MT_NEW_USER_SECRET" --name MethuselanThucydides mt:v0.5
 ```
+
+MT_NEW_USER_SECRET is some random string you assign as a enviromental variable. 
+This allows you to register a new user for the first time when you boot up. It also
+lets you allow others to make their own accounts. As long as they have the secret.
+Don't share this.
 
 The website will be accessible at 0.0.0.0:5516 (accessible at localhost:5516)
 
