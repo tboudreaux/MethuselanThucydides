@@ -15,6 +15,7 @@ COPY . /app
 
 # Set the environment variable for Flask
 ENV FLASK_APP=app.py
+ENV TZ="America/New_York"
 
 # Expose the port that Flask will listen on
 EXPOSE 5000
