@@ -34,6 +34,8 @@ SET default_tablespace = '';
 
 SET default_with_oids = false;
 
+--
+--
 
 CREATE TABLE public.authors (
     uuid uuid NOT NULL,
@@ -43,6 +45,9 @@ CREATE TABLE public.authors (
 
 
 
+--
+--
+
 CREATE TABLE public.authors_papers (
     paper_uuid uuid NOT NULL,
     author_uuid uuid NOT NULL
@@ -50,6 +55,8 @@ CREATE TABLE public.authors_papers (
 
 
 
+--
+--
 
 CREATE TABLE public.papers (
     title character varying(200) NOT NULL,
@@ -73,6 +80,23 @@ CREATE TABLE public.papers (
 
 
 
+--
+--
+
+CREATE TABLE public.queries (
+    uuid uuid NOT NULL,
+    query text NOT NULL,
+    order_id integer NOT NULL,
+    response text,
+    paper_uuid uuid NOT NULL,
+    created_at date NOT NULL,
+    user_uuid uuid
+);
+
+
+
+--
+--
 
 CREATE TABLE public.users (
     username character varying(100) NOT NULL,
@@ -96,26 +120,50 @@ CREATE TABLE public.users (
 
 
 
+--
+--
 
 ALTER TABLE ONLY public.papers
     ADD CONSTRAINT arxivsummary_pkey PRIMARY KEY (uuid);
 
 
+--
+--
+
 ALTER TABLE ONLY public.authors_papers
     ADD CONSTRAINT authors_papers_pkey PRIMARY KEY (paper_uuid, author_uuid);
 
+
+--
+--
 
 ALTER TABLE ONLY public.authors
     ADD CONSTRAINT authors_pkey PRIMARY KEY (uuid);
 
 
+--
+--
+
+ALTER TABLE ONLY public.queries
+    ADD CONSTRAINT queries_pkey PRIMARY KEY (uuid);
+
+
+--
+--
+
 ALTER TABLE ONLY public.users
     ADD CONSTRAINT users_pkey PRIMARY KEY (uuid);
 
 
+--
+--
+
 ALTER TABLE ONLY public.authors_papers
     ADD CONSTRAINT author_uuid FOREIGN KEY (author_uuid) REFERENCES public.authors(uuid) NOT VALID;
 
+
+--
+--
 
 ALTER TABLE ONLY public.authors_papers
     ADD CONSTRAINT paper_uuid FOREIGN KEY (paper_uuid) REFERENCES public.papers(uuid) NOT VALID;
