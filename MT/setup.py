@@ -2,6 +2,7 @@ from MT.config import uri
 from flask import Flask, render_template, jsonify
 from flask_sqlalchemy import SQLAlchemy
 import secrets
+import datetime as dt
 
 
 app = Flask(__name__)
@@ -11,4 +12,13 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 db = SQLAlchemy(app)
 
+TDELTLOOKUP = {
+    1: 1,
+    2: 1,
+    3: 1,
+    4: 1,
+    5: 2,
+    6: 3,
+    0: 3,
+    }
 

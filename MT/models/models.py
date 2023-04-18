@@ -1,14 +1,19 @@
 from MT.setup import db
 
 import uuid
-from sqlalchemy.dialects.postgresql import TEXT
+from sqlalchemy.dialects.postgresql import TEXT, ARRAY
 from sqlalchemy.sql import func
 import bcrypt
 from sqlalchemy.dialects.postgresql import UUID
 
+authors_papers = db.Table('authors_papers',
+    db.Column('author_uuid', UUID(as_uuid=True), db.ForeignKey('authors.uuid'), primary_key=True),
+    db.Column('paper_uuid', UUID(as_uuid=True), db.ForeignKey('papers.uuid'), primary_key=True)
+)
+
 class Paper(db.Model):
-    __tablename__ = 'arxivsummary'
-    id = db.Column(db.Integer, primary_key=True)
+    __tablename__ = 'papers'
+    uuid = db.Column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4)
     title = db.Column(db.String(200), nullable=False)
     first_author = db.Column(db.String(100))
     num_authors = db.Column(db.Integer)
@@ -25,8 +30,9 @@ class Paper(db.Model):
     gpt_summary_short = db.Column(TEXT)
     gpt_summary_long = db.Column(TEXT)
     full_page_text = db.Column(TEXT)
+    authors = db.relationship("Author", secondary="authors_papers")
 
-    def init(self, title, first_author, num_authors, url, abstract, comments, published_date, added_date, last_used, arxiv_id, doi, subjects, hastex, gpt_summary_short, gpt_summary_long, full_page_text):
+    def __init__(self, title, first_author, num_authors, url, abstract, comments, published_date, added_date, last_used, arxiv_id, doi, subjects, hastex, gpt_summary_short, gpt_summary_long, full_page_text):
         self.title = title
         self.first_author = first_author
         self.num_authors = num_authors
@@ -70,10 +76,10 @@ class User(db.Model):
     admin = db.Column(db.Boolean, default=False)
     salt = db.Column(db.String(100), nullable=False)
 
-    def init(self, username, email, password, ip=None, user_agent=None, country=None, city=None, timezone=None, admin=False, enabled=True):
+    def __init__(self, username, email, password, ip=None, user_agent=None, country=None, city=None, timezone=None, admin=False, enabled=True):
         checkUser = User.query.filter_by(username=username).first()
         if checkUser:
-            return False
+            raise EnvironmentError('Username already exists')
         self.username = username
         self.email = email
         self.password, self.salt = self.hash_plain_password(password)
@@ -84,7 +90,6 @@ class User(db.Model):
         self.last_timezone = timezone
         self.admin = admin
         self.enabled = enabled
-        return True
 
     def hash_plain_password(self, plain_password, salt=None):
         if not salt:
@@ -98,34 +103,20 @@ class User(db.Model):
     def __repr__(self):
         return f'<User: {self.username}>'
 
-class author(db.Model):
+
+class Author(db.Model):
     __tablename__ = 'authors'
     uuid = db.Column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4)
-    full_name = db.Column(db.String(100), nullable=False)
+    full_name = db.Column(ARRAY(TEXT), nullable=False)
     first_name = db.Column(db.String(100), nullable=False)
+    papers = db.relationship("Paper", secondary="authors_papers")
 
-    def init(self, full_name, first_name):
+    def __init__(self, full_name, first_name):
         self.full_name = full_name
         self.first_name = first_name
 
     def __repr__(self):
-        return f'<Author: {self.name}>'
-
-class author_papers(db.Model):
-    __tablename__ = 'authorpapers'
-    uuid = db.Column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4)
-    paper_id = db.Column(db.Integer, db.ForeignKey('arxivsummary.id'))
-    author_id = db.Column(db.Integer, db.ForeignKey('authors.uuid'))
-
-    def init(self, paper_id, author_id):
-        self.paper_id = paper_id
-        self.author_id = author_id
-
-    def __repr__(self):
-        return f'<PaperAuthor: {self.paper_id}, {self.author_id}>'
-
-
-
+        return f'<Author: {" ".join(self.full_name)}>'
 
 
 

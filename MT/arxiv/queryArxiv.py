@@ -1,35 +1,65 @@
-from MT.setup import db
+from MT.setup import db, TDELTLOOKUP
 from MT.utils.utils import upsert
 from MT.config import arxivCategories
-from MT.config import uri
 from MT.models.models import Paper
+from MT.models.models import Author
 
 import arxiv
 from arxiv import SortCriterion
 from arxiv import SortOrder
 import datetime as dt
-from sqlalchemy import create_engine
-from sqlalchemy import text
-from sqlalchemy import insert, select
-from sqlalchemy import MetaData
 import pypdf
 import os
 import tempfile
 
+def embed_single_paper(paper, result):
+    inputVector = [
+            "Title: " + paper.title,
+            "First_author: " + paper.first_author,
+            "Published: " + str(paper.published_date),
+            "ID: " + paper.arxiv_id,
+            "Abstract: " + paper.abstract,
+            "Comments: " + str(paper.comments),
+            "Subjects: " + ', '.join(paper.subjects),
+            "URL" + paper.url,
+            ]
+    upsert(paper.arxiv_id, '\n'.join(inputVector), result.categories[0])
+
+def ennroll_single_paper(result):
+    newPaper = Paper(
+        result.title,
+        result.authors[0].name,
+        len(result.authors),
+        result.pdf_url,
+        result.summary,
+        result.comment,
+        result.published.date(),
+        dt.datetime.today().date(),
+        None,
+        result.get_short_id(),
+        None,
+        result.primary_category,
+        False,
+        None,
+        None,
+        None,
+    )
+    for author in result.authors:
+        authorNames = author.name.split()
+        newAuthor = Author(
+                authorNames,
+                authorNames[0]
+                )
+        newPaper.authors.append(newAuthor)
+    db.session.add(newPaper)
+    db.session.commit()
+    embed_single_paper(newPaper, result)
 
 
 def fetch_latest():
     currentWeekday = dt.datetime.today().weekday()
-    if currentWeekday == 5:
-        TDELT = 2
-    elif currentWeekday == 6:
-        TDELT = 3
-    elif currentWeekday == 0:
-        TDELT = 3
-    else:
-        TDELT = 1
-    i = 0
-    log = list()
+    TDELT = TDELTLOOKUP[currentWeekday]
+    initNumPapers = Paper.query.count()
     for cat in arxivCategories:
         r = arxiv.Search(
             query = f"cat:{cat}",
@@ -38,83 +68,30 @@ def fetch_latest():
             sort_by = SortCriterion.SubmittedDate,
             sort_order = SortOrder.Descending,
         )
-
-        engine = create_engine(uri)
-
-        with engine.connect() as connection:
-            metadata = MetaData()
-            metadata.reflect(connection)
-            arxivsummary = metadata.tables['arxivsummary']
-            for result in r.results():
-
-                if result.published.date() == dt.datetime.today().date() - dt.timedelta(TDELT):
-                    ID = result.get_short_id()
-
-                    rs = connection.execute(text(f"SELECT COUNT(id) FROM arxivsummary WHERE arxiv_id = '{ID}'"))
-                    count = rs.fetchone()[0]
-
-                    if count == 0:
-                        i += 1
-                        log.append(f"Adding {ID} to database")
-                        enroll_paper_short(result, arxivsummary, connection)
-                    else:
-                        log.append(f"Skipping {ID} because it's already in the database")
-
-                else:
-                    break
-    return {'statusCode': 200, 'numAdded': i, 'log': log}
+        # check if paper is already in database
+        for result in r.results():
+            checkPaper = Paper.query.filter_by(arxiv_id = result.get_short_id()).first()
+            if checkPaper is not None:
+                continue # skip paper if it's already in the database
+            if result.published.date() == dt.datetime.today().date() - dt.timedelta(TDELT):
+                ennroll_single_paper(result)
+    finalPaperCount = Paper.query.count()
+    i = finalPaperCount - initNumPapers
+    return i
 
 
 def fetch_arxix_id(arxivID):
+        checkPaper = Paper.query.filter_by(arxiv_id = arxivID).first()
+        if checkPaper is not None:
+            return 0
         r = arxiv.Search(
             id_list = [arxivID],
             max_results = 1,
         )
         singlePaper = next(r.results())
-        engine = create_engine(uri)
+        ennroll_single_paper(singlePaper)
 
-        with engine.connect() as connection:
-            metadata = MetaData()
-            metadata.reflect(connection)
-            arxivsummary = metadata.tables['arxivsummary']
-
-            ID = singlePaper.get_short_id()
-
-            rs = connection.execute(text(f"SELECT COUNT(id) FROM arxivsummary WHERE arxiv_id = '{ID}'"))
-            count = rs.fetchone()[0]
-
-            if count == 0:
-                enroll_paper_short(singlePaper, arxivsummary, connection)
-                return {'statusCode': 200, 'message': f"Added {ID} to database"}
-            return {'statusCode': 200, 'message': f"Skipping {ID} because it's already in the database"}
-
-
-def enroll_paper_short(paper, table, connection):
-    ID = paper.get_short_id()
-    title = paper.title
-    authors = ', '.join([x.name for x in paper.authors])
-    published = paper.published.date()
-    firstAuthor = paper.authors[0].name
-    pdf_url = paper.pdf_url
-    summary = paper.summary
-    comments = paper.comment
-    doi = paper.doi
-    journal_ref = paper.journal_ref
-    subject = paper.categories[0]
-    today = dt.datetime.today().date()
-
-    stmt = insert(table).values(arxiv_id = ID, title = title, author_list = authors, published_date = published, first_author = firstAuthor, url = pdf_url, abstract = summary, comments = comments, doi = doi, added_date = today, subjects = subject)
-    compiled = stmt.compile()
-    InputResult = connection.execute(stmt)
-    connection.commit()
-
-    stmt = select(table).where(table.c.arxiv_id == ID)
-    rs = connection.execute(stmt)
-    paper = rs.fetchone()
-
-    vecInput = "Title: " + paper.title + "\n" + " Authors: " + paper.author_list + "\n" +  " Published: " + str(paper.published_date) + "\n" +  " URL: " + paper.url + "\n" + " ID: " + ID + "\n" + "Abstract: " + paper.abstract
-
-    upsert(ID, vecInput, subject)
+        return 1
 
 def load_full_text(arxiv_id):
     """

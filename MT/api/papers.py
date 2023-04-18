@@ -1,4 +1,4 @@
-from MT.setup import app, db
+from MT.setup import app, TDELTLOOKUP
 from MT.models.models import Paper
 
 from flask import jsonify
@@ -39,14 +39,7 @@ def papers_date_latest():
     """
     Return all papers in the database for the latest date
     """
-    if dt.datetime.today().weekday() == 5:
-        TD = 2
-    elif dt.datetime.today().weekday() == 6:
-        TD = 3
-    elif dt.datetime.today().weekday() == 0:
-        TD = 3
-    else:
-        TD = 1
+    TD = TDELTLOOKUP[dt.datetime.today().weekday()]
     papers = Paper.query.filter_by(published_date=dt.datetime.today().date()-dt.timedelta(TD)).all()
     papers = [paper.__dict__ for paper in papers]
     papers = [dict(filter(lambda x: x[0] != '_sa_instance_state', d.items())) for d in papers]

@@ -4,14 +4,29 @@ async function getPaperList(category) {
 	return data;
 }
 async function getCategories() {
-	let response = await fetch('/api/categories');
+	let response = await fetch('/api/utils/categories');
 	let data = await response.json();
 	return data;
 }
 async function getSummary(paper_id) {
-	let response = await fetch('/api/summarize/' + paper_id);
+	let response = await fetch('/api/gpt/summarize/' + paper_id);
 	let data = await response.json();
 	return data;
+}
+
+async function getPaperAuthors(paper_id) {
+	let response = await fetch('/api/authors/paper/' + paper_id);
+	let data = await response.json();
+	return data;
+}
+
+async function formatAuthorList(paper_id){
+	let authors = await getPaperAuthors(paper_id);
+	let fullAuthorNames = [];
+	for (let i = 0; i < authors.length; i++) {
+		fullAuthorNames.push(authors[i].fullname.join(' '));
+	}
+	return fullAuthorNames.join(', ');
 }
 
 async function activateAdvancedMode(arxivID) {
@@ -41,7 +56,7 @@ async function activateAdvancedMode(arxivID) {
 }
 
 async function checkMode(arxivID) {
-	let response = await fetch('/api/fetch/ID/' + arxivID + '/hasFullText');
+	let response = await fetch('/api/utils/hasFullText/' + arxivID);
 	let data = await response.json();
 	return data;
 }
@@ -94,7 +109,7 @@ async function format_paper(paper) {
 	
 	let author_list = document.createElement('h4');
 	author_list.classList.add('author_list');
-	author_list.innerHTML = paper.author_list;
+	author_list.innerHTML = await formatAuthorList(paper.arxiv_id);
 	paper_div.appendChild(author_list);
 
 	let hr = document.createElement('hr');
