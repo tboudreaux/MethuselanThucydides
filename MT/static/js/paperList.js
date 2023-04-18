@@ -29,6 +29,46 @@ async function formatAuthorList(paper_id){
 	return fullAuthorNames.join(', ');
 }
 
+async function formatSingleCatButton(key, name) {
+	let navItem = document.createElement('li');
+	navItem.classList.add('nav-item');
+	navItem.id = "navItem_" + key;
+
+	let button = document.createElement('button');
+	button.classList.add('categoryButton');
+	button.id = "categoryButton_" + key;
+	
+	button.addEventListener('click', function(event) { openCat(event, key); });
+
+
+	let navNameContainer = document.createElement('span');
+	navNameContainer.innerHTML = name;
+
+	let icon = document.createElement('i');
+	icon.classList.add('fas');
+	icon.classList.add('fa-book');
+
+	navNameContainer.appendChild(icon);
+	button.appendChild(navNameContainer);
+	navItem.appendChild(button);
+
+	return navItem;
+}
+
+async function formatCategoryButtonList() {
+	let categories = await getCategories();
+	categoryMenu = document.getElementById('cat-menu');
+	console.log(categoryMenu);
+	for (var key in categories['categories']) {
+		if (categories['categories'].hasOwnProperty(key)) {
+			console.log(key + " -> " + categories['categories'][key]);
+			navItem = await formatSingleCatButton(key, categories['categories'][key]);
+			console.log("NAVITEM: " + navItem);
+			categoryMenu.appendChild(navItem);
+		}
+	}
+}
+
 async function activateAdvancedMode(arxivID) {
 	let advancedModeBtn = document.getElementById(arxivID + '_advancedMode');
 	advancedModeBtn.classList.add('disabled');
@@ -196,8 +236,10 @@ async function formatTab(category){
 
 async function formatAllTabs(){
 	let categories = await getCategories();
-	for (const category of categories['categories']){
-		formatTab(category);
+	for (var key in categories['categories']){
+		if (categories['categories'].hasOwnProperty(key)){
+			formatTab(key);
+		}
 	}
 }
 
@@ -210,7 +252,6 @@ async function submitQuery(arxivID) {
 		return;
 	}
 	modeCheck = await checkMode(arxivID);
-	console.log(modeCheck);
 	if (modeCheck['hasFullText'] === false) {
 		console.log("Using simple mode");
 		endpoint = '/api/gpt/query/simple/' + arxivID;

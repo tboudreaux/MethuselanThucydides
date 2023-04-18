@@ -1,16 +1,15 @@
 from MT.setup import app
+from MT.config import catNameLookup
 from MT.models.models import Paper
 
 from flask import jsonify
 
-@app.route('/api/utils//categories')
+@app.route('/api/utils/categories')
 def categories():
     """
     Return all categories in the database
     """
-    categories = Paper.query.with_entities(Paper.subjects).distinct().all()
-    categories = [category[0] for category in categories]
-    return jsonify({'categories':categories})
+    return jsonify({'categories':catNameLookup})
 
 
 @app.route('/api/utils/hasFullText/<arxiv_id>')
