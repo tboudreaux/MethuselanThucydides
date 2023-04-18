@@ -333,19 +333,19 @@ def has_full_text(arxiv_id):
         return jsonify({'hasFullText':False})
 
 @app.route('/api/user/enroll_user', methods=['POST'])
-def enroll_user_endpoint():
+@token_required
+def enroll_user_endpoint(current_user):
     payload = request.get_json()
-    authorizingUser = payload['authorizing_user']
-    authorizingUser = User.query.filter_by(username=authorizingUser).first()
-    authorizingPass = payload['authorizing_pass']
-    authorizingUserSalt = authorizingUser.salt
-    authorizingUserHash, _ = authorizingUser.hash_plain_password(authorizingPass, salt=authorizingUserSalt)
-    if authorizingUserHash == authorizingUser.password and authorizingUser.admin:
+    if current_user.admin:
         newUser = payload['new_user']
         newPass = payload['new_pass']
         newEmail = payload['new_email']
         newUserIsAdmin = payload['new_user_is_admin']
         newUserIsEnabled = payload['new_user_is_enabled']
+
+        checkNewUser = User.query.filter_by(username=newUser).first()
+        if checkNewUser is not None:
+            return jsonify({'message':'User already exists'}), 409
 
         newUser = enroll_user(newUser, newEmail, newPass, admin=newUserIsAdmin, enabled=newUserIsEnabled)
         db.session.add(newUser)
@@ -356,15 +356,13 @@ def enroll_user_endpoint():
             return jsonify({'success':True}), 201
         else:
             return jsonify({'success':False}), 500
-    else:
-        if not authorizingUser.admin:
-            return jsonify({'message':'User is not an admin'}), 401
-        if authorizingUserHash != authorizingUser.password:
-            return jsonify({'message':'Incorrect password'}), 401
-        return jsonify({'message':'Unknown error'}), 500
+    elif not current_user.admin:
+        return jsonify({'message':'User is not an admin'}), 401
+    return jsonify({'message':'Unknown error'}), 500
 
 @app.route('/login', methods=['POST'])
 def login():
+    token_valid_time = 30 # minutes
     payload = request.get_json()
     username = payload.get('username', None)
     email = payload.get('email', None)
@@ -380,14 +378,14 @@ def login():
     else:
         user = User.query.filter_by(email=ID).first()
     if user.check_password(payload['password']):
-        token = jwt.encode({'public_id': user.username, 'exp': dt.datetime.utcnow() + dt.timedelta(minutes=30)}, app.config['SECRET_KEY'])
-        return jsonify({'token': token})
+        token = jwt.encode({'public_id': user.username, 'exp': dt.datetime.utcnow() + dt.timedelta(minutes=token_valid_time)}, app.config['SECRET_KEY'])
+        return jsonify({'token': token, 'expires': dt.datetime.utcnow() + dt.timedelta(minutes=token_valid_time)})
     return make_response('Could not verify', 401, {'WWW-Authenticate': 'Basic realm="Login required!"'})
 
 @app.route('/login/test')
 @token_required
 def login_test(current_user):
-    return jsonify({'message': 'Login successful'})
+    return jsonify({'message': 'Login successful', 'username': current_user.username, 'email': current_user.email, 'admin': current_user.admin, 'enabled': current_user.enabled, 'auth': True});
 
 @app.route('/login/revoke/all', methods=['POST'])
 def revoke_all_tokens():

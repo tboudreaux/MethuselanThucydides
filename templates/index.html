@@ -13,12 +13,12 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 	<link rel="stylesheet", href="static/css/style.css">
 	<script src="/static/js/bootstrapOverlay.js"></script>
+	<script src="/static/js/auth.js"></script>
+	<script src="/static/js/users.js"></script>
     <script> const qamap = new Map();</script>
   </head>
   <body>
     <div class="container-fluid">
-
-    
       <div class="row">
           <div class="col-md-3", id='sidebar-container'>
 	    <div class="sidebar">
@@ -32,13 +32,39 @@
 		<button class="tablinks" onclick="openCat(event, 'astro-ph.IM')"><i class="fa fa-database" aria-hidden="true"></i> Instrumentation and Methods for Astrophysics</button>
 		<button class="tablinks" onclick="openCat(event, 'astro-ph.SR')"><i class="fa fa-database" aria-hidden="true"></i> Solar and Stellar Astrophysics</button>
             </div>
-          <div class="panel-footer">
-			  <span><p><a href="https://github.com/tboudreaux/MethuselanThucydides"><i class="fa fa-github" aria-hidden="true"></i></a></p>
-			<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#login">
-			<i class="fa fa-sign-in" aria-hidden="true"></i>
-				</button></span>
+          
+		  </div>
+		  <div class="panel-footer row">
+			  <div class="col">
+			  <p><a href="https://github.com/tboudreaux/MethuselanThucydides"><i class="fa fa-github" aria-hidden="true"></i></a></p>
+			  </div>
+			<div class='col-sm-2'>
+			<div id="signIn-btn">
+			<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#login" style="background-color: green;" title="Sign In!">
+				<i class="fa fa-sign-in" aria-hidden="true"></i>
+			</button>
+			</div>
+			</div>
+			<div class="col-sm-4">
+			<div id="signOut-btn">
+			<button type="button" class="btn btn-primary" onclick="logout()" style="background-color: red;" title="Sign Out!">
+				<i class="fa fa-sign-out" aria-hidden="true"></i>
+			</button>
+			</div>
+			</div>
+			<div class="col-sm-6">
+			<div id="newUser-btn">
+			<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#newUser" title="Add User!">
+				<i class="fa fa-plus" aria-hidden="true"></i>
+			</button>
+			</div>
+			</div>
 
           </div>
+		  <div class="row">
+			  <div class="col">
+				  <p id="user"></p>
+			  </div>
 		  </div>
         </div>
 		<div class="col-md-1">
@@ -80,13 +106,71 @@
       </div>
       <div class="modal-body">
 		  <div id="loginForm">
-			  <input type="text" id="username" placeholder="Username" class="queryBox" style="padding: 10px;">
-			  <input type="password" id="password" placeholder="Password" class="queryBox" style="padding: 10px;">
+			  <div class="container">
+				  <div class="column">
+					  <div class="row">
+			  <input type="text" id="username" placeholder="Username" class="queryBox">
+					  </div>
+					  <div class="row">
+					  </div>
+					  <div class="row">
+			  <input type="password" id="password" placeholder="Password" class="queryBox">
+					  </div>
+				  </div>
+			  </div>
 		  </div>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">cancel</button>
-        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Login</button>
+        <button type="button" class="btn btn-primary" data-bs-dismiss="modal" onclick="login()">Login</button>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal fade" id="newUser" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="newUser" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+		  <h1 class="modal-title fs-5" id="staticBackdropLabel">Login</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+		  <div id="newUserForm">
+			  <div class="container">
+				  <div class="row">
+					  <div class="col">
+			  <input type="text" id="newUserUsername" placeholder="Username/Email" class="queryBox">
+					  </div>
+					  <div class="col">
+			  <input type="password" id="newUserPassword" placeholder="Password" class="queryBox">
+					  </div>
+				  </div>
+				  <div class="row">
+					  <div class="col">
+						  <input type="email" id="newUserEmail" placeholder="Email" class="queryBox">
+					  </div>
+					  <div class="col">
+						  <div class="row">
+							  <div class="col">
+								<label class="switch">
+								<input type="checkbox" id="newUserIsAdmin">
+								<span class="slider round"></span>
+								</label>
+							  </div>
+							  <div class="col">
+								  <p>Admin?</p>
+							  </div>
+						  </div>
+					  </div>
+
+
+				  </div>
+			  </div>
+		  </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">cancel</button>
+        <button type="button" class="btn btn-primary" data-bs-dismiss="modal" onclick="enroll_user()">Add User!</button>
       </div>
     </div>
   </div>
@@ -94,12 +178,7 @@
     </div>
     <script src="static/js/paperList.js"></script>
     <script>formatAllTabs();</script>
-	<script>
-		myModal = new bootstrap.Modal(document.getElementById('staticBackdrop'), {
-			keyboard: false
-		});
-		myModal.toggle();
-	</script>
+	<script>unauthorized_user_warn()</script>
   </body>
 </html>
 
