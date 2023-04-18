@@ -109,11 +109,15 @@ I have tested this running behind a nginx reverse proxy. Its quite
 straightforward and no special configuration was needed.
 
 ## Screenshot
-Simple demo of the state of the app in mid April 2023
-![Example Photo](/imgs/demo.png?raw=true "Demo")
-
-A slightly more complex example
-![Example Photo 2](/imgs/demo2.png?raw=true "Demo 2")
+Some screenshots of the web interface as of April 18th 2023
+![Example Photo](/imgs/Screenshot/A.png?raw=true "Demo A")
+![Example Photo](/imgs/Screenshot/B.png?raw=true "Demo A")
+![Example Photo](/imgs/Screenshot/C.png?raw=true "Demo A")
+![Example Photo](/imgs/Screenshot/D.png?raw=true "Demo A")
+![Example Photo](/imgs/Screenshot/E.png?raw=true "Demo A")
+![Example Photo](/imgs/Screenshot/F.png?raw=true "Demo A")
+![Example Photo](/imgs/Screenshot/G.png?raw=true "Demo A")
+![Example Photo](/imgs/Screenshot/H.png?raw=true "Demo A")
 
 ## Notes
 	1) Currently there is a bug in how I have implimented the arxiv API
