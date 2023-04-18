@@ -17,7 +17,22 @@ async function getSummary(paper_id) {
 async function activateAdvancedMode(arxivID) {
 	let advancedModeBtn = document.getElementById(arxivID + '_advancedMode');
 	advancedModeBtn.classList.add('disabled');
-	let response = await fetch('/api/fetch/ID/' + arxivID + '/long');
+	advancedModeBtn.innerHTML = 'Fetching...';
+
+	token = localStorage.getItem('token');
+
+	if (token == null) {
+		alert ('Please login to view full text!');
+		advancedModeBtn.innerHTML = 'Fetch Full Text';
+		advancedModeBtn.classList.remove('disabled');
+		return;
+	}
+	let response = await fetch('/api/fetch/ID/' + arxivID + '/long', {
+		method: 'GET',
+		headers: {
+			'x-access-tokens': token,
+		},
+	});
 	let data = await response.json();
 
 	advancedModeBtn.innerHTML = 'Full Text Mode!';
@@ -174,6 +189,11 @@ async function formatAllTabs(){
 
 
 async function submitQuery(arxivID) {
+	token = localStorage.getItem('token');
+	if (token === null) {
+		alert ("You must be logged in to ask questions");
+		return;
+	}
 	modeCheck = await checkMode(arxivID);
 	console.log(modeCheck);
 	if (modeCheck['hasFullText'] === false) {
@@ -184,10 +204,10 @@ async function submitQuery(arxivID) {
 		console.log("Using advanced mode");
 		endpoint = '/api/query/complex/' + arxivID;
 	}
-	console.log(endpoint);
     var http = new XMLHttpRequest();
     http.open("POST", endpoint, true);
     http.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+	http.setRequestHeader("x-access-tokens", token);
 	let query = document.getElementById(arxivID + '_queryBox').value;
 	let fullQuery = ''
 	if (qamap.has(arxivID)) {
