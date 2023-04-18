@@ -54,12 +54,12 @@ async function login() {
 	} else {
 		console.log("Login failed");
 	}
-	await formatUserButton();
+	await style_for_current_user();
 }
 
 async function logout(){
 	localStorage.removeItem("token");
-	await formatUserButton();
+	await style_for_current_user();
 }
 
 async function unauthorized_user_warn() {
@@ -76,6 +76,6 @@ async function unauthorized_user_warn() {
 		console.log("Authorized user");
 		userName = await get_user_from_token();
 	}
-	await formatUserButton()
+	await style_for_current_user();
 }
 

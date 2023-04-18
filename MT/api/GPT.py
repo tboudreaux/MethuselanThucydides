@@ -1,5 +1,5 @@
 from MT.setup import app, db
-from MT.models.models import Paper, User
+from MT.models.models import Paper, User, Query
 from MT.GPT.chat import ask
 from MT.utils.auth import token_required
 from MT.api.arxiv import fetch_arxiv_long_api
@@ -81,9 +81,12 @@ def query_simple(current_user, arxiv_id):
     paper = Paper.query.filter_by(arxiv_id=arxiv_id).first()
     query = f"Please the most recent question about the following question about the paper titled {paper.title}. Previous questions and answers have been provided as context for you. {question}"
     paper.last_used = dt.datetime.now().date()
+    answer = ask(query, document_id=arxiv_id)
+
+    query = Query(user.uuid, paper.uuid, question, answer)
+    db.session.add(query)
     db.session.commit()
 
-    answer = ask(query, document_id=arxiv_id)
     return jsonify({'query': question, 'answer':answer})
 
 @app.route('/api/gpt/query/complex/<arxiv_id>', methods=['POST'])
@@ -100,7 +103,10 @@ def query_complex(current_user, arxiv_id):
     question = request.form['query']
     query = f"Please the most recent question about the following question about the paper titled {paper.title}. Previous questions and answers have been provided as context for you. {question}"
     paper.last_used = dt.datetime.now().date()
-    db.session.commit()
 
     answer = ask(query, document_id=arxiv_id)
+    query = Query(user.uuid, paper.uuid, question, answer)
+    db.session.add(query)
+    db.session.commit()
     return jsonify({'query': question, 'answer':answer})
+

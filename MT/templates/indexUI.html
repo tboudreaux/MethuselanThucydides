@@ -20,6 +20,9 @@
 		<script src="/static/imgs/paths.js"></script>
 		<script src="static/js/paperList.js">
 		<script src="/static/js/icons.js"></script>
+		<script src="/static/js/query.js"></script>
+		<script src="/static/js/autoStyle.js"></script>
+
 		<script> const qamap = new Map();</script>
 
 		<title>Daily Paper Summary</title>
@@ -72,9 +75,13 @@
 
 	<!-- Scripts -->
 	<script>
-		formatAllTabs();
-		formatCategoryButtonList();
-		formatUserButton();
+		async function setup_page () {
+			await formatAllTabs();
+			await formatCategoryButtonList();
+			await style_for_current_user();
+			unauthorized_user_warn();
+		};
+		setup_page();
 	</script>
 	</body>
 </html>

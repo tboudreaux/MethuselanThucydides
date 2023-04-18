@@ -5,6 +5,7 @@ from sqlalchemy.dialects.postgresql import TEXT, ARRAY
 from sqlalchemy.sql import func
 import bcrypt
 from sqlalchemy.dialects.postgresql import UUID
+import datetime as dt
 
 authors_papers = db.Table('authors_papers',
     db.Column('author_uuid', UUID(as_uuid=True), db.ForeignKey('authors.uuid'), primary_key=True),
@@ -30,6 +31,7 @@ class Paper(db.Model):
     gpt_summary_short = db.Column(TEXT)
     gpt_summary_long = db.Column(TEXT)
     full_page_text = db.Column(TEXT)
+    queries = db.relationship("Query", backref="paper", lazy=True)
     authors = db.relationship("Author", secondary="authors_papers")
 
     def __init__(self, title, first_author, num_authors, url, abstract, comments, published_date, added_date, last_used, arxiv_id, doi, subjects, hastex, gpt_summary_short, gpt_summary_long, full_page_text):
@@ -66,6 +68,7 @@ class User(db.Model):
     last_country = db.Column(db.String(1000))
     last_city = db.Column(db.String(1000))
     last_timezone = db.Column(db.String(1000))
+    queries = db.relationship('Query', backref='user', lazy=True)
 
     num_logins = db.Column(db.Integer, default=0)
     num_queries = db.Column(db.Integer, default=0)
@@ -109,7 +112,6 @@ class Author(db.Model):
     uuid = db.Column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4)
     full_name = db.Column(ARRAY(TEXT), nullable=False)
     first_name = db.Column(db.String(100), nullable=False)
-    papers = db.relationship("Paper", secondary="authors_papers")
 
     def __init__(self, full_name, first_name):
         self.full_name = full_name
@@ -118,6 +120,42 @@ class Author(db.Model):
     def __repr__(self):
         return f'<Author: {" ".join(self.full_name)}>'
 
+class Query(db.Model):
+    __tablename__ = 'queries'
+    uuid = db.Column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4)
+    user_uuid = db.Column(UUID(as_uuid=True), db.ForeignKey('users.uuid'), nullable=False)
+    paper_uuid = db.Column(UUID(as_uuid=True), db.ForeignKey('papers.uuid'), nullable=False)
+    query = db.Column(TEXT, nullable=False)
+    order_id = db.Column(db.Integer, nullable=False)
+    response = db.Column(TEXT, nullable=False)
+    created_at = db.Column(db.DateTime(timezone=True), default=func.now(), nullable=False)
+
+    def __init__(self, user_uuid, paper_uuid, query, response):
+        self.user_uuid = user_uuid
+        self.paper_uuid = paper_uuid
+        self.query = query
+        self.response = response
+
+        # get the order_id
+        last_query = db.session.query(Query).filter_by(user_uuid=user_uuid, paper_uuid=paper_uuid).count()
+        self.order_id = last_query + 1
+
+        self.created_at = dt.datetime.now()
+
+    def to_dict(self):
+        return {
+            'uuid': str(self.uuid),
+            'user_uuid': str(self.user_uuid),
+            'paper_uuid': str(self.paper_uuid),
+            'query': self.query,
+            'response': self.response,
+            'order_id': self.order_id,
+            'created_at': self.created_at
+        }
+
+
+    def __repr__(self):
+        return f'<Query: {self.query}, user: {self.user_uuid}>'
 
 
 
