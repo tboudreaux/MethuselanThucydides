@@ -213,11 +213,11 @@ async function submitQuery(arxivID) {
 	console.log(modeCheck);
 	if (modeCheck['hasFullText'] === false) {
 		console.log("Using simple mode");
-		endpoint = '/api/query/simple/' + arxivID;
+		endpoint = '/api/gpt/query/simple/' + arxivID;
 	}
 	else{
 		console.log("Using advanced mode");
-		endpoint = '/api/query/complex/' + arxivID;
+		endpoint = '/api/gpt/query/complex/' + arxivID;
 	}
     var http = new XMLHttpRequest();
     http.open("POST", endpoint, true);

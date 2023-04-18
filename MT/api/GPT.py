@@ -1,7 +1,8 @@
 from MT.setup import app, db
-from MT.models.models import Paper
+from MT.models.models import Paper, User
 from MT.GPT.chat import ask
 from MT.utils.auth import token_required
+from MT.api.arxiv import fetch_arxiv_long_api
 
 from flask import jsonify, request
 import datetime as dt
