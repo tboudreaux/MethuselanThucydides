@@ -138,3 +138,13 @@ https://example.com
 ```cron
 0 5 * * * curl -v https://example.com/api/fetch/latest
 ```
+
+## Things I am working on
+
+	- Adding vector based memory for conversations instances
+	- Better user management tools
+	- Improved UI
+	- Search functionality
+	- Home page with reccomendations based on what papers users have interacted with
+	- Ability to follow references chains and bring additional papers down those chains in for further context (long term)
+	- config option to switch between gpt-3.5-turbo and gpt-4 (waiting till I get gpt-4 api access)
