@@ -58,6 +58,27 @@ class Paper(db.Model):
     def __repr__(self):
         return f'<Paper: {self.title}, arxiv_id: {self.arxiv_id}>'
 
+    def to_dict(self):
+        return {
+            'uuid': self.uuid,
+            'title': self.title,
+            'first_author': self.first_author,
+            'num_authors': self.num_authors,
+            'url': self.url,
+            'abstract': self.abstract,
+            'comments': self.comments,
+            'published_date': self.published_date,
+            'added_date': self.added_date,
+            'last_used': self.last_used,
+            'arxiv_id': self.arxiv_id,
+            'doi': self.doi,
+            'subjects': self.subjects,
+            'hastex': self.hastex,
+            'gpt_summary_short': self.gpt_summary_short,
+            'gpt_summary_long': self.gpt_summary_long,
+            'full_page_text': self.full_page_text
+        }
+
 class User(db.Model):
     __tablename__ = 'users'
     uuid = db.Column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4)

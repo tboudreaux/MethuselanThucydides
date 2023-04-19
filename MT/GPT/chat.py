@@ -5,6 +5,7 @@ import requests
 import logging
 import os
 import datetime as dt
+import openai
 
 DATABASE_INTERFACE_BEAR_TOKEN = os.environ.get("BEARER_TOKEN", None)
 OPENAI_API_KEY = os.environ.get("OPENAI_API_KEY", None)
@@ -92,3 +93,21 @@ def ask(user_question: str, document_id: str = None) -> Dict[str, Any]:
     logging.info("Response: %s", response)
 
     return response["choices"][0]["message"]["content"]
+
+def direct_ask(questions):
+    messageBody = [
+            {'role': 'system', 'content': "You are a helpful assistant"},
+        ]
+    for question in questions:
+        messageBody.append({'role': 'user', 'content': question})
+    completion = openai.ChatCompletion.create(
+        model="gpt-3.5-turbo",
+        messages = messageBody
+        )
+
+    return completion['choices'][0]['message']['content']
+
+# TODO : change schema so that there is a categories table and the
+#        papers are linked in a many to many relationship to the categories
+# TODO : Add a table to the schema to cache the daily category summaries so
+#        that we don't have to recompute them every time

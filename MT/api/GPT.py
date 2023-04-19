@@ -1,8 +1,9 @@
 from MT.setup import app, db, TDELTLOOKUP
 from MT.models.models import Paper, User, Query
-from MT.GPT.chat import ask
+from MT.GPT.chat import ask, direct_ask
 from MT.utils.auth import token_required, key_required
 from MT.api.arxiv import fetch_arxiv_long_api
+from MT.config import catNameLookup
 
 from flask import jsonify, request
 import datetime as dt
@@ -192,4 +193,31 @@ def query_complex(current_user, arxiv_id):
     db.session.add(query)
     db.session.commit()
     return jsonify({'query': question, 'answer':answer})
+
+@app.route('/api/gpt/homepage')
+def homepage():
+    """
+    Return a list of the most recent papers that have been summarized.
+    """
+    TDELT = TDELTLOOKUP[dt.date.today().weekday()]
+
+    subjectSummaries = dict()
+    for key, catName in catNameLookup.items():
+        papers = Paper.query.filter(
+                Paper.gpt_summary_short.isnot(None),
+                Paper.subjects==key,
+                Paper.published_date == (dt.date.today() - dt.timedelta(TDELT))
+                ).all()
+        papersDict = [paper.to_dict() for paper in papers]
+
+        if len(papersDict) > 0:
+            print(f"Summarizing {key}")
+            subjectQuery = f"I have provided you summaries of the {len(papersDict)} paper(s) posted today in the field of {catName}. Using these, generate a breif (4-5) sentence summary of the overall research posted today"
+            fullContextQuery = list()
+            for paper in papersDict:
+                fullContextQuery.append(f"Title {paper['title']}\nSummary {paper['gpt_summary_short']}\n")
+            fullContextQuery.append(subjectQuery)
+            subjectAnswer = direct_ask(fullContextQuery)
+            subjectSummaries[key] = subjectAnswer
+    return jsonify({'subjectSummaries':subjectSummaries})
 
