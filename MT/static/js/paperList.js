@@ -22,11 +22,13 @@ async function getPaperAuthors(paper_id) {
 }
 
 async function formatAuthorList(paper_id){
+	console.log("HERE");
 	let authors = await getPaperAuthors(paper_id);
 	let fullAuthorNames = [];
-	for (let i = 0; i < authors.length; i++) {
-		fullAuthorNames.push(authors[i].fullname.join(' '));
+	for (let i = 0; i < authors.authors.length; i++) {
+		fullAuthorNames.push(authors.authors[i].fullname);
 	}
+	console.log(fullAuthorNames);
 	return fullAuthorNames.join(', ');
 }
 

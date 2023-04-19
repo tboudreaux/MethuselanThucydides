@@ -16,7 +16,6 @@ async function format_stored_chat_log(arxiv_id) {
 		let arxiv_id = allPaperDivs[i].id;
 		let chat_log = await get_user_paper_queries(arxiv_id);
 		let chat = document.getElementById(arxiv_id + '_chat');
-		console.log(chat_log);
 		queries = chat_log['queries'];
 		for (let i = 0; i < queries.length; i++) {
 			let userMessage = document.createElement('p');

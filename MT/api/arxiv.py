@@ -3,7 +3,7 @@ from MT.arxiv.queryArxiv import fetch_latest
 from MT.arxiv.queryArxiv import fetch_arxix_id
 from MT.arxiv.queryArxiv import load_full_text
 
-from flask import jsonify, make_response
+from flask import jsonify, make_response, escape
 @app.route('/api/fetch/latest')
 def fetch_latest_api():
     """
