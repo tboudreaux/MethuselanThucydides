@@ -236,6 +236,7 @@ async function formatTab(category){
 	tab.id = category;
 	tab.classList.add('tabcontent');
 	tab.id = category + '-list';
+	tab.style.display = 'none';
 	container.appendChild(tab);
 
 	await displayPapers(category, tab);

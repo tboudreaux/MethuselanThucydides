@@ -67,6 +67,14 @@ async function formatUserMeanu(){
 			newUserLink.classList.add("dropdown-item");
 			newUserContainer.appendChild(newUserLink);
 			userMeanu.appendChild(newUserContainer);
+
+			generateAPIKeyContainer = document.createElement("li");
+			generateAPIKeyLink = document.createElement("a");
+			generateAPIKeyLink.setAttribute("onclick", "launchGenerateAPIKeyModal(); return false;");
+			generateAPIKeyLink.innerHTML = "Generate API Key";
+			generateAPIKeyLink.classList.add("dropdown-item");
+			generateAPIKeyContainer.appendChild(generateAPIKeyLink);
+			userMeanu.appendChild(generateAPIKeyContainer);
 		}
 
 
@@ -140,4 +148,22 @@ async function launchRegisterModal(){
 	modal.show();
 }
 
+async function launchGenerateAPIKeyModal(){
+	modal = new bootstrap.Modal(document.getElementById("generateAPIKey"), {
+		keyboard: false
+	});
+	modal.show();
+}
+
+async function clear_api_key_modal(){
+	APIKeyp = document.getElementById("APIKey");
+	APIKeyp.innerHTML = "";
+	APIKeyp.style.display = "none";
+
+	APIKeyMessage = document.getElementById("APIKeyMessage");
+	APIKeyMessage.style.display = "block";
+
+	generateAPIKeyButton = document.getElementById("generateKeyButton");
+	generateAPIKeyButton.classList.remove("disabled");
+}
 

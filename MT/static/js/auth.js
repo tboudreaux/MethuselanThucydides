@@ -79,3 +79,23 @@ async function unauthorized_user_warn() {
 	await style_for_current_user();
 }
 
+async function get_api_key() {
+	generateButton = document.getElementById("generateKeyButton");
+	generateButton.classList.add("disabled");
+	const response = await fetch("/api/user/genkey", {
+		method: "GET",
+		headers: {
+			"x-access-tokens": localStorage.getItem("token"),
+		},
+	});
+	json = await response.json();
+
+	apiKeyp = document.getElementById("APIKey");
+	apiKeyp.innerHTML = 'API Key: ' + json.uuid + ':' + json.key;
+	apiKeyp.style.display = 'block';
+
+	APIKeyMessage = document.getElementById("APIKeyMessage");
+	APIKeyMessage.style.display = 'none';
+
+	return json.key;
+}

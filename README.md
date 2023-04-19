@@ -108,6 +108,19 @@ full text is stored in the database after anyone clicks the "Abstract Mode
 Only" button one time it will always be greyed out in the future as that chat
 box will always then default to considering the entire paper.
 
+## API Key
+Some functionality is intended for programmatic not UI interface (specifically
+auto summarizing all the latest papers). For this you will need an API key.
+Only admin users can generate API keys. If you are an admin all you need do in
+order to get an API key is click on your username > generate API Key >
+Generate. The key comprises 2 parts, separated by a ":". The first is the key
+UUID (used for rapid lookup in the key table) and the second is the plain text 
+16 byte token. On the server side this token has was hashed and salted before 
+being stored.
+
+Make sure to write this key down as it is not stored anywhere and so cannot 
+be retrieved after you have closed the dialogue.
+
 ## Reverse Proxy
 I have tested this running behind a nginx reverse proxy. Its quite
 straightforward and no special configuration was needed.
@@ -141,6 +154,13 @@ https://example.com
 
 ```cron
 0 5 * * * curl -v https://example.com/api/fetch/latest
+```
+
+This will automatically fetch papers; however, it will not pass them along to
+gpt for summarization. Another API call can be scheduled for that:
+
+```cron
+10 5 * * * curl -X GET 10.17.1.25:5515/api/gpt/summarize/latest -H "x-access-key: YOUR-MT-API-KEY"
 ```
 
 ## Things I am working on

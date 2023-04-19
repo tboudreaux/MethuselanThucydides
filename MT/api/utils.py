@@ -1,8 +1,9 @@
 from MT.setup import app
 from MT.config import catNameLookup
 from MT.models.models import Paper, User
+from MT.utils.auth import key_required
 
-from flask import jsonify
+from flask import jsonify, request
 
 @app.route('/api/utils/categories')
 def categories():
@@ -33,3 +34,11 @@ def first_time_setup():
         return jsonify({'ft': True});
     else:
         return jsonify({'ft': False});
+
+@app.route('/api/utils/apikey/verify')
+@key_required
+def verify_api_key(current_user):
+    """
+    Verify an API key
+    """
+    return jsonify({'valid':True, 'user': current_user.username}), 200

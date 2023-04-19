@@ -2,10 +2,13 @@ from MT.setup import db
 
 import uuid
 from sqlalchemy.dialects.postgresql import TEXT, ARRAY
+from sqlalchemy.ext.hybrid import hybrid_method
 from sqlalchemy.sql import func
 import bcrypt
 from sqlalchemy.dialects.postgresql import UUID
 import datetime as dt
+import secrets
+import hashlib
 
 authors_papers = db.Table('authors_papers',
     db.Column('author_uuid', UUID(as_uuid=True), db.ForeignKey('authors.uuid'), primary_key=True),
@@ -68,16 +71,15 @@ class User(db.Model):
     last_country = db.Column(db.String(1000))
     last_city = db.Column(db.String(1000))
     last_timezone = db.Column(db.String(1000))
-    queries = db.relationship('Query', backref='user', lazy=True)
-
     num_logins = db.Column(db.Integer, default=0)
     num_queries = db.Column(db.Integer, default=0)
-
     can_query = db.Column(db.Boolean, default=True)
-
     enabled = db.Column(db.Boolean, default=True)
     admin = db.Column(db.Boolean, default=False)
     salt = db.Column(db.String(100), nullable=False)
+
+    queries = db.relationship('Query', backref='user', lazy=True)
+    keys = db.relationship('Key', backref='user', lazy=True)
 
     def __init__(self, username, email, password, ip=None, user_agent=None, country=None, city=None, timezone=None, admin=False, enabled=True):
         checkUser = User.query.filter_by(username=username).first()
@@ -158,4 +160,34 @@ class Query(db.Model):
         return f'<Query: {self.query}, user: {self.user_uuid}>'
 
 
+class Key(db.Model):
+    __tablename__ = "keys"
+    uuid = db.Column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4)
+    key = db.Column(db.String(32), nullable=False)
+    user_uuid = db.Column(UUID(as_uuid=True), db.ForeignKey('users.uuid'), nullable=False)
+    created_at = db.Column(db.DateTime(timezone=True), default=func.now(), nullable=False)
+    last_used = db.Column(db.DateTime(timezone=True))
+    uses = db.Column(db.Integer, default=0)
+    salt = db.Column(db.String(100), nullable=False)
+    max_uses = db.Column(db.Integer, default=2147483647)
+
+    def __init__(self, user_uuid, key, max_uses=2147483647):
+        self.user_uuid = user_uuid
+        self.max_uses = max_uses
+        self.key, self.salt = self._hash_key(key)
+
+    @staticmethod
+    def _hash_key(key, salt=None):
+        print(key, salt)
+        if salt is None:
+            salt = bcrypt.gensalt().decode('utf-8')
+        hashedKey = bcrypt.hashpw(key.encode('utf-8'), salt.encode('utf-8')).decode('utf-8')
+        return hashedKey, salt
+
+    def check_key(self, key):
+        return self._hash_key(key, salt=self.salt)[0] == self.key
+
+
+    def __repr__(self):
+        return f'<Key: {self.key}, user: {self.user_uuid}>'
 

@@ -1,7 +1,7 @@
-from MT.setup import app, db
+from MT.setup import app, db, TDELTLOOKUP
 from MT.models.models import Paper, User, Query
 from MT.GPT.chat import ask
-from MT.utils.auth import token_required
+from MT.utils.auth import token_required, key_required
 from MT.api.arxiv import fetch_arxiv_long_api
 
 from flask import jsonify, request
@@ -26,7 +26,7 @@ def summarize(arxiv_id):
         return jsonify({'summary':paper.gpt_summary_short})
     else:
         query = f"Please summarize, in 1-2 sentences, the paper titled {paper.title}."
-        gptResponse = ask(query)
+        gptResponse = ask(query, document_id=arxiv_id)
         if paper.full_page_text is None:
             paper.gpt_summary_short = gptResponse
         else:
@@ -34,6 +34,89 @@ def summarize(arxiv_id):
             paper.gpt_summary_short = gptResponse
         db.session.commit()
         return jsonify({'summary':ask(query)})
+
+@app.route('/api/gpt/summarize/all')
+@key_required
+def summarize_all(current_user):
+    """
+    Return a GPT summary for all papers.
+    If the paper has not been summarized before, it will be summarized and stored in the database.
+    If the paper has been summarized before, the stored summary will be returned.
+    """
+    papers = Paper.query.all()
+    for paper in papers:
+        if paper.gpt_summary_long is not None:
+            continue
+        elif paper.gpt_summary_short is not None:
+            continue
+        else:
+            query = f"Please summarize, in 1-2 sentences, the paper titled {paper.title}."
+            gptResponse = ask(query, document_id=paper.arxiv_id)
+            if paper.full_page_text is None:
+                paper.gpt_summary_short = gptResponse
+            else:
+                paper.gpt_summary_long = gptResponse
+                paper.gpt_summary_short = gptResponse
+            db.session.commit()
+    return jsonify({'summary':'All papers summarized'})
+
+@app.route('/api/gpt/summarize/latest')
+@key_required
+def summarize_latest(current_user):
+    """
+    Return a GPT summary for the latest papers.
+    If the paper has not been summarized before, it will be summarized and stored in the database.
+    If the paper has been summarized before, the stored summary will be returned.
+    """
+    TDELT = TDELTLOOKUP[dt.datetime.today().weekday()]
+    papers = Paper.query.order_by(Paper.published_date.desc()).limit(500).all()
+    summarized = list()
+    for paper in papers:
+        if paper.published_date < dt.date.today() - dt.timedelta(days=TDELT):
+            print(f"Skipping {paper.arxiv_id} because it was published on {paper.published_date}") 
+            continue
+        if paper.gpt_summary_long is not None:
+            print(f"Skipping {paper.arxiv_id} because it has already been summarized (long)")
+            continue
+        elif paper.gpt_summary_short is not None:
+            print(f"Skipping {paper.arxiv_id} because it has already been summarized (short)")
+            continue
+        else:
+            summarized.append(paper.arxiv_id)
+            query = f"Please summarize, in 1-2 sentences, the paper titled {paper.title}."
+            gptResponse = ask(query, document_id=paper.arxiv_id)
+            if paper.full_page_text is None:
+                paper.gpt_summary_short = gptResponse
+            else:
+                paper.gpt_summary_long = gptResponse
+                paper.gpt_summary_short = gptResponse
+            db.session.commit()
+    return jsonify({'summary':'Latest papers summarized', 'papers':summarized})
+
+@app.route('/api/gpt/summarize/missing')
+@key_required
+def summarize_missing(current_user):
+    """
+    Return a GPT summary for all papers that have not been summarized.
+    If the paper has not been summarized before, it will be summarized and stored in the database.
+    If the paper has been summarized before, the stored summary will be returned.
+    """
+    papers = Paper.query.filter_by(gpt_summary_short=None).all()
+    for paper in papers:
+        if paper.gpt_summary_long is not None:
+            continue
+        elif paper.gpt_summary_short is not None:
+            continue
+        else:
+            query = f"Please summarize, in 1-2 sentences, the paper titled {paper.title}."
+            gptResponse = ask(query, document_id=paper.arxiv_id)
+            if paper.full_page_text is None:
+                paper.gpt_summary_short = gptResponse
+            else:
+                paper.gpt_summary_long = gptResponse
+                paper.gpt_summary_short = gptResponse
+            db.session.commit()
+    return jsonify({'summary':'Missing papers summarized'})
 
 @app.route('/api/gpt/summarize/<arxiv_id>/force')
 @token_required

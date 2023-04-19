@@ -138,3 +138,28 @@
     </div>
   </div>
 </div>
+
+<!-- Generate API Key Modal-->
+<!-- This modal is used for admins to generate a new API key -->
+<div class="modal fade" id="generateAPIKey" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="generateAPIKey" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="staticBackdropLabel">API Key</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body" id="APIKeyMessageContainer">
+		  <p id="APIKey" style="display: none;"></p>
+		  <p id="APIKeyMessage", style="display: block;">
+		  Generate an API key? This will allow you to use the API to interact with the database and specifically to allow
+		  auto summarization of papers without token authorization. Once the key is generated you will not be able to
+		  retrive it (though you can generate new keys) so make sure to save it somewhere safe.
+		  </p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" data-bs-dismiss="modal" onclick="clear_api_key_modal()">Close</button>
+        <button type="button" class="btn btn-primary" onclick="get_api_key()" id="generateKeyButton">Generate!</button>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,8 +1,10 @@
 from MT.setup import app, db
 from MT.utils.auth import token_required
-from MT.models.models import User
+from MT.models.models import User, Key
 
 from flask import jsonify, request
+import secrets
+
 @app.route('/api/user/enroll_user', methods=['POST'])
 @token_required
 def enroll_user_endpoint(current_user):
@@ -75,3 +77,14 @@ def enroll_user_with_secret():
 @token_required
 def is_admin_endpoint(current_user):
     return jsonify({'admin':current_user.admin}), 200
+
+@app.route('/api/user/genkey', methods=['GET'])
+@token_required
+def genkey_endpoint(current_user):
+    if not current_user.admin:
+        return jsonify({'message':'User is not an admin'}), 401
+    unhashedKey = secrets.token_hex(16)
+    key = Key(current_user.uuid, unhashedKey)
+    db.session.add(key)
+    db.session.commit()
+    return jsonify({'key':unhashedKey, 'uuid':key.uuid}), 200
