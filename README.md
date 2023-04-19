@@ -70,16 +70,20 @@ file ./postgres-schema.sql into that database.
 
 
 ## IMPORTANT
-Note that there is currently no authentication. Therefore, anyone can ask
-questions and CHARGE YOUR API KEY. This is a top priority for me, but be aware
-of that!
-
-Also, I am an astronomer, not a security researcher or even software engineer.
+I am an astronomer, not a security researcher or even software engineer.
 This is a hobby project which I am working on and would like to have at least
 somewhat okay security. However, do not deploy in a low trust environment as I
 am not willing to guarantee that I am following best security practices.
 
 # Other Information
+## First time Setup
+When you open MT you wont have a user account. You will be given the option to
+make one. Provide a username, password, email, and secret (the environmental
+variable MT_NEW_USER_SECRET). When you create this user the back-end code will
+check if any users exist in the database and if not it will make that user an
+admin (can create new users and new admin users themself). You can now login as
+that user. The create user button will remain with the same functionality;
+except that all subsequent users it creates will not have admin privileges.
 
 ## Basic Usage
 Basic usage should be self explanatory. The idea is that the website served
@@ -145,6 +149,6 @@ https://example.com
 	- Better user management tools
 	- Improved UI
 	- Search functionality
-	- Home page with reccomendations based on what papers users have interacted with
+	- Home page with recommendations based on what papers users have interacted with
 	- Ability to follow references chains and bring additional papers down those chains in for further context (long term)
 	- config option to switch between gpt-3.5-turbo and gpt-4 (waiting till I get gpt-4 api access)
