@@ -58,6 +58,22 @@ CREATE TABLE public.authors_papers (
 --
 --
 
+CREATE TABLE public.keys (
+    uuid uuid NOT NULL,
+    key character varying(100) NOT NULL,
+    user_uuid uuid NOT NULL,
+    uses integer DEFAULT 0 NOT NULL,
+    max_uses integer DEFAULT 2147483647 NOT NULL,
+    created_at date NOT NULL,
+    last_used date,
+    salt character varying(100) NOT NULL
+);
+
+
+
+--
+--
+
 CREATE TABLE public.papers (
     title character varying(200) NOT NULL,
     first_author character varying(100),
@@ -144,6 +160,13 @@ ALTER TABLE ONLY public.authors
 --
 --
 
+ALTER TABLE ONLY public.keys
+    ADD CONSTRAINT keys_pkey PRIMARY KEY (uuid);
+
+
+--
+--
+
 ALTER TABLE ONLY public.queries
     ADD CONSTRAINT queries_pkey PRIMARY KEY (uuid);
 
@@ -167,6 +190,13 @@ ALTER TABLE ONLY public.authors_papers
 
 ALTER TABLE ONLY public.authors_papers
     ADD CONSTRAINT paper_uuid FOREIGN KEY (paper_uuid) REFERENCES public.papers(uuid) NOT VALID;
+
+
+--
+--
+
+ALTER TABLE ONLY public.keys
+    ADD CONSTRAINT user_uuid FOREIGN KEY (user_uuid) REFERENCES public.users(uuid);
 
 
 --
