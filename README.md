@@ -160,7 +160,7 @@ This will automatically fetch papers; however, it will not pass them along to
 gpt for summarization. Another API call can be scheduled for that:
 
 ```cron
-10 5 * * * curl -X GET 10.17.1.25:5515/api/gpt/summarize/latest -H "x-access-key: YOUR-MT-API-KEY"
+10 5 * * * curl -X GET https://example.com:5515/api/gpt/summarize/latest -H "x-access-key: YOUR-MT-API-KEY"
 ```
 
 ## Things I am working on
