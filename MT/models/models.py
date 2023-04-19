@@ -15,6 +15,11 @@ authors_papers = db.Table('authors_papers',
     db.Column('paper_uuid', UUID(as_uuid=True), db.ForeignKey('papers.uuid'), primary_key=True)
 )
 
+papers_categories = db.Table('papers_categories',
+    db.Column('paper_uuid', UUID(as_uuid=True), db.ForeignKey('papers.uuid'), primary_key=True),
+    db.Column('category_uuid', UUID(as_uuid=True), db.ForeignKey('categories.uuid'), primary_key=True)
+)
+
 class Paper(db.Model):
     __tablename__ = 'papers'
     uuid = db.Column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4)
@@ -36,6 +41,7 @@ class Paper(db.Model):
     full_page_text = db.Column(TEXT)
     queries = db.relationship("Query", backref="paper", lazy=True)
     authors = db.relationship("Author", secondary="authors_papers")
+    categories = db.relationship("Category", secondary="papers_categories")
 
     def __init__(self, title, first_author, num_authors, url, abstract, comments, published_date, added_date, last_used, arxiv_id, doi, subjects, hastex, gpt_summary_short, gpt_summary_long, full_page_text):
         self.title = title
@@ -212,3 +218,38 @@ class Key(db.Model):
     def __repr__(self):
         return f'<Key: {self.key}, user: {self.user_uuid}>'
 
+class Category(db.Model):
+    __tablename__ = 'categories'
+    uuid = db.Column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4)
+    category_id = db.Column(db.String(100), nullable=False)
+    category_name = db.Column(db.String(100), nullable=False)
+    category_field = db.Column(db.String(100), nullable=False)
+    summary = db.relationship('Summary', backref='category', lazy=True)
+
+    def __init__(self, category_id, category_name, category_field):
+        self.category_id = category_id
+        self.category_name = category_name
+        self.category_field = category_field
+
+    @staticmethod
+    def todays_summary(category_id):
+        today = dt.date.today()
+        return db.Session.query(Category).filter_by(category_id==category_id, date=today).first().summary
+
+    def __repr__(self):
+        return f'<Category: {self.category_id}, UUID: {self.uuid}>'
+
+class Summary(db.Model):
+    __tablename__ = 'summaries'
+    uuid = db.Column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4)
+    category_uuid = db.Column(UUID(as_uuid=True), db.ForeignKey('categories.uuid'), nullable=False)
+    date = db.Column(db.Date, nullable=False)
+    summary = db.Column(TEXT, nullable=False)
+
+    def __init__(self, category_uuid, date, summary):
+        self.category_uuid = category_uuid
+        self.date = date
+        self.summary = summary
+
+    def __repr__(self):
+        return f'<Summary: {self.uuid}, Date: {self.date}, Category: {self.category_uuid}>'

@@ -3,6 +3,7 @@ from MT.utils.utils import upsert
 from MT.config import arxivCategories
 from MT.models.models import Paper
 from MT.models.models import Author
+from MT.models.models import Category
 
 import arxiv
 from arxiv import SortCriterion
@@ -25,7 +26,7 @@ def embed_single_paper(paper, result):
             ]
     upsert(paper.arxiv_id, '\n'.join(inputVector), result.categories[0])
 
-def ennroll_single_paper(result):
+def enroll_single_paper(result):
     newPaper = Paper(
         result.title,
         result.authors[0].name,
@@ -51,6 +52,11 @@ def ennroll_single_paper(result):
                 authorNames[0]
                 )
         newPaper.authors.append(newAuthor)
+    for subject in result.categories:
+        checkCategory = Category.query.filter_by(category_id=subject).first()
+        if checkCategory is None:
+            newCategory = Category(subject)
+            newPaper.categories.append(newCategory)
     db.session.add(newPaper)
     db.session.commit()
     embed_single_paper(newPaper, result)
@@ -74,7 +80,7 @@ def fetch_latest():
             if checkPaper is not None:
                 continue # skip paper if it's already in the database
             if result.published.date() == dt.datetime.today().date() - dt.timedelta(TDELT):
-                ennroll_single_paper(result)
+                enroll_single_paper(result)
     finalPaperCount = Paper.query.count()
     i = finalPaperCount - initNumPapers
     return i
@@ -89,7 +95,7 @@ def fetch_arxix_id(arxivID):
             max_results = 1,
         )
         singlePaper = next(r.results())
-        ennroll_single_paper(singlePaper)
+        enroll_single_paper(singlePaper)
 
         return 1
 
