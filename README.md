@@ -127,8 +127,8 @@ straightforward and no special configuration was needed.
 
 ## Screenshot
 Some screenshots of the web interface as of April 18th 2023
-![Example Photo](/imgs/screenshot/A.png?raw=true "Demo A")
-![Example Photo](/imgs/screenshot/B.png?raw=true "Demo A")
+![Example Photo](/imgs/screenshots/A.png?raw=true "Demo A")
+![Example Photo](/imgs/screenshots/B.png?raw=true "Demo A")
 ![Example Photo](/imgs/screenshots/C.png?raw=true "Demo A")
 ![Example Photo](/imgs/screenshots/D.png?raw=true "Demo A")
 ![Example Photo](/imgs/screenshots/E.png?raw=true "Demo A")
