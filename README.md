@@ -135,7 +135,7 @@ Some screenshots of the web interface as of April 18th 2023
 ![Example Photo](/imgs/screenshots/F.png?raw=true "Demo A")
 ![Example Photo](/imgs/screenshots/G.png?raw=true "Demo A")
 ![Example Photo](/imgs/screenshots/H.png?raw=true "Demo A")
-![Schema](/imgs/screenshots/schema.png$raw=true "Schema")
+![Schema](/imgs/screenshots/schema.png?raw=true "Schema")
 
 ## Notes
 	1) Currently there is a bug in how I have implimented the arxiv API
