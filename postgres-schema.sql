@@ -58,6 +58,18 @@ CREATE TABLE public.authors_papers (
 --
 --
 
+CREATE TABLE public.categories (
+    uuid uuid NOT NULL,
+    category_id character varying(100) NOT NULL,
+    category_name character varying(100) NOT NULL,
+    category_field character varying(100)
+);
+
+
+
+--
+--
+
 CREATE TABLE public.keys (
     uuid uuid NOT NULL,
     key character varying(100) NOT NULL,
@@ -99,6 +111,16 @@ CREATE TABLE public.papers (
 --
 --
 
+CREATE TABLE public.papers_categories (
+    paper_uuid uuid NOT NULL,
+    category_uuid uuid NOT NULL
+);
+
+
+
+--
+--
+
 CREATE TABLE public.queries (
     uuid uuid NOT NULL,
     query text NOT NULL,
@@ -107,6 +129,18 @@ CREATE TABLE public.queries (
     paper_uuid uuid NOT NULL,
     created_at date NOT NULL,
     user_uuid uuid
+);
+
+
+
+--
+--
+
+CREATE TABLE public.summaries (
+    uuid uuid NOT NULL,
+    date date NOT NULL,
+    category_uuid uuid NOT NULL,
+    summary_text text NOT NULL
 );
 
 
@@ -160,6 +194,13 @@ ALTER TABLE ONLY public.authors
 --
 --
 
+ALTER TABLE ONLY public.categories
+    ADD CONSTRAINT categories_pkey PRIMARY KEY (uuid);
+
+
+--
+--
+
 ALTER TABLE ONLY public.keys
     ADD CONSTRAINT keys_pkey PRIMARY KEY (uuid);
 
@@ -167,8 +208,22 @@ ALTER TABLE ONLY public.keys
 --
 --
 
+ALTER TABLE ONLY public.papers_categories
+    ADD CONSTRAINT papers_categories_pkey PRIMARY KEY (paper_uuid, category_uuid);
+
+
+--
+--
+
 ALTER TABLE ONLY public.queries
     ADD CONSTRAINT queries_pkey PRIMARY KEY (uuid);
+
+
+--
+--
+
+ALTER TABLE ONLY public.summaries
+    ADD CONSTRAINT summaries_pkey PRIMARY KEY (uuid);
 
 
 --
@@ -188,8 +243,29 @@ ALTER TABLE ONLY public.authors_papers
 --
 --
 
+ALTER TABLE ONLY public.papers_categories
+    ADD CONSTRAINT category_uuid FOREIGN KEY (category_uuid) REFERENCES public.categories(uuid) NOT VALID;
+
+
+--
+--
+
+ALTER TABLE ONLY public.summaries
+    ADD CONSTRAINT category_uuid FOREIGN KEY (category_uuid) REFERENCES public.categories(uuid);
+
+
+--
+--
+
 ALTER TABLE ONLY public.authors_papers
     ADD CONSTRAINT paper_uuid FOREIGN KEY (paper_uuid) REFERENCES public.papers(uuid) NOT VALID;
+
+
+--
+--
+
+ALTER TABLE ONLY public.papers_categories
+    ADD CONSTRAINT paper_uuid FOREIGN KEY (paper_uuid) REFERENCES public.papers(uuid);
 
 
 --
