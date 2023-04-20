@@ -12,20 +12,24 @@ async function get_user_paper_queries(arxiv_id){
 
 async function format_stored_chat_log(arxiv_id) {
 	allPaperDivs = document.getElementsByClassName('paper');
-	for (let i = 0; i < allPaperDivs.length; i++) {
-		let arxiv_id = allPaperDivs[i].id;
-		let chat_log = await get_user_paper_queries(arxiv_id);
-		let chat = document.getElementById(arxiv_id + '_chat');
-		queries = chat_log['queries'];
-		for (let i = 0; i < queries.length; i++) {
-			let userMessage = document.createElement('p');
-			userMessage.classList.add('user');
-			userMessage.innerHTML = '<i class="fa fa-user" aria-hidden="true"></i>  ' + queries[i]['query'];
-			chat.appendChild(userMessage);
-			let responseMessage = document.createElement('p');
-			responseMessage.classList.add('chatElement');
-			responseMessage.innerHTML = '<i class="fa fa-robot" aria-hidden="true"></i>  ' + queries[i]['response'];
-			chat.appendChild(responseMessage);
+	if (logged_in === true){
+		for (let i = 0; i < allPaperDivs.length; i++) {
+			let arxiv_id = allPaperDivs[i].id;
+			let chat_log = await get_user_paper_queries(arxiv_id);
+			let chat = document.getElementById(arxiv_id + '_chat');
+			queries = chat_log['queries'];
+			if (queries != null) {
+				for (let i = 0; i < queries.length; i++) {
+					let userMessage = document.createElement('p');
+					userMessage.classList.add('user');
+					userMessage.innerHTML = '<i class="fa fa-user" aria-hidden="true"></i>  ' + queries[i]['query'];
+					chat.appendChild(userMessage);
+					let responseMessage = document.createElement('p');
+					responseMessage.classList.add('chatElement');
+					responseMessage.innerHTML = '<i class="fa fa-robot" aria-hidden="true"></i>  ' + queries[i]['response'];
+					chat.appendChild(responseMessage);
+				}
+			}
 		}
 	}
 }

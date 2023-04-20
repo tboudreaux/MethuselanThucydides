@@ -231,11 +231,11 @@ class Category(db.Model):
         self.category_name = category_name
         self.category_field = category_field
 
-    @staticmethod
-    def todays_summary(category_id):
-        today = dt.date.today()
-        return db.Session.query(Category).filter_by(category_id==category_id, date=today).first().summary
-
+    # @staticmethod
+    # def todays_summary(category_id):
+    #     today = dt.date.today()
+    #     return db.Session.query(Category).filter_by(category_id==category_id, date=today).first()
+    #
     def __repr__(self):
         return f'<Category: {self.category_id}, UUID: {self.uuid}>'
 
@@ -244,12 +244,12 @@ class Summary(db.Model):
     uuid = db.Column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4)
     category_uuid = db.Column(UUID(as_uuid=True), db.ForeignKey('categories.uuid'), nullable=False)
     date = db.Column(db.Date, nullable=False)
-    summary = db.Column(TEXT, nullable=False)
+    summary_text = db.Column(TEXT, nullable=False)
 
-    def __init__(self, category_uuid, date, summary):
+    def __init__(self, category_uuid, date, summary_text):
         self.category_uuid = category_uuid
         self.date = date
-        self.summary = summary
+        self.summary_text = summary_text
 
     def __repr__(self):
         return f'<Summary: {self.uuid}, Date: {self.date}, Category: {self.category_uuid}>'

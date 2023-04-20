@@ -23,50 +23,31 @@
 		<script src="/static/js/icons.js"></script>
 		<script src="/static/js/query.js"></script>
 		<script src="/static/js/autoStyle.js"></script>
+		<script src="/static/js/ui.js"></script>
 
 		<script>
 			const qamap = new Map();
 		</script>
-		<!-- MathJax -->
-		<script>
-			MathJax = {
-				tex: {
-					inlineMath: [['$', '$'], ['\\(', '\\)']]
-				},
-				svg: {
-					fontCache: 'global'
-				}
-			};
-			</script>
-			<script type="text/javascript" id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
-
-
 		<title>Daily Paper Summary</title>
 
 	</head>
 	<body scroll="no" style="overflow: hidden">
+
+<template id="summary-template">
+	<div class="card" id="cat-summary-container">
+		<div class="card-body">
+			<h5 class="card-title"></h5>
+			<p class="card-text"></p>
+			<a class="card-link"></a>
+		</div>
+	</div>
+</template>
+
 		<div class="container-fluid">
 			<div class="row flex-nowrap">
 
 				<!-- Sidebar -->
-				<div class="col-auto col-md-3 col-xl-2 px-sm-2 px-0 bg-dark">
-					<div class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white min-vh-100">
-						<a href="/" class="d-flex align-items-center pb-3 mb-md-0 me-md-auto text-white text-decoration-none">
-							<span class="fs-5 d-none d-sm-inline">arXiv Categories</span>
-						</a>
-					<ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start" id="cat-menu">
-					</ul>
-					<hr>
-					<div class="dropdown pb-4">
-						<a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
-							<i class="bi bi-person-circle"></i>
-							<span class="d-none d-sm-inline mx-1" id="dsp-user">user</span>
-						</a>
-						<ul class="dropdown-menu dropdown-menu-dark text-small shadow" id="usr-meanu">
-						</ul>
-					</div>
-					</div>
-				</div>
+				{{ include_raw('sidebar.html') }}
 
 				<!-- Main -->
 				<div class="col py-3">
@@ -79,21 +60,20 @@
 					</script>
 					
 				  <div class="row">
-					  <div id="home">
-					  </div>
-					  <div id="paperList">
+					  <div class="col">
+						  <div id="home">
+						  </div>
+						  <div id="paperList">
+						  </div>
 					  </div>
 				  </div>
 				</div>
             </div>
 		</div>
-
-	<!--Modals-->
-	{{ include_raw('modals.html') }}
-
 	<!-- Scripts -->
 	<script>
 		async function setup_page () {
+			await formatHomePage();
 			await formatAllTabs();
 			await formatCategoryButtonList();
 			await style_for_current_user();
@@ -101,6 +81,15 @@
 		};
 		setup_page();
 	</script>
+
+	<!--Modals-->
+	{{ include_raw('modals.html') }}
+
+	<!-- Templates -->
+	{{ include_raw('template.html') }}
+
+	<!-- Templates-->
+	{{ include_raw('template.html') }}
 	</body>
 </html>
 

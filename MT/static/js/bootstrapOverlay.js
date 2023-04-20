@@ -34,8 +34,10 @@
 
 
   function openCat(evt, catID) {
+	const homescreen = document.getElementById("home");
+	homescreen.style.display = "none";
     const paperList = document.getElementById("paperList");
-	  console.log(paperList);
+	  paperList.style.display = "block";
 	const catLists = paperList.getElementsByClassName("tabcontent");
     for (let i = 0; i < catLists.length; i++) {
       catLists[i].style.display = "none";

@@ -64,13 +64,25 @@ async function formatSingleCatButton(key, name) {
 async function formatCategoryButtonList() {
 	console.log(paths);
 	let categories = await getCategories();
-	categoryMenu = document.getElementById('cat-menu');
-	console.log(categoryMenu);
+	let categoryMenu = document.getElementById('cat-menu');
+	
+	let homeButtonContainer = document.createElement('li');
+	homeButtonContainer.classList.add('nav-item');
+	homeButtonContainer.id = "navItem_home";
+	let homeButton = document.createElement('button');
+	homeButton.classList.add('categoryButton');
+	homeButton.classList.add('px-0');
+	homeButton.classList.add('align-middle');
+	homeButton.id = "categoryButton_home";
+	homeButton.addEventListener('click', function(event) { formatHomePage(); });
+	homeButton.innerHTML = "<i class='bi bi-house'></i> Home";
+	homeButtonContainer.appendChild(homeButton);
+	categoryMenu.appendChild(homeButtonContainer);
+
+
 	for (var key in categories['categories']) {
 		if (categories['categories'].hasOwnProperty(key)) {
-			console.log(key + " -> " + categories['categories'][key]);
 			navItem = await formatSingleCatButton(key, categories['categories'][key]);
-			console.log("NAVITEM: " + navItem);
 			categoryMenu.appendChild(navItem);
 		}
 	}

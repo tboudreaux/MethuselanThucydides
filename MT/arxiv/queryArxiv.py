@@ -4,6 +4,7 @@ from MT.config import arxivCategories
 from MT.models.models import Paper
 from MT.models.models import Author
 from MT.models.models import Category
+from MT.arxiv.taxonomy import IDNAMES, SUBJECTNAMES
 
 import arxiv
 from arxiv import SortCriterion
@@ -55,7 +56,10 @@ def enroll_single_paper(result):
     for subject in result.categories:
         checkCategory = Category.query.filter_by(category_id=subject).first()
         if checkCategory is None:
-            newCategory = Category(subject)
+            HLCat = subject.split('.')[0]
+            subjectName = SUBJECTNAMES[HLCat]
+            catName = IDNAMES[subjectName][subject]
+            newCategory = Category(subject, catName, subjectName)
             newPaper.categories.append(newCategory)
     db.session.add(newPaper)
     db.session.commit()
@@ -67,6 +71,7 @@ def fetch_latest():
     TDELT = TDELTLOOKUP[currentWeekday]
     initNumPapers = Paper.query.count()
     for cat in arxivCategories:
+        print("Fetching category: " + cat)
         r = arxiv.Search(
             query = f"cat:{cat}",
             id_list = [],

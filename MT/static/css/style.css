@@ -279,7 +279,12 @@ to {transform: rotate(360deg);}
 }
 
 #paperList {
-	height: 100vh;
+	height: 90vh;
+	overflow-y: auto;
+}
+
+#home{
+	height: 90vh;
 	overflow-y: auto;
 }
 .sidebar {
