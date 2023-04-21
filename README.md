@@ -36,7 +36,7 @@ export OPENAI_API_KEY=<Your API KEY>
 export BEARER_TOKEN=<Your Bearer Token>
 export DATASTORE="milvus"
 docker build -t mt:v0.5 .
-docker run -p 5516:5000 -d --restart always -e "BEARER_TOKEN=$BEARER_TOKEN" -e "OPENAI_API_KEY=$OPENAI_API_KEY" -e "DATASTORE=$DATASTORE" -e "MT_NEW_USER_SECRET=$MT_NEW_USER_SECRET" --name MethuselanThucydides mt:v0.5
+docker run -p 5516:5000 -d --restart always -e "BEARER_TOKEN=$BEARER_TOKEN" -e "OPENAI_API_KEY=$OPENAI_API_KEY" -e "DATASTORE=$DATASTORE" -e "MT_NEW_USER_SECRET=$MT_NEW_USER_SECRET" -e "MT_DB_NAME=databaseName" -e "MT_DB_HOST=host" -e "MT_DB_PORT=port" -e "MT_DB_USER=dbUsername" -e "MT_DB_PASSWORD=dbPassword" --name MethuselanThucydides mt:v0.5
 ```
 
 MT_NEW_USER_SECRET is some random string you assign as a enviromental variable. 
