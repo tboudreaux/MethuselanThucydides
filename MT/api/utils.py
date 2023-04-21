@@ -1,7 +1,8 @@
-from MT.setup import app
-from MT.config import catNameLookup
+from MT.setup import app, db
+from MT.config import arxivCategories
 from MT.models.models import Paper, User
 from MT.utils.auth import key_required
+from MT.arxiv import taxonomy
 
 from flask import jsonify, request
 
@@ -10,6 +11,9 @@ def categories():
     """
     Return all categories in the database
     """
+    catNameLookup = {}
+    for cat in arxivCategories:
+        catNameLookup[cat] = taxonomy.get_category_name(cat)
     return jsonify({'categories':catNameLookup})
 
 

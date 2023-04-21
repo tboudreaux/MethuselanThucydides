@@ -55,9 +55,12 @@ def enroll_single_paper(result):
                 )
         newPaper.authors.append(newAuthor)
     for subject in result.categories:
+        print(subject)
         checkCategory = Category.query.filter_by(category_id=subject).first()
         if checkCategory is None:
             HLCat = subject.split('.')[0]
+            if HLCat not in SUBJECTNAMES:
+                continue
             subjectName = SUBJECTNAMES[HLCat]
             catName = IDNAMES[subjectName][subject]
             newCategory = Category(subject, catName, subjectName)
@@ -141,11 +144,6 @@ def load_full_text(arxiv_id):
         print("Already have full text")
 
 def is_paper_posted_today(published) -> bool:
-    print("HERE")
-    print("HERE")
-    print(f"PUBLISHED DATETIME : {published}")
-    print("HERE")
-    print("HERE")
     eastern = pytz.timezone('US/Eastern')
     current_datetime = dt.datetime.now(eastern)
     current_datetime = current_datetime.astimezone(eastern)

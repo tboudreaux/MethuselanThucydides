@@ -205,3 +205,9 @@ IDNAMES = {
         "stat.TH": "Statistics Theory"
         }
 }
+
+def get_category_name(catID):
+    for category in IDNAMES:
+        if catID in IDNAMES[category]:
+            return IDNAMES[category][catID]
+    return "Unknown"

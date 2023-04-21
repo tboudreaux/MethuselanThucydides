@@ -3,7 +3,7 @@ from MT.models.models import Paper, User, Query, Category, Summary
 from MT.GPT.chat import ask, direct_ask
 from MT.utils.auth import token_required, key_required
 from MT.api.arxiv import fetch_arxiv_long_api
-from MT.config import catNameLookup, arxivCategories
+from MT.config import arxivCategories
 from MT.utils.home import todays_summary
 from MT.arxiv.queryArxiv import is_paper_posted_today
 
