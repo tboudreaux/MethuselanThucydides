@@ -75,17 +75,15 @@ def fetch_latest():
         r = arxiv.Search(
             query = f"cat:{cat}",
             id_list = [],
-            max_results = 300,
+            max_results = 1000,
             sort_by = SortCriterion.SubmittedDate,
-            sort_order = SortOrder.Descending,
         )
         # check if paper is already in database
         for result in r.results():
             checkPaper = Paper.query.filter_by(arxiv_id = result.get_short_id()).first()
             if checkPaper is not None:
-                continue # skip paper if it's already in the database
-            if result.published.date() == dt.datetime.today().date() - dt.timedelta(TDELT):
-                enroll_single_paper(result)
+                break # skip paper if it's already in the database
+            enroll_single_paper(result)
     finalPaperCount = Paper.query.count()
     i = finalPaperCount - initNumPapers
     return i

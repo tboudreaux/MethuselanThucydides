@@ -10,6 +10,9 @@ async function formatHomePage() {
 	let homepageDiv = document.getElementById('home');
 	homepageDiv.innerHTML = "";
 	homepageDiv.style = "display: block;";
+
+	let categoryTitle = document.getElementById('category-title');
+	categoryTitle.innerHTML = "";
 	let summaryTemplate = document.getElementById('summary-template');
 	let clonedTemplate = summaryTemplate.content.cloneNode(true);
 	let summaryDiv = clonedTemplate.getElementById('cat-summary-container');

@@ -70,13 +70,12 @@ def summarize_latest(current_user):
     If the paper has not been summarized before, it will be summarized and stored in the database.
     If the paper has been summarized before, the stored summary will be returned.
     """
-    TDELT = TDELTLOOKUP[dt.datetime.today().weekday()]
     papers = Paper.query.order_by(Paper.published_date.desc()).limit(500).all()
     summarized = list()
     for paper in papers:
-        if paper.published_date < dt.date.today() - dt.timedelta(days=TDELT):
-            print(f"Skipping {paper.arxiv_id} because it was published on {paper.published_date}") 
-            continue
+        # if paper.published_date < dt.date.today() - dt.timedelta(days=TDELT):
+        #     print(f"Skipping {paper.arxiv_id} because it was published on {paper.published_date}") 
+        #     continue
         if paper.gpt_summary_long is not None:
             print(f"Skipping {paper.arxiv_id} because it has already been summarized (long)")
             continue

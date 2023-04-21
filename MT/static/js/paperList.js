@@ -43,12 +43,39 @@ async function formatSingleCatButton(key, name) {
 	
 	button.addEventListener('click', function(event) { openCat(event, key); });
 
-	let icon = document.createElement('tt');
-	icon.innerHTML = " " + key.split('.')[1];
-	icon.classList.add('circleIcon');
+	// let icon = document.createElement('tt');
+	// icon.innerHTML = " " + key.split('.')[1];
+	// icon.classList.add('circleIcon');
+
+	/*
+<svg width="20" height="20" viewBox="0 0 20 20">
+<circle cx="10" cy="10" r="8" fill="#ccc" />
+<text x="50%" y="50%" text-anchor="middle" fill="#fff" font-size="10">CO</text>
+</svg>
+*/
+
+	let icon = document.createElement("svg");
+	icon.setAttribute("width", "20");
+	icon.setAttribute("height", "20");
+	icon.setAttribute("viewBox", "0 0 20 20");
+	let circle = document.createElement("circle");
+	circle.setAttribute("cx", "10");
+	circle.setAttribute("cy", "10");
+	circle.setAttribute("r", "8");
+	circle.setAttribute("fill", "#ccc");
+	let text = document.createElement("text");
+	text.setAttribute("x", "50%");
+	text.setAttribute("y", "50%");
+	text.setAttribute("text-anchor", "middle");
+	text.setAttribute("fill", "#fff");
+	text.setAttribute("font-size", "10");
+	text.innerHTML = key.split('.')[1];
+	icon.appendChild(circle);
+	icon.appendChild(text);
+
 
 	let navNameContainer = document.createElement('span');
-	navNameContainer.innerHTML = key;
+	navNameContainer.innerHTML = ": " + key;
 	navNameContainer.classList.add('ms-1');
 	navNameContainer.classList.add('d-none');
 	navNameContainer.classList.add('d-sm-inline');
@@ -75,7 +102,17 @@ async function formatCategoryButtonList() {
 	homeButton.classList.add('align-middle');
 	homeButton.id = "categoryButton_home";
 	homeButton.addEventListener('click', function(event) { formatHomePage(); });
-	homeButton.innerHTML = "<i class='bi bi-house'></i> Home";
+	homeButtonIcon = document.createElement('i');
+	homeButtonIcon.classList.add('bi');
+	homeButtonIcon.classList.add('bi-house');
+	homeButtonName = document.createElement('span');
+	homeButtonName.innerHTML = " Home";
+	homeButtonName.classList.add('ms-1');
+	homeButtonName.classList.add('d-none');
+	homeButtonName.classList.add('d-sm-inline');
+	homeButton.appendChild(homeButtonIcon);
+	homeButton.appendChild(homeButtonName);
+	
 	homeButtonContainer.appendChild(homeButton);
 	categoryMenu.appendChild(homeButtonContainer);
 
@@ -249,6 +286,7 @@ async function formatTab(category){
 	tab.classList.add('tabcontent');
 	tab.id = category + '-list';
 	tab.style.display = 'none';
+
 	container.appendChild(tab);
 
 	await displayPapers(category, tab);

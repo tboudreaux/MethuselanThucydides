@@ -61,6 +61,16 @@
   box-shadow: 0 4px 8px rgba(100,100,100,0.5);
 }
 
+.categoryButton svg circle {
+  stroke: #666;
+  stroke-width: 1;
+}
+
+.categoryButton svg text {
+  font-family: sans-serif;
+  font-weight: bold;
+}
+
 .inputLine {
   display: flex;
   align-items: center;
@@ -447,4 +457,9 @@ input:checked + .slider:before {
 	border-radius: 50%;
 	background-color: #f7f7f7;
 	aspect-ratio: 1/1;
+}
+
+#title{
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0) 100%);
+  background-attachment: fixed;
 }

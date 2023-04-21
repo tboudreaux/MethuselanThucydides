@@ -24,6 +24,7 @@
 		<script src="/static/js/query.js"></script>
 		<script src="/static/js/autoStyle.js"></script>
 		<script src="/static/js/ui.js"></script>
+		<script src="/static/js/api.js"></script>
 
 		<script>
 			const qamap = new Map();
@@ -51,14 +52,16 @@
 
 				<!-- Main -->
 				<div class="col py-3">
-				  <h1 id="primary_title"></h1>
+				  <div class="row" id="title">
+					  <h1 id="primary-title"></h1>
+					  <h2 id="category-title"></h2>
 
-					<script>
-						const timeElapsed = Date.now();
-						const today = new Date(timeElapsed);
-						document.getElementById("primary_title").innerHTML = "Daily Paper Summary for " + today.toDateString();
-					</script>
-					
+						<script>
+							const timeElapsed = Date.now();
+							const today = new Date(timeElapsed);
+							document.getElementById("primary-title").innerHTML = "Daily Paper Summary for " + today.toDateString();
+						</script>
+				  </div>
 				  <div class="row">
 					  <div class="col">
 						  <div id="home">
@@ -73,11 +76,12 @@
 	<!-- Scripts -->
 	<script>
 		async function setup_page () {
-			await formatHomePage();
-			await formatAllTabs();
-			await formatCategoryButtonList();
-			await style_for_current_user();
 			unauthorized_user_warn();
+			await formatHomePage();
+			await formatCategoryButtonList();
+			await formatAllTabs();
+			await style_for_current_user();
+			// add_tab_title();
 		};
 		setup_page();
 	</script>

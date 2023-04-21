@@ -33,7 +33,7 @@
   });
 
 
-  function openCat(evt, catID) {
+async function openCat(evt, catID) {
 	const homescreen = document.getElementById("home");
 	homescreen.style.display = "none";
     const paperList = document.getElementById("paperList");
@@ -42,6 +42,11 @@
     for (let i = 0; i < catLists.length; i++) {
       catLists[i].style.display = "none";
     }
+	  const categoryTitle = document.getElementById("category-title");
+	  categoryResolved = await resolve_category(catID);
+	  console.log("Resolving category: " + catID);
+	  console.log(categoryResolved);
+	  categoryTitle.innerHTML = categoryResolved['description'];
 
     document.getElementById(catID + "-list").style.display = "block";
   }

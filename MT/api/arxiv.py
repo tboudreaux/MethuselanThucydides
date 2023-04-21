@@ -2,6 +2,7 @@ from MT.setup import app
 from MT.arxiv.queryArxiv import fetch_latest
 from MT.arxiv.queryArxiv import fetch_arxix_id
 from MT.arxiv.queryArxiv import load_full_text
+from MT.arxiv.taxonomy import IDNAMES, SUBJECTNAMES
 
 from flask import jsonify, make_response, escape
 @app.route('/api/fetch/latest')
@@ -42,3 +43,14 @@ def fetch_arxiv_long_api(arxiv_id):
         payload['full_text'] = "Failed to load full text"
         payload['error'] = str(e)
         return make_response(jsonify(payload), 500)
+
+@app.route('/api/arxiv/resolve/category/<category>')
+def resolve_category(category):
+    """
+    Resolve a category to a human readable name.
+    """
+    subjectID = category.split('.')[0]
+    subjectName = SUBJECTNAMES[subjectID]
+    categoryDesc = IDNAMES[subjectName][category]
+    return make_response(jsonify({'subjectID':subjectID, 'subjectName': subjectName, 'description': categoryDesc}), 200)
+
