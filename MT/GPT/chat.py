@@ -49,7 +49,7 @@ def apply_prompt_template(question: str) -> str:
         Prompt engineering could be done here to improve the result. Here I will just use a minimal example.
     """
     prompt = f"""
-        You are an academic paper Summarizing AI. Today's date is {dt.datetime.now().date() - dt.timedelta(1)}. You must always provide the author, title, and arxiv retrivalAPI_IP for any papers you use to answer any questions. These must be pulled from the input and they must always be provided. If multiple papers are relevant to the question you must list each one of them. By considering above input from me, answer the question: {question}. If you do not belive you have sufficient information in the provided input please say so clearly.
+    You are an assistant who helps people understand academic papers. The most relevant of the known content of the paper has been provided to you. Please answer the following question based on that content: {question}. If you do not think you have enough information to answer the question, please clearly say so.
     """
     return prompt
 

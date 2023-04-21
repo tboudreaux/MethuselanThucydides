@@ -2,13 +2,14 @@ from MT.setup import db
 
 import uuid
 from sqlalchemy.dialects.postgresql import TEXT, ARRAY
-from sqlalchemy.ext.hybrid import hybrid_method
+from sqlalchemy.ext.hybrid import hybrid_method, hybrid_property
 from sqlalchemy.sql import func
 import bcrypt
 from sqlalchemy.dialects.postgresql import UUID
 import datetime as dt
 import secrets
 import hashlib
+import pytz
 
 authors_papers = db.Table('authors_papers',
     db.Column('author_uuid', UUID(as_uuid=True), db.ForeignKey('authors.uuid'), primary_key=True),
@@ -84,6 +85,14 @@ class Paper(db.Model):
             'gpt_summary_long': self.gpt_summary_long,
             'full_page_text': self.full_page_text
         }
+
+    @hybrid_property
+    def published_today(self):
+        return is_paper_posted_today(self.published_date)
+
+    @published_today.expression
+    def published_today(cls):
+        return is_paper_posted_today(cls.published_date)
 
 class User(db.Model):
     __tablename__ = 'users'
@@ -253,3 +262,33 @@ class Summary(db.Model):
 
     def __repr__(self):
         return f'<Summary: {self.uuid}, Date: {self.date}, Category: {self.category_uuid}>'
+
+
+def is_paper_posted_today(published) -> bool:
+    eastern = pytz.timezone('US/Eastern')
+    current_datetime = dt.datetime.now(eastern)
+    current_datetime = current_datetime.astimezone(eastern)
+
+    # Calculate the start and end datetimes of the current visibility window
+    days_delta = (current_datetime.weekday() - 2) % 5
+    start_datetime = current_datetime - dt.timedelta(days=days_delta, hours=current_datetime.hour - 14, minutes=current_datetime.minute, seconds=current_datetime.second, microseconds=current_datetime.microsecond)
+    end_datetime = start_datetime + dt.timedelta(days=1)
+
+    # If it's Sunday, adjust the start and end datetimes
+    if current_datetime.weekday() == 6:
+        start_datetime -= dt.timedelta(days=2)
+        end_datetime -= dt.timedelta(days=2)
+    elif current_datetime.weekday() == 0 and current_datetime.time() < dt.time(20, 0):
+        start_datetime -= dt.timedelta(days=3)
+        end_datetime -= dt.timedelta(days=3)
+
+    # Convert the start and end datetimes to UTC
+    start_datetime_utc = start_datetime.astimezone(pytz.UTC)
+    end_datetime_utc = end_datetime.astimezone(pytz.UTC)
+
+    # Filter papers that fall within the visibility window
+    # print(f"current_datetime: {current_datetime}")
+    # print(f"start_datetime_utc: {start_datetime_utc}")
+    # print(f"published: {published}")
+    # print(f"end_datetime_utc: {end_datetime_utc}")
+    return start_datetime_utc <= published < end_datetime_utc

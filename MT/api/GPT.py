@@ -5,6 +5,7 @@ from MT.utils.auth import token_required, key_required
 from MT.api.arxiv import fetch_arxiv_long_api
 from MT.config import catNameLookup, arxivCategories
 from MT.utils.home import todays_summary
+from MT.arxiv.queryArxiv import is_paper_posted_today
 
 from flask import jsonify, request
 import datetime as dt
@@ -72,27 +73,29 @@ def summarize_latest(current_user):
     """
     papers = Paper.query.order_by(Paper.published_date.desc()).limit(500).all()
     summarized = list()
+    totalSummarized = 0
     for paper in papers:
-        # if paper.published_date < dt.date.today() - dt.timedelta(days=TDELT):
-        #     print(f"Skipping {paper.arxiv_id} because it was published on {paper.published_date}") 
-        #     continue
-        if paper.gpt_summary_long is not None:
-            print(f"Skipping {paper.arxiv_id} because it has already been summarized (long)")
-            continue
-        elif paper.gpt_summary_short is not None:
-            print(f"Skipping {paper.arxiv_id} because it has already been summarized (short)")
+        if not is_paper_posted_today(paper.published_date):
             continue
         else:
-            summarized.append(paper.arxiv_id)
-            query = f"Please summarize, in 1-2 sentences, the paper titled {paper.title}."
-            gptResponse = ask(query, document_id=paper.arxiv_id)
-            if paper.full_page_text is None:
-                paper.gpt_summary_short = gptResponse
+            if paper.gpt_summary_long is not None:
+                print(f"Skipping {paper.arxiv_id} because it has already been summarized (long)")
+                continue
+            elif paper.gpt_summary_short is not None:
+                print(f"Skipping {paper.arxiv_id} because it has already been summarized (short)")
+                continue
             else:
-                paper.gpt_summary_long = gptResponse
-                paper.gpt_summary_short = gptResponse
-            db.session.commit()
-    return jsonify({'summary':'Latest papers summarized', 'papers':summarized})
+                totalSummarized += 1
+                summarized.append(paper.arxiv_id)
+                query = f"Please summarize, in 1-2 sentences, the paper titled {paper.title}."
+                gptResponse = ask(query, document_id=paper.arxiv_id)
+                if paper.full_page_text is None:
+                    paper.gpt_summary_short = gptResponse
+                else:
+                    paper.gpt_summary_long = gptResponse
+                    paper.gpt_summary_short = gptResponse
+                db.session.commit()
+    return jsonify({'summary':'Latest papers summarized', 'papers':summarized, 'totalSummarized':totalSummarized})
 
 @app.route('/api/gpt/summarize/missing')
 @key_required
@@ -199,11 +202,11 @@ def homepage():
     """
     Return a list of the most recent papers that have been summarized.
     """
-    TDELT = TDELTLOOKUP[dt.date.today().weekday()]
-
     subjectSummaries = dict()
     for catID in arxivCategories:
         category = Category.query.filter_by(category_id=catID).first()
+        if category is None:
+            continue
         print(f"Processing {category.category_name} for {dt.date.today()}")
         if (tsum := todays_summary(category.category_id)) is not None:
             if tsum != "":
@@ -215,9 +218,8 @@ def homepage():
         papers = Paper.query.filter(
                 Paper.gpt_summary_short.isnot(None),
                 Paper.subjects==catID,
-                Paper.published_date == (dt.date.today() - dt.timedelta(TDELT))
-                ).all()
-        papersDict = [paper.to_dict() for paper in papers]
+                ).order_by(Paper.published_date.desc()).limit(200).all()
+        papersDict = [paper.to_dict() for paper in papers if is_paper_posted_today(paper.published_date)]
 
         if len(papersDict) > 0:
             print(f"Found {len(papersDict)} papers for {category.category_name} for {dt.date.today()}")

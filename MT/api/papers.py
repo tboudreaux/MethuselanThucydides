@@ -1,8 +1,10 @@
 from MT.setup import app, TDELTLOOKUP
 from MT.models.models import Paper
+from MT.arxiv.queryArxiv import is_paper_posted_today
 
 from flask import jsonify
 import datetime as dt
+from sqlalchemy import and_
 
 @app.route('/api/papers/all')
 def papers_all():
@@ -70,16 +72,10 @@ def papers_date_category_latest(category):
     """
     Return all papers in the database for the latest date and in a given category
     """
-    if dt.datetime.today().weekday() == 5:
-        TD = 2
-    elif dt.datetime.today().weekday() == 6:
-        TD = 3
-    elif dt.datetime.today().weekday() == 0:
-        TD = 3
-    else:
-        TD = 1
-    papers = Paper.query.filter_by(published_date=dt.datetime.today().date()-dt.timedelta(TD), subjects=category).all()
-    papers = [paper.__dict__ for paper in papers]
+    papers = Paper.query.filter(
+            Paper.subjects==category
+    ).order_by(Paper.published_date.desc()).limit(200).all()
+    papers = [paper.__dict__ for paper in papers if is_paper_posted_today(paper.published_date)]
     papers = [dict(filter(lambda x: x[0] != '_sa_instance_state', d.items())) for d in papers]
     return jsonify({'papers':papers})
 

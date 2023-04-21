@@ -13,6 +13,7 @@ import datetime as dt
 import pypdf
 import os
 import tempfile
+import pytz
 
 def embed_single_paper(paper, result):
     inputVector = [
@@ -35,7 +36,7 @@ def enroll_single_paper(result):
         result.pdf_url,
         result.summary,
         result.comment,
-        result.published.date(),
+        result.published,
         dt.datetime.today().date(),
         None,
         result.get_short_id(),
@@ -70,20 +71,24 @@ def fetch_latest():
     currentWeekday = dt.datetime.today().weekday()
     TDELT = TDELTLOOKUP[currentWeekday]
     initNumPapers = Paper.query.count()
+    lenResults = 0
     for cat in arxivCategories:
         print("Fetching category: " + cat)
         r = arxiv.Search(
             query = f"cat:{cat}",
             id_list = [],
-            max_results = 1000,
+            max_results = 100,
             sort_by = SortCriterion.SubmittedDate,
         )
-        # check if paper is already in database
-        for result in r.results():
+        todays_papers = filter(lambda x: is_paper_posted_today(x.published), r.results())
+        for result in todays_papers:
+            lenResults += 1
             checkPaper = Paper.query.filter_by(arxiv_id = result.get_short_id()).first()
             if checkPaper is not None:
-                break # skip paper if it's already in the database
+                print("\tAlready have paper")
+                continue
             enroll_single_paper(result)
+    print("Done fetching, total result " + str(lenResults))
     finalPaperCount = Paper.query.count()
     i = finalPaperCount - initNumPapers
     return i
@@ -134,3 +139,38 @@ def load_full_text(arxiv_id):
         db.session.commit()
     else:
         print("Already have full text")
+
+def is_paper_posted_today(published) -> bool:
+    print("HERE")
+    print("HERE")
+    print(f"PUBLISHED DATETIME : {published}")
+    print("HERE")
+    print("HERE")
+    eastern = pytz.timezone('US/Eastern')
+    current_datetime = dt.datetime.now(eastern)
+    current_datetime = current_datetime.astimezone(eastern)
+
+    # Calculate the start and end datetimes of the current visibility window
+    days_delta = (current_datetime.weekday() - 2) % 5
+    start_datetime = current_datetime - dt.timedelta(days=days_delta, hours=current_datetime.hour - 14, minutes=current_datetime.minute, seconds=current_datetime.second, microseconds=current_datetime.microsecond)
+    end_datetime = start_datetime + dt.timedelta(days=1)
+
+    # If it's Sunday, adjust the start and end datetimes
+    if current_datetime.weekday() == 6:
+        start_datetime -= dt.timedelta(days=2)
+        end_datetime -= dt.timedelta(days=2)
+    elif current_datetime.weekday() == 0 and current_datetime.time() < dt.time(20, 0):
+        start_datetime -= dt.timedelta(days=3)
+        end_datetime -= dt.timedelta(days=3)
+
+    # Convert the start and end datetimes to UTC
+    start_datetime_utc = start_datetime.astimezone(pytz.UTC)
+    end_datetime_utc = end_datetime.astimezone(pytz.UTC)
+
+    # Filter papers that fall within the visibility window
+    # print(f"current_datetime: {current_datetime}")
+    # print(f"start_datetime_utc: {start_datetime_utc}")
+    # print(f"published: {published}")
+    # print(f"end_datetime_utc: {end_datetime_utc}")
+    return start_datetime_utc <= published < end_datetime_utc
+
