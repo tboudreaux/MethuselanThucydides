@@ -173,3 +173,4 @@ gpt for summarization. Another API call can be scheduled for that:
 	- Home page with recommendations based on what papers users have interacted with
 	- Ability to follow references chains and bring additional papers down those chains in for further context (long term)
 	- config option to switch between gpt-3.5-turbo and gpt-4 (waiting till I get gpt-4 api access)
+	- Auto build the schema on first setup so that the schema does not have to be manually built
