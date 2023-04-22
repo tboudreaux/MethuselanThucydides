@@ -1,34 +1,3 @@
-async function logged_in() {
-	const response = await fetch("/login/test", {
-		method: "GET",
-		headers: {
-			"x-access-tokens": localStorage.getItem("token"),
-		},
-	});
-	// json = await response.json();
-	if (response.status == 401){
-		return false;
-	} else {
-		return true;
-	}
-}
-
-async function get_user_from_token(){
-	const response = await fetch("/login/test", {
-		method: "GET",
-		headers: {
-			"x-access-tokens": localStorage.getItem("token"),
-		},
-	});
-	json = await response.json();
-	if (response.status == 401){
-		return false;
-	} else {
-		return json.username;
-	}
-}
-
-
 async function login() {
 	userName = document.getElementById("username").value;
 	password = document.getElementById("password").value;

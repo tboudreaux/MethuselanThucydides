@@ -116,6 +116,7 @@ class User(db.Model):
 
     queries = db.relationship('Query', backref='user', lazy=True)
     keys = db.relationship('Key', backref='user', lazy=True)
+    bookmarks = db.relationship('Bookmark', backref='user', lazy=True)
 
     def __init__(self, username, email, password, ip=None, user_agent=None, country=None, city=None, timezone=None, admin=False, enabled=True):
         checkUser = User.query.filter_by(username=username).first()
@@ -292,3 +293,18 @@ def is_paper_posted_today(published) -> bool:
     # print(f"published: {published}")
     # print(f"end_datetime_utc: {end_datetime_utc}")
     return start_datetime_utc <= published < end_datetime_utc
+
+class Bookmark(db.Model):
+    __tablename__ = "bookmarks"
+    uuid = db.Column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4)
+    user_uuid = db.Column(UUID(as_uuid=True), db.ForeignKey('users.uuid'), nullable=False)
+    paper_uuid = db.Column(UUID(as_uuid=True), db.ForeignKey('papers.uuid'), nullable=False)
+    created_at = db.Column(db.DateTime(timezone=True), default=func.now(), nullable=False)
+
+    def __init__(self, user_uuid, paper_uuid):
+        self.user_uuid = user_uuid
+        self.paper_uuid = paper_uuid
+        self.created_at = dt.datetime.now()
+
+    def __repr__(self):
+        return f'<Bookmark: {self.uuid}, user: {self.user_uuid}, paper: {self.paper_uuid}>'

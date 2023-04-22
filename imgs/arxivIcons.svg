@@ -1,0 +1,974 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="512"
+   height="512"
+   viewBox="0 0 512 512"
+   version="1.1"
+   id="svg5"
+   inkscape:version="1.2.1 (9c6d41e410, 2022-07-14, custom)"
+   sodipodi:docname="arxivIcons.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview7"
+     pagecolor="#505050"
+     bordercolor="#eeeeee"
+     borderopacity="1"
+     inkscape:showpageshadow="0"
+     inkscape:pageopacity="0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#505050"
+     inkscape:document-units="px"
+     showgrid="false"
+     inkscape:zoom="0.16234276"
+     inkscape:cx="2928.9881"
+     inkscape:cy="1007.1284"
+     inkscape:window-width="2560"
+     inkscape:window-height="1371"
+     inkscape:window-x="1440"
+     inkscape:window-y="356"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="g4597-6-3-4-1-5-4-3-8">
+    <inkscape:page
+       x="0"
+       y="0"
+       width="512"
+       height="512"
+       id="page4488"
+       inkscape:export-filename="Page 1.svg"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96" />
+    <inkscape:page
+       x="522"
+       y="0"
+       width="512"
+       height="512"
+       id="page4490"
+       inkscape:export-filename="Page 2.svg"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96" />
+    <inkscape:page
+       x="1044"
+       y="0"
+       width="512"
+       height="512"
+       id="page4697"
+       inkscape:export-filename="Page 3.svg"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96" />
+    <inkscape:page
+       x="1566"
+       y="0"
+       width="512"
+       height="512"
+       id="page4699"
+       inkscape:export-filename="Page 4.svg"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96" />
+    <inkscape:page
+       x="2088"
+       y="0"
+       width="512"
+       height="512"
+       id="page4701"
+       inkscape:export-filename="Page 5.svg"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96" />
+    <inkscape:page
+       x="2610"
+       y="0"
+       width="512"
+       height="512"
+       id="page4703"
+       inkscape:export-filename="Page 6.svg"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96" />
+    <inkscape:page
+       x="3132"
+       y="0"
+       width="512"
+       height="512"
+       id="page10290" />
+    <inkscape:page
+       x="3654"
+       y="0"
+       width="512"
+       height="512"
+       id="page10292" />
+    <inkscape:page
+       x="4176"
+       y="0"
+       width="512"
+       height="512"
+       id="page10294" />
+    <inkscape:page
+       x="4698"
+       y="0"
+       width="512"
+       height="512"
+       id="page10296" />
+    <inkscape:page
+       x="5220"
+       y="0"
+       width="512"
+       height="512"
+       id="page10298" />
+    <inkscape:page
+       x="5742"
+       y="0"
+       width="512"
+       height="512"
+       id="page10300" />
+  </sodipodi:namedview>
+  <defs
+     id="defs2">
+    <filter
+       inkscape:collect="always"
+       style="color-interpolation-filters:sRGB"
+       id="filter993"
+       x="-0.05247186"
+       y="-0.05247186"
+       width="1.1049437"
+       height="1.1049437">
+      <feGaussianBlur
+         inkscape:collect="always"
+         stdDeviation="10.08207"
+         id="feGaussianBlur995" />
+    </filter>
+    <filter
+       inkscape:collect="always"
+       style="color-interpolation-filters:sRGB"
+       id="filter4388"
+       x="-0.10260827"
+       y="-0.25960202"
+       width="1.2052165"
+       height="1.519204">
+      <feGaussianBlur
+         inkscape:collect="always"
+         stdDeviation="15.68454"
+         id="feGaussianBlur4390" />
+    </filter>
+    <filter
+       inkscape:collect="always"
+       style="color-interpolation-filters:sRGB"
+       id="filter993-3"
+       x="-0.05247186"
+       y="-0.05247186"
+       width="1.1049437"
+       height="1.1049437">
+      <feGaussianBlur
+         inkscape:collect="always"
+         stdDeviation="10.08207"
+         id="feGaussianBlur995-3" />
+    </filter>
+    <filter
+       inkscape:collect="always"
+       style="color-interpolation-filters:sRGB"
+       id="filter4388-3"
+       x="-0.10260827"
+       y="-0.25960202"
+       width="1.2052165"
+       height="1.519204">
+      <feGaussianBlur
+         inkscape:collect="always"
+         stdDeviation="15.68454"
+         id="feGaussianBlur4390-8" />
+    </filter>
+    <filter
+       inkscape:collect="always"
+       style="color-interpolation-filters:sRGB"
+       id="filter993-3-7"
+       x="-0.05247186"
+       y="-0.05247186"
+       width="1.1049437"
+       height="1.1049437">
+      <feGaussianBlur
+         inkscape:collect="always"
+         stdDeviation="10.08207"
+         id="feGaussianBlur995-3-7" />
+    </filter>
+    <filter
+       inkscape:collect="always"
+       style="color-interpolation-filters:sRGB"
+       id="filter4388-3-6"
+       x="-0.10260827"
+       y="-0.25960202"
+       width="1.2052165"
+       height="1.519204">
+      <feGaussianBlur
+         inkscape:collect="always"
+         stdDeviation="15.68454"
+         id="feGaussianBlur4390-8-4" />
+    </filter>
+    <filter
+       inkscape:collect="always"
+       style="color-interpolation-filters:sRGB"
+       id="filter993-3-7-4"
+       x="-0.05247186"
+       y="-0.05247186"
+       width="1.1049437"
+       height="1.1049437">
+      <feGaussianBlur
+         inkscape:collect="always"
+         stdDeviation="10.08207"
+         id="feGaussianBlur995-3-7-0" />
+    </filter>
+    <filter
+       inkscape:collect="always"
+       style="color-interpolation-filters:sRGB"
+       id="filter4388-3-6-5"
+       x="-0.10260827"
+       y="-0.25960202"
+       width="1.2052165"
+       height="1.519204">
+      <feGaussianBlur
+         inkscape:collect="always"
+         stdDeviation="15.68454"
+         id="feGaussianBlur4390-8-4-9" />
+    </filter>
+    <filter
+       inkscape:collect="always"
+       style="color-interpolation-filters:sRGB"
+       id="filter993-3-7-4-7"
+       x="-0.05247186"
+       y="-0.05247186"
+       width="1.1049437"
+       height="1.1049437">
+      <feGaussianBlur
+         inkscape:collect="always"
+         stdDeviation="10.08207"
+         id="feGaussianBlur995-3-7-0-5" />
+    </filter>
+    <filter
+       inkscape:collect="always"
+       style="color-interpolation-filters:sRGB"
+       id="filter4388-3-6-5-4"
+       x="-0.10260827"
+       y="-0.25960202"
+       width="1.2052165"
+       height="1.519204">
+      <feGaussianBlur
+         inkscape:collect="always"
+         stdDeviation="15.68454"
+         id="feGaussianBlur4390-8-4-9-8" />
+    </filter>
+    <filter
+       inkscape:collect="always"
+       style="color-interpolation-filters:sRGB"
+       id="filter993-3-7-4-7-0"
+       x="-0.05247186"
+       y="-0.05247186"
+       width="1.1049437"
+       height="1.1049437">
+      <feGaussianBlur
+         inkscape:collect="always"
+         stdDeviation="10.08207"
+         id="feGaussianBlur995-3-7-0-5-2" />
+    </filter>
+    <filter
+       inkscape:collect="always"
+       style="color-interpolation-filters:sRGB"
+       id="filter4388-3-6-5-4-1"
+       x="-0.10260827"
+       y="-0.25960202"
+       width="1.2052165"
+       height="1.519204">
+      <feGaussianBlur
+         inkscape:collect="always"
+         stdDeviation="15.68454"
+         id="feGaussianBlur4390-8-4-9-8-0" />
+    </filter>
+    <filter
+       inkscape:collect="always"
+       style="color-interpolation-filters:sRGB"
+       id="filter993-3-7-4-7-0-8"
+       x="-0.05247186"
+       y="-0.05247186"
+       width="1.1049437"
+       height="1.1049437">
+      <feGaussianBlur
+         inkscape:collect="always"
+         stdDeviation="10.08207"
+         id="feGaussianBlur995-3-7-0-5-2-6" />
+    </filter>
+    <filter
+       inkscape:collect="always"
+       style="color-interpolation-filters:sRGB"
+       id="filter4388-3-6-5-4-1-2"
+       x="-0.10260827"
+       y="-0.25960202"
+       width="1.2052165"
+       height="1.519204">
+      <feGaussianBlur
+         inkscape:collect="always"
+         stdDeviation="15.68454"
+         id="feGaussianBlur4390-8-4-9-8-0-8" />
+    </filter>
+    <filter
+       inkscape:collect="always"
+       style="color-interpolation-filters:sRGB"
+       id="filter993-3-7-4-7-0-8-1"
+       x="-0.05247186"
+       y="-0.05247186"
+       width="1.1049437"
+       height="1.1049437">
+      <feGaussianBlur
+         inkscape:collect="always"
+         stdDeviation="10.08207"
+         id="feGaussianBlur995-3-7-0-5-2-6-0" />
+    </filter>
+    <filter
+       inkscape:collect="always"
+       style="color-interpolation-filters:sRGB"
+       id="filter4388-3-6-5-4-1-2-4"
+       x="-0.10260827"
+       y="-0.25960202"
+       width="1.2052165"
+       height="1.519204">
+      <feGaussianBlur
+         inkscape:collect="always"
+         stdDeviation="15.68454"
+         id="feGaussianBlur4390-8-4-9-8-0-8-2" />
+    </filter>
+    <filter
+       inkscape:collect="always"
+       style="color-interpolation-filters:sRGB"
+       id="filter993-3-7-4-7-0-8-0"
+       x="-0.05247186"
+       y="-0.05247186"
+       width="1.1049437"
+       height="1.1049437">
+      <feGaussianBlur
+         inkscape:collect="always"
+         stdDeviation="10.08207"
+         id="feGaussianBlur995-3-7-0-5-2-6-2" />
+    </filter>
+    <filter
+       inkscape:collect="always"
+       style="color-interpolation-filters:sRGB"
+       id="filter4388-3-6-5-4-1-2-8"
+       x="-0.10260827"
+       y="-0.25960202"
+       width="1.2052165"
+       height="1.519204">
+      <feGaussianBlur
+         inkscape:collect="always"
+         stdDeviation="15.68454"
+         id="feGaussianBlur4390-8-4-9-8-0-8-3" />
+    </filter>
+    <filter
+       inkscape:collect="always"
+       style="color-interpolation-filters:sRGB"
+       id="filter993-3-7-4-7-0-8-2"
+       x="-0.05247186"
+       y="-0.05247186"
+       width="1.1049437"
+       height="1.1049437">
+      <feGaussianBlur
+         inkscape:collect="always"
+         stdDeviation="10.08207"
+         id="feGaussianBlur995-3-7-0-5-2-6-5" />
+    </filter>
+    <filter
+       inkscape:collect="always"
+       style="color-interpolation-filters:sRGB"
+       id="filter4388-3-6-5-4-1-2-44"
+       x="-0.10260827"
+       y="-0.25960202"
+       width="1.2052165"
+       height="1.519204">
+      <feGaussianBlur
+         inkscape:collect="always"
+         stdDeviation="15.68454"
+         id="feGaussianBlur4390-8-4-9-8-0-8-9" />
+    </filter>
+    <filter
+       inkscape:collect="always"
+       style="color-interpolation-filters:sRGB"
+       id="filter993-3-7-4-7-0-8-3"
+       x="-0.05247186"
+       y="-0.05247186"
+       width="1.1049437"
+       height="1.1049437">
+      <feGaussianBlur
+         inkscape:collect="always"
+         stdDeviation="10.08207"
+         id="feGaussianBlur995-3-7-0-5-2-6-51" />
+    </filter>
+    <filter
+       inkscape:collect="always"
+       style="color-interpolation-filters:sRGB"
+       id="filter4388-3-6-5-4-1-2-7"
+       x="-0.10260827"
+       y="-0.25960202"
+       width="1.2052165"
+       height="1.519204">
+      <feGaussianBlur
+         inkscape:collect="always"
+         stdDeviation="15.68454"
+         id="feGaussianBlur4390-8-4-9-8-0-8-4" />
+    </filter>
+    <filter
+       inkscape:collect="always"
+       style="color-interpolation-filters:sRGB"
+       id="filter993-3-7-4-7-0-8-3-4"
+       x="-0.05247186"
+       y="-0.05247186"
+       width="1.1049437"
+       height="1.1049437">
+      <feGaussianBlur
+         inkscape:collect="always"
+         stdDeviation="10.08207"
+         id="feGaussianBlur995-3-7-0-5-2-6-51-1" />
+    </filter>
+    <filter
+       inkscape:collect="always"
+       style="color-interpolation-filters:sRGB"
+       id="filter4388-3-6-5-4-1-2-7-2"
+       x="-0.10260827"
+       y="-0.25960202"
+       width="1.2052165"
+       height="1.519204">
+      <feGaussianBlur
+         inkscape:collect="always"
+         stdDeviation="15.68454"
+         id="feGaussianBlur4390-8-4-9-8-0-8-4-8" />
+    </filter>
+  </defs>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <g
+       id="g4597"
+       inkscape:label="icon-SR">
+      <circle
+         style="opacity:1;mix-blend-mode:normal;fill:#5873a7;fill-opacity:1;filter:url(#filter993)"
+         id="path883"
+         cx="254.76788"
+         cy="254.76788"
+         r="230.57091" />
+      <text
+         xml:space="preserve"
+         style="font-size:355.1px;line-height:1.25;font-family:'Space Mono';-inkscape-font-specification:'Space Mono';stroke-width:2.66325"
+         x="181.7791"
+         y="280.55972"
+         id="text4384"
+         transform="scale(0.65186703,1.5340552)"
+         inkscape:label="Scat"><tspan
+           sodipodi:role="line"
+           id="tspan4382"
+           x="181.7791"
+           y="280.55972"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'Fira Mono for Powerline';-inkscape-font-specification:'Fira Mono for Powerline';fill:#ffffff;fill-opacity:1;stroke-width:2.66325">SR</tspan></text>
+      <rect
+         style="opacity:1;fill:#5873a7;fill-opacity:1;filter:url(#filter4388)"
+         id="rect4067"
+         width="366.86026"
+         height="145.00232"
+         x="70.186707"
+         y="181.0031" />
+      <text
+         xml:space="preserve"
+         style="font-size:98.8729px;line-height:1.25;font-family:'Space Mono';-inkscape-font-specification:'Space Mono';stroke-width:0.741547"
+         x="34.380787"
+         y="269.18494"
+         id="text1779"
+         transform="scale(0.94818843,1.0546427)"
+         inkscape:label="Lcat"><tspan
+           sodipodi:role="line"
+           id="tspan1777"
+           x="34.380787"
+           y="269.18494"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'Fira Mono for Powerline';-inkscape-font-specification:'Fira Mono for Powerline';fill:#ffffff;fill-opacity:1;stroke-width:0.741547">astro-ph</tspan></text>
+    </g>
+    <g
+       id="g4597-6"
+       inkscape:label="icon-IM"
+       transform="translate(523.48422,2.1117164)">
+      <circle
+         style="opacity:1;mix-blend-mode:normal;fill:#5873a7;fill-opacity:1;filter:url(#filter993-3)"
+         id="path883-0"
+         cx="254.76788"
+         cy="254.76788"
+         r="230.57091" />
+      <text
+         xml:space="preserve"
+         style="font-size:355.1px;line-height:1.25;font-family:'Space Mono';-inkscape-font-specification:'Space Mono';stroke-width:2.66325"
+         x="181.7791"
+         y="280.55972"
+         id="text4384-4"
+         transform="scale(0.65186703,1.5340552)"
+         inkscape:label="Scat"><tspan
+           sodipodi:role="line"
+           id="tspan4382-8"
+           x="181.7791"
+           y="280.55972"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'Fira Mono for Powerline';-inkscape-font-specification:'Fira Mono for Powerline';fill:#ffffff;fill-opacity:1;stroke-width:2.66325">IM</tspan></text>
+      <rect
+         style="opacity:1;fill:#5873a7;fill-opacity:1;filter:url(#filter4388-3)"
+         id="rect4067-8"
+         width="366.86026"
+         height="145.00232"
+         x="70.186707"
+         y="181.0031" />
+      <text
+         xml:space="preserve"
+         style="font-size:98.8729px;line-height:1.25;font-family:'Space Mono';-inkscape-font-specification:'Space Mono';stroke-width:0.741547"
+         x="34.380787"
+         y="269.18494"
+         id="text1779-8"
+         transform="scale(0.94818843,1.0546427)"
+         inkscape:label="Lcat"><tspan
+           sodipodi:role="line"
+           id="tspan1777-9"
+           x="34.380787"
+           y="269.18494"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'Fira Mono for Powerline';-inkscape-font-specification:'Fira Mono for Powerline';fill:#ffffff;fill-opacity:1;stroke-width:0.741547">astro-ph</tspan></text>
+    </g>
+    <g
+       id="g4597-6-3"
+       inkscape:label="icon-HE"
+       transform="translate(1046.8972,0.36544634)">
+      <circle
+         style="opacity:1;mix-blend-mode:normal;fill:#5873a7;fill-opacity:1;filter:url(#filter993-3-7)"
+         id="path883-0-0"
+         cx="254.76788"
+         cy="254.76788"
+         r="230.57091" />
+      <text
+         xml:space="preserve"
+         style="font-size:355.1px;line-height:1.25;font-family:'Space Mono';-inkscape-font-specification:'Space Mono';stroke-width:2.66325"
+         x="181.7791"
+         y="280.55972"
+         id="text4384-4-3"
+         transform="scale(0.65186703,1.5340552)"
+         inkscape:label="Scat"><tspan
+           sodipodi:role="line"
+           id="tspan4382-8-0"
+           x="181.7791"
+           y="280.55972"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'Fira Mono for Powerline';-inkscape-font-specification:'Fira Mono for Powerline';fill:#ffffff;fill-opacity:1;stroke-width:2.66325">HE</tspan></text>
+      <rect
+         style="opacity:1;fill:#5873a7;fill-opacity:1;filter:url(#filter4388-3-6)"
+         id="rect4067-8-9"
+         width="366.86026"
+         height="145.00232"
+         x="70.186707"
+         y="181.0031" />
+      <text
+         xml:space="preserve"
+         style="font-size:98.8729px;line-height:1.25;font-family:'Space Mono';-inkscape-font-specification:'Space Mono';stroke-width:0.741547"
+         x="34.380787"
+         y="269.18494"
+         id="text1779-8-2"
+         transform="scale(0.94818843,1.0546427)"
+         inkscape:label="Lcat"><tspan
+           sodipodi:role="line"
+           id="tspan1777-9-5"
+           x="34.380787"
+           y="269.18494"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'Fira Mono for Powerline';-inkscape-font-specification:'Fira Mono for Powerline';fill:#ffffff;fill-opacity:1;stroke-width:0.741547">astro-ph</tspan></text>
+    </g>
+    <g
+       id="g4597-6-3-4"
+       inkscape:label="icon-GA"
+       transform="translate(1567.3935,1.6311102)">
+      <circle
+         style="opacity:1;mix-blend-mode:normal;fill:#5873a7;fill-opacity:1;filter:url(#filter993-3-7-4)"
+         id="path883-0-0-6"
+         cx="254.76788"
+         cy="254.76788"
+         r="230.57091" />
+      <text
+         xml:space="preserve"
+         style="font-size:355.1px;line-height:1.25;font-family:'Space Mono';-inkscape-font-specification:'Space Mono';stroke-width:2.66325"
+         x="181.7791"
+         y="280.55972"
+         id="text4384-4-3-9"
+         transform="scale(0.65186703,1.5340552)"
+         inkscape:label="Scat"><tspan
+           sodipodi:role="line"
+           id="tspan4382-8-0-2"
+           x="181.7791"
+           y="280.55972"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'Fira Mono for Powerline';-inkscape-font-specification:'Fira Mono for Powerline';fill:#ffffff;fill-opacity:1;stroke-width:2.66325">GA</tspan></text>
+      <rect
+         style="opacity:1;fill:#5873a7;fill-opacity:1;filter:url(#filter4388-3-6-5)"
+         id="rect4067-8-9-2"
+         width="366.86026"
+         height="145.00232"
+         x="70.186707"
+         y="181.0031" />
+      <text
+         xml:space="preserve"
+         style="font-size:98.8729px;line-height:1.25;font-family:'Space Mono';-inkscape-font-specification:'Space Mono';stroke-width:0.741547"
+         x="34.380787"
+         y="269.18494"
+         id="text1779-8-2-4"
+         transform="scale(0.94818843,1.0546427)"
+         inkscape:label="Lcat"><tspan
+           sodipodi:role="line"
+           id="tspan1777-9-5-7"
+           x="34.380787"
+           y="269.18494"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'Fira Mono for Powerline';-inkscape-font-specification:'Fira Mono for Powerline';fill:#ffffff;fill-opacity:1;stroke-width:0.741547">astro-ph</tspan></text>
+    </g>
+    <g
+       id="g4597-6-3-4-1"
+       inkscape:label="icon-EP"
+       transform="translate(2089.6087,1.2317244)">
+      <circle
+         style="opacity:1;mix-blend-mode:normal;fill:#5873a7;fill-opacity:1;filter:url(#filter993-3-7-4-7)"
+         id="path883-0-0-6-2"
+         cx="254.76788"
+         cy="254.76788"
+         r="230.57091" />
+      <text
+         xml:space="preserve"
+         style="font-size:355.1px;line-height:1.25;font-family:'Space Mono';-inkscape-font-specification:'Space Mono';stroke-width:2.66325"
+         x="181.7791"
+         y="280.55972"
+         id="text4384-4-3-9-8"
+         transform="scale(0.65186703,1.5340552)"
+         inkscape:label="Scat"><tspan
+           sodipodi:role="line"
+           id="tspan4382-8-0-2-9"
+           x="181.7791"
+           y="280.55972"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'Fira Mono for Powerline';-inkscape-font-specification:'Fira Mono for Powerline';fill:#ffffff;fill-opacity:1;stroke-width:2.66325">EP</tspan></text>
+      <rect
+         style="opacity:1;fill:#5873a7;fill-opacity:1;filter:url(#filter4388-3-6-5-4)"
+         id="rect4067-8-9-2-3"
+         width="366.86026"
+         height="145.00232"
+         x="70.186707"
+         y="181.0031" />
+      <text
+         xml:space="preserve"
+         style="font-size:98.8729px;line-height:1.25;font-family:'Space Mono';-inkscape-font-specification:'Space Mono';stroke-width:0.741547"
+         x="34.380787"
+         y="269.18494"
+         id="text1779-8-2-4-6"
+         transform="scale(0.94818843,1.0546427)"
+         inkscape:label="Lcat"><tspan
+           sodipodi:role="line"
+           id="tspan1777-9-5-7-8"
+           x="34.380787"
+           y="269.18494"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'Fira Mono for Powerline';-inkscape-font-specification:'Fira Mono for Powerline';fill:#ffffff;fill-opacity:1;stroke-width:0.741547">astro-ph</tspan></text>
+    </g>
+    <g
+       id="g4597-6-3-4-1-5"
+       inkscape:label="icon-CO"
+       transform="translate(2614.4384,0.56243071)">
+      <circle
+         style="opacity:1;mix-blend-mode:normal;fill:#5873a7;fill-opacity:1;filter:url(#filter993-3-7-4-7-0)"
+         id="path883-0-0-6-2-1"
+         cx="254.76788"
+         cy="254.76788"
+         r="230.57091" />
+      <text
+         xml:space="preserve"
+         style="font-size:355.1px;line-height:1.25;font-family:'Space Mono';-inkscape-font-specification:'Space Mono';stroke-width:2.66325"
+         x="181.7791"
+         y="280.55972"
+         id="text4384-4-3-9-8-1"
+         transform="scale(0.65186703,1.5340552)"
+         inkscape:label="Scat"><tspan
+           sodipodi:role="line"
+           id="tspan4382-8-0-2-9-0"
+           x="181.7791"
+           y="280.55972"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'Fira Mono for Powerline';-inkscape-font-specification:'Fira Mono for Powerline';fill:#ffffff;fill-opacity:1;stroke-width:2.66325">CO</tspan></text>
+      <rect
+         style="opacity:1;fill:#5873a7;fill-opacity:1;filter:url(#filter4388-3-6-5-4-1)"
+         id="rect4067-8-9-2-3-8"
+         width="366.86026"
+         height="145.00232"
+         x="70.186707"
+         y="181.0031" />
+      <text
+         xml:space="preserve"
+         style="font-size:98.8729px;line-height:1.25;font-family:'Space Mono';-inkscape-font-specification:'Space Mono';stroke-width:0.741547"
+         x="34.380787"
+         y="269.18494"
+         id="text1779-8-2-4-6-5"
+         transform="scale(0.94818843,1.0546427)"
+         inkscape:label="Lcat"><tspan
+           sodipodi:role="line"
+           id="tspan1777-9-5-7-8-0"
+           x="34.380787"
+           y="269.18494"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'Fira Mono for Powerline';-inkscape-font-specification:'Fira Mono for Powerline';fill:#ffffff;fill-opacity:1;stroke-width:0.741547">astro-ph</tspan></text>
+    </g>
+    <g
+       id="g4597-6-3-4-1-5-4"
+       inkscape:label="icon-MT"
+       transform="translate(3133.0939,5.4604315)">
+      <circle
+         style="opacity:1;mix-blend-mode:normal;fill:#5873a7;fill-opacity:1;filter:url(#filter993-3-7-4-7-0-8)"
+         id="path883-0-0-6-2-1-7"
+         cx="254.76788"
+         cy="254.76788"
+         r="230.57091" />
+      <text
+         xml:space="preserve"
+         style="font-size:355.1px;line-height:1.25;font-family:'Space Mono';-inkscape-font-specification:'Space Mono';stroke-width:2.66325"
+         x="181.7791"
+         y="280.55972"
+         id="text4384-4-3-9-8-1-2"
+         transform="scale(0.65186703,1.5340552)"
+         inkscape:label="Scat"><tspan
+           sodipodi:role="line"
+           id="tspan4382-8-0-2-9-0-4"
+           x="181.7791"
+           y="280.55972"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'Fira Mono for Powerline';-inkscape-font-specification:'Fira Mono for Powerline';fill:#ffffff;fill-opacity:1;stroke-width:2.66325">AT</tspan></text>
+      <rect
+         style="opacity:1;fill:#5873a7;fill-opacity:1;filter:url(#filter4388-3-6-5-4-1-2)"
+         id="rect4067-8-9-2-3-8-0"
+         width="366.86026"
+         height="145.00232"
+         x="70.186707"
+         y="181.0031" />
+      <text
+         xml:space="preserve"
+         style="font-size:175.602px;line-height:1.25;font-family:'Space Mono';-inkscape-font-specification:'Space Mono';text-align:center;text-anchor:middle;stroke-width:1.31702"
+         x="228.54962"
+         y="338.71829"
+         id="text1779-8-2-4-6-5-6"
+         transform="scale(1.1331298,0.8825114)"
+         inkscape:label="Lcat"><tspan
+           sodipodi:role="line"
+           id="tspan1777-9-5-7-8-0-2"
+           x="228.54962"
+           y="338.71829"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'Fira Mono for Powerline';-inkscape-font-specification:'Fira Mono for Powerline';text-align:center;text-anchor:middle;fill:#ffffff;fill-opacity:1;stroke-width:1.31702">math</tspan></text>
+    </g>
+    <g
+       id="g4597-6-3-4-1-5-4-2"
+       inkscape:label="icon-MT"
+       transform="translate(3655.9526,0.6462806)">
+      <circle
+         style="opacity:1;mix-blend-mode:normal;fill:#5873a7;fill-opacity:1;filter:url(#filter993-3-7-4-7-0-8-1)"
+         id="path883-0-0-6-2-1-7-2"
+         cx="254.76788"
+         cy="254.76788"
+         r="230.57091" />
+      <text
+         xml:space="preserve"
+         style="font-size:355.1px;line-height:1.25;font-family:'Space Mono';-inkscape-font-specification:'Space Mono';stroke-width:2.66325"
+         x="181.7791"
+         y="280.55972"
+         id="text4384-4-3-9-8-1-2-0"
+         transform="scale(0.65186703,1.5340552)"
+         inkscape:label="Scat"><tspan
+           sodipodi:role="line"
+           id="tspan4382-8-0-2-9-0-4-5"
+           x="181.7791"
+           y="280.55972"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'Fira Mono for Powerline';-inkscape-font-specification:'Fira Mono for Powerline';fill:#ffffff;fill-opacity:1;stroke-width:2.66325">CO</tspan></text>
+      <rect
+         style="opacity:1;fill:#5873a7;fill-opacity:1;filter:url(#filter4388-3-6-5-4-1-2-4)"
+         id="rect4067-8-9-2-3-8-0-5"
+         width="366.86026"
+         height="145.00232"
+         x="70.186707"
+         y="181.0031" />
+      <text
+         xml:space="preserve"
+         style="font-size:175.602px;line-height:1.25;font-family:'Space Mono';-inkscape-font-specification:'Space Mono';text-align:center;text-anchor:middle;stroke-width:1.31702"
+         x="228.54962"
+         y="338.71829"
+         id="text1779-8-2-4-6-5-6-2"
+         transform="scale(1.1331298,0.8825114)"
+         inkscape:label="Lcat"><tspan
+           sodipodi:role="line"
+           id="tspan1777-9-5-7-8-0-2-9"
+           x="228.54962"
+           y="338.71829"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'Fira Mono for Powerline';-inkscape-font-specification:'Fira Mono for Powerline';text-align:center;text-anchor:middle;fill:#ffffff;fill-opacity:1;stroke-width:1.31702">math</tspan></text>
+    </g>
+    <g
+       id="g4597-6-3-4-1-5-4-8"
+       inkscape:label="icon-MT"
+       transform="translate(4177.9096,-1.2983981)">
+      <circle
+         style="opacity:1;mix-blend-mode:normal;fill:#5873a7;fill-opacity:1;filter:url(#filter993-3-7-4-7-0-8-0)"
+         id="path883-0-0-6-2-1-7-0"
+         cx="254.76788"
+         cy="254.76788"
+         r="230.57091" />
+      <text
+         xml:space="preserve"
+         style="font-size:355.1px;line-height:1.25;font-family:'Space Mono';-inkscape-font-specification:'Space Mono';stroke-width:2.66325"
+         x="181.7791"
+         y="280.55972"
+         id="text4384-4-3-9-8-1-2-4"
+         transform="scale(0.65186703,1.5340552)"
+         inkscape:label="Scat"><tspan
+           sodipodi:role="line"
+           id="tspan4382-8-0-2-9-0-4-0"
+           x="181.7791"
+           y="280.55972"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'Fira Mono for Powerline';-inkscape-font-specification:'Fira Mono for Powerline';fill:#ffffff;fill-opacity:1;stroke-width:2.66325">GN</tspan></text>
+      <rect
+         style="opacity:1;fill:#5873a7;fill-opacity:1;filter:url(#filter4388-3-6-5-4-1-2-8)"
+         id="rect4067-8-9-2-3-8-0-9"
+         width="366.86026"
+         height="145.00232"
+         x="70.186707"
+         y="181.0031" />
+      <text
+         xml:space="preserve"
+         style="font-size:175.602px;line-height:1.25;font-family:'Space Mono';-inkscape-font-specification:'Space Mono';text-align:center;text-anchor:middle;stroke-width:1.31702"
+         x="228.54962"
+         y="338.71829"
+         id="text1779-8-2-4-6-5-6-1"
+         transform="scale(1.1331298,0.8825114)"
+         inkscape:label="Lcat"><tspan
+           sodipodi:role="line"
+           id="tspan1777-9-5-7-8-0-2-96"
+           x="228.54962"
+           y="338.71829"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'Fira Mono for Powerline';-inkscape-font-specification:'Fira Mono for Powerline';text-align:center;text-anchor:middle;fill:#ffffff;fill-opacity:1;stroke-width:1.31702">math</tspan></text>
+    </g>
+    <g
+       id="g4597-6-3-4-1-5-4-9"
+       inkscape:label="icon-MT"
+       transform="translate(4703.2428,4.4815889)">
+      <circle
+         style="opacity:1;mix-blend-mode:normal;fill:#5873a7;fill-opacity:1;filter:url(#filter993-3-7-4-7-0-8-2)"
+         id="path883-0-0-6-2-1-7-3"
+         cx="254.76788"
+         cy="254.76788"
+         r="230.57091" />
+      <text
+         xml:space="preserve"
+         style="font-size:355.1px;line-height:1.25;font-family:'Space Mono';-inkscape-font-specification:'Space Mono';stroke-width:2.66325"
+         x="181.7791"
+         y="280.55972"
+         id="text4384-4-3-9-8-1-2-6"
+         transform="scale(0.65186703,1.5340552)"
+         inkscape:label="Scat"><tspan
+           sodipodi:role="line"
+           id="tspan4382-8-0-2-9-0-4-05"
+           x="181.7791"
+           y="280.55972"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'Fira Mono for Powerline';-inkscape-font-specification:'Fira Mono for Powerline';fill:#ffffff;fill-opacity:1;stroke-width:2.66325">GR</tspan></text>
+      <rect
+         style="opacity:1;fill:#5873a7;fill-opacity:1;filter:url(#filter4388-3-6-5-4-1-2-44)"
+         id="rect4067-8-9-2-3-8-0-0"
+         width="366.86026"
+         height="145.00232"
+         x="70.186707"
+         y="181.0031" />
+      <text
+         xml:space="preserve"
+         style="font-size:175.602px;line-height:1.25;font-family:'Space Mono';-inkscape-font-specification:'Space Mono';text-align:center;text-anchor:middle;stroke-width:1.31702"
+         x="228.54962"
+         y="338.71829"
+         id="text1779-8-2-4-6-5-6-29"
+         transform="scale(1.1331298,0.8825114)"
+         inkscape:label="Lcat"><tspan
+           sodipodi:role="line"
+           id="tspan1777-9-5-7-8-0-2-4"
+           x="228.54962"
+           y="338.71829"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'Fira Mono for Powerline';-inkscape-font-specification:'Fira Mono for Powerline';text-align:center;text-anchor:middle;fill:#ffffff;fill-opacity:1;stroke-width:1.31702">math</tspan></text>
+    </g>
+    <g
+       id="g4597-6-3-4-1-5-4-3"
+       inkscape:label="icon-MT"
+       transform="translate(5223.9766,5.7906884)">
+      <circle
+         style="opacity:1;mix-blend-mode:normal;fill:#5873a7;fill-opacity:1;filter:url(#filter993-3-7-4-7-0-8-3)"
+         id="path883-0-0-6-2-1-7-1"
+         cx="254.76788"
+         cy="254.76788"
+         r="230.57091" />
+      <text
+         xml:space="preserve"
+         style="font-size:355.1px;line-height:1.25;font-family:'Space Mono';-inkscape-font-specification:'Space Mono';stroke-width:2.66325"
+         x="181.7791"
+         y="280.55972"
+         id="text4384-4-3-9-8-1-2-46"
+         transform="scale(0.65186703,1.5340552)"
+         inkscape:label="Scat"><tspan
+           sodipodi:role="line"
+           id="tspan4382-8-0-2-9-0-4-9"
+           x="181.7791"
+           y="280.55972"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'Fira Mono for Powerline';-inkscape-font-specification:'Fira Mono for Powerline';fill:#ffffff;fill-opacity:1;stroke-width:2.66325">MP</tspan></text>
+      <rect
+         style="opacity:1;fill:#5873a7;fill-opacity:1;filter:url(#filter4388-3-6-5-4-1-2-7)"
+         id="rect4067-8-9-2-3-8-0-4"
+         width="366.86026"
+         height="145.00232"
+         x="70.186707"
+         y="181.0031" />
+      <text
+         xml:space="preserve"
+         style="font-size:175.602px;line-height:1.25;font-family:'Space Mono';-inkscape-font-specification:'Space Mono';text-align:center;text-anchor:middle;stroke-width:1.31702"
+         x="228.54962"
+         y="338.71829"
+         id="text1779-8-2-4-6-5-6-22"
+         transform="scale(1.1331298,0.8825114)"
+         inkscape:label="Lcat"><tspan
+           sodipodi:role="line"
+           id="tspan1777-9-5-7-8-0-2-6"
+           x="228.54962"
+           y="338.71829"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'Fira Mono for Powerline';-inkscape-font-specification:'Fira Mono for Powerline';text-align:center;text-anchor:middle;fill:#ffffff;fill-opacity:1;stroke-width:1.31702">math</tspan></text>
+    </g>
+    <g
+       id="g4597-6-3-4-1-5-4-3-8"
+       inkscape:label="icon-MT"
+       transform="translate(5740.956,-0.57331121)">
+      <circle
+         style="opacity:1;mix-blend-mode:normal;fill:#5873a7;fill-opacity:1;filter:url(#filter993-3-7-4-7-0-8-3-4)"
+         id="path883-0-0-6-2-1-7-1-9"
+         cx="254.76788"
+         cy="254.76788"
+         r="230.57091" />
+      <text
+         xml:space="preserve"
+         style="font-size:355.1px;line-height:1.25;font-family:'Space Mono';-inkscape-font-specification:'Space Mono';stroke-width:2.66325"
+         x="181.7791"
+         y="280.55972"
+         id="text4384-4-3-9-8-1-2-46-2"
+         transform="scale(0.65186703,1.5340552)"
+         inkscape:label="Scat"><tspan
+           sodipodi:role="line"
+           id="tspan4382-8-0-2-9-0-4-9-8"
+           x="181.7791"
+           y="280.55972"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'Fira Mono for Powerline';-inkscape-font-specification:'Fira Mono for Powerline';fill:#ffffff;fill-opacity:1;stroke-width:2.66325">GN</tspan></text>
+      <rect
+         style="opacity:1;fill:#5873a7;fill-opacity:1;filter:url(#filter4388-3-6-5-4-1-2-7-2)"
+         id="rect4067-8-9-2-3-8-0-4-8"
+         width="366.86026"
+         height="145.00232"
+         x="70.186707"
+         y="181.0031" />
+      <text
+         xml:space="preserve"
+         style="font-size:175.602px;line-height:1.25;font-family:'Space Mono';-inkscape-font-specification:'Space Mono';text-align:center;text-anchor:middle;stroke-width:1.31702"
+         x="228.54962"
+         y="338.71829"
+         id="text1779-8-2-4-6-5-6-22-8"
+         transform="scale(1.1331298,0.8825114)"
+         inkscape:label="Lcat"><tspan
+           sodipodi:role="line"
+           id="tspan1777-9-5-7-8-0-2-6-6"
+           x="228.54962"
+           y="338.71829"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'Fira Mono for Powerline';-inkscape-font-specification:'Fira Mono for Powerline';text-align:center;text-anchor:middle;fill:#ffffff;fill-opacity:1;stroke-width:1.31702">econ</tspan></text>
+    </g>
+  </g>
+</svg>

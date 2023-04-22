@@ -1,32 +1,25 @@
 from MT.setup import app, db
 from MT.models.models import Query, User, Paper
-from MT.utils.auth import token_required
+from MT.utils.auth import token_required, auth_required
 
 from flask import jsonify
 
-@app.route('/api/query/all/useruuid/<user_id>')
-@token_required
-def get_all_queries(current_user, uuid):
+@app.route('/api/query/all/user')
+@auth_required
+def get_all_queries_username(current_user):
     """
     Return all queries for a given user.
     """
-    user = User.query.filter_by(uuid=uuid).first()
-    if user is None:
-        return jsonify({'message':'User not found'})
-    queries = Query.query.filter_by(uuid=uuid).all()
-    return jsonify({'queries':[query.to_dict() for query in queries]})
-
-@app.route('/api/query/all/username/<username>')
-@token_required
-def get_all_queries_username(current_user, username):
-    """
-    Return all queries for a given user.
-    """
-    user = User.query.filter_by(username=username).first()
-    if user is None:
-        return jsonify({'message':'User not found'})
-    userQueries = User.query.filter_by(username=username).first().queries
-    return jsonify({'queries':[query.to_dict() for query in userQueries]})
+    userQueries = current_user.queries
+    arxivIDs = [query.paper.arxiv_id for query in userQueries]
+    queryDict = [query.to_dict() for query, x in zip(userQueries, arxivIDs)]
+    returnDict = dict()
+    for query, arxivID in zip(queryDict, arxivIDs):
+        if arxivID in returnDict:
+            returnDict[arxivID].append(query)
+        else:
+            returnDict[arxivID] = [query]
+    return jsonify({'queries':returnDict})
 
 @app.route('/api/query/user')
 @token_required
@@ -37,7 +30,8 @@ def get_query(current_user):
     uuid = current_user.uuid
     user = User.query.filter_by(uuid=uuid).first()
     userQueries = User.query.filter_by(uuid=uuid).first().queries
-    return jsonify({'queries':[query.to_dict() for query in userQueries]})
+    queryDict = [query.to_dict() for query in userQueries]
+    return jsonify({'queries':queryDict})
 
 @app.route('/api/query/all/paper/<arxiv_id>')
 @token_required

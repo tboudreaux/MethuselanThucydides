@@ -47,3 +47,45 @@ def key_required(f):
 
         return f(current_user, *args, **kwargs)
     return decorator
+
+def user_pass_required(f):
+    @wraps(f)
+    def decorator(*args, **kwargs):
+        user = None
+        password = None
+        if 'x-access-user' in request.headers:
+            user = request.headers['x-access-user']
+        if 'x-access-pass' in request.headers:
+            password = request.headers['x-access-pass']
+
+        if not user:
+            print("No user")
+            return jsonify({'message': 'a valid user is missing', 'auth': False}), 401
+        if not password:
+            print("No password")
+            return jsonify({'message': 'a valid password is missing', 'auth': False}), 401
+        user = db.session.query(User).filter_by(username=user).first()
+        if not user:
+            print("Invalid user")
+            return jsonify({'message': 'user is invalid', 'auth': False}), 401
+        if not user.check_password(password):
+            print("Invalid user")
+            return jsonify({'message': 'user is invalid', 'auth': False}), 401
+        current_user = user
+
+        return f(current_user, *args, **kwargs)
+    return decorator
+
+def auth_required(f):
+    @wraps(f)
+    def decorator(*args, **kwargs):
+        if 'x-access-tokens' in request.headers:
+            return token_required(f)(*args, **kwargs)
+        elif 'x-access-key' in request.headers:
+            return key_required(f)(*args, **kwargs)
+        elif 'x-access-user' in request.headers and 'x-access-pass' in request.headers:
+            return user_pass_required(f)(*args, **kwargs)
+        else:
+            print("No auth")
+            return jsonify({'message': 'a valid auth is missing', 'auth': False}), 401
+    return decorator

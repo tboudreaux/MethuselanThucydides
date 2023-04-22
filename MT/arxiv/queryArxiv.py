@@ -55,7 +55,6 @@ def enroll_single_paper(result):
                 )
         newPaper.authors.append(newAuthor)
     for subject in result.categories:
-        print(subject)
         checkCategory = Category.query.filter_by(category_id=subject).first()
         if checkCategory is None:
             HLCat = subject.split('.')[0]

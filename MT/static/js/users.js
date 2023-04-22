@@ -1,30 +1,3 @@
-async function first_time_setup(){
-	let response = await fetch("/api/utils/first_time_setup");
-	let data = await response.json();
-	if (data["first_time_setup"] == true) {
-		return true;
-	}
-	else {
-		return false;
-	}
-}
-
-async function is_admin(){
-	let response = await fetch("/api/user/is_admin", {
-		headers: {
-			"x-access-tokens": localStorage.getItem("token"),
-		},
-	});
-	let data = await response.json();
-	if (data["admin"] === true) {
-		return true;
-	}
-	else {
-		return false;
-	}
-}
-
-
 async function enroll_user(){
 	newUserName = document.getElementById("newUserUsername").value;
 	newUserPassword = document.getElementById("newUserPassword").value;

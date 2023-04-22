@@ -1,38 +1,41 @@
-async function get_user_paper_queries(arxiv_id){
-	let token = localStorage.getItem('token');
-	let response = await fetch('/api/query/user/paper/' + arxiv_id, {
-		method: 'GET',
-		headers: {
-			'x-access-tokens': token,
-		},
-	});
-	let data = await response.json();
-	return data;
-}
 
-async function format_stored_chat_log(arxiv_id) {
-	allPaperDivs = document.getElementsByClassName('paper');
-	if (logged_in === true){
-		for (let i = 0; i < allPaperDivs.length; i++) {
-			let arxiv_id = allPaperDivs[i].id;
-			let chat_log = await get_user_paper_queries(arxiv_id);
-			let chat = document.getElementById(arxiv_id + '_chat');
-			queries = chat_log['queries'];
-			if (queries != null) {
-				for (let i = 0; i < queries.length; i++) {
-					let userMessage = document.createElement('p');
-					userMessage.classList.add('user');
-					userMessage.innerHTML = '<i class="fa fa-user" aria-hidden="true"></i>  ' + queries[i]['query'];
-					chat.appendChild(userMessage);
-					let responseMessage = document.createElement('p');
-					responseMessage.classList.add('chatElement');
-					responseMessage.innerHTML = '<i class="fa fa-robot" aria-hidden="true"></i>  ' + queries[i]['response'];
-					chat.appendChild(responseMessage);
-				}
+async function format_stored_chat_log() {
+	if (await logged_in() === true){
+		console.log("Calling format_stored_chat_log full");
+		let userQueries = await get_user_all_queries();
+		for (var arxiv_id in userQueries['queries']) {
+			let chatID = arxiv_id + '_chat';
+			queries = userQueries['queries'][arxiv_id];
+			let chat = document.getElementById(chatID);
+			if (chat != null) {
+				console.log("Formatting stored chat log for " + arxiv_id);
+				format_single_paper_chat_log(chat, queries);
+			}
+		}
+	} else {
+		console.log("Clearning all chat logs");
+		let allChats = document.getElementsByClassName('chat');
+		if (allChats != null) {
+			for (let i = 0; i < allChats.length; i++) {
+				allChats[i].innerHTML = "";
 			}
 		}
 	}
 }
+
+function format_single_paper_chat_log(chat, queries) {
+	for (let i = 0; i < queries.length; i++) {
+		let userMessage = document.createElement('p');
+		userMessage.classList.add('user');
+		userMessage.innerHTML = '<i class="fa fa-user" aria-hidden="true"></i>  ' + queries[i]['query'];
+		chat.appendChild(userMessage);
+		let responseMessage = document.createElement('p');
+		responseMessage.classList.add('chatElement');
+		responseMessage.innerHTML = '<i class="fa fa-robot" aria-hidden="true"></i>  ' + queries[i]['response'];
+		chat.appendChild(responseMessage);
+	}
+}
+
 
 async function submitQuery(arxivID) {
 	token = localStorage.getItem('token');
@@ -54,20 +57,15 @@ async function submitQuery(arxivID) {
     http.setRequestHeader("Content-type","application/x-www-form-urlencoded");
 	http.setRequestHeader("x-access-tokens", token);
 	let query = document.getElementById(arxivID + '_queryBox').value;
-	// let fullQuery = ''
-	// if (qamap.has(arxivID)) {
-	// 	let fullState = qamap.get(arxivID);
-	// 	for (let i = 0; i < fullState.length; i++) {
-	// 		fullQuery += 'Question #' + i+1 + ': ' + fullState[i][0] + ', Answer #' + i+1 + ': ' + fullState[i][1] + '\n';
-	// 	}
-	// }
-	// fullQuery += 'Current Question: ' + query;
     var params = "query=" + query; 
     http.send(params);
 	// Show the spinner
-	waitSpinner = document.getElementById(arxivID + '_waitSpinner');
-	submitQueryButton = document.getElementById(arxivID + '_submitButton');
+	waitSpinner = document.getElementById(arxivID + '_spinner');
 	waitSpinner.style.display = 'block';
+	askIcon = document.getElementById(arxivID + '_ask_icon');
+	askIcon.style.display = 'none';
+
+	submitQueryButton = document.getElementById(arxivID + '_submitButton');
 	submitQueryButton.classList.add('disabled');
 
 	let chat = document.getElementById(arxivID + '_chat');
@@ -93,6 +91,7 @@ async function submitQuery(arxivID) {
 			qamap.set(arxivID, currentState);
 		}
 		waitSpinner.style.display = 'none';
+		askIcon.style.display = 'block';
 		submitQueryButton.classList.remove('disabled');
 
 

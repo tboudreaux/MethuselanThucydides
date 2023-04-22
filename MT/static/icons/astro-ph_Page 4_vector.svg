@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="512"
+   height="512"
+   viewBox="0 0 512 512"
+   version="1.1"
+   id="svg5"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <defs
+     id="defs2">
+    <filter
+       style="color-interpolation-filters:sRGB"
+       id="filter993-3-7-4"
+       x="-0.052471861"
+       y="-0.052471861"
+       width="1.1049438"
+       height="1.1049438">
+      <feGaussianBlur
+         stdDeviation="10.08207"
+         id="feGaussianBlur995-3-7-0" />
+    </filter>
+    <filter
+       style="color-interpolation-filters:sRGB"
+       id="filter4388-3-6-5"
+       x="-0.10260827"
+       y="-0.25960201"
+       width="1.2052165"
+       height="1.519204">
+      <feGaussianBlur
+         stdDeviation="15.68454"
+         id="feGaussianBlur4390-8-4-9" />
+    </filter>
+  </defs>
+  <g
+     id="layer1"
+     transform="translate(-1566)">
+    <g
+       id="g4597-6-3-4"
+       transform="translate(1567.3935,1.6311102)">
+      <circle
+         style="opacity:1;mix-blend-mode:normal;fill:#5873a7;fill-opacity:1;filter:url(#filter993-3-7-4)"
+         id="path883-0-0-6"
+         cx="254.76788"
+         cy="254.76788"
+         r="230.57091" />
+      <text
+         xml:space="preserve"
+         style="font-size:355.1px;line-height:1.25;font-family:'Space Mono';-inkscape-font-specification:'Space Mono';stroke-width:2.66325"
+         x="181.7791"
+         y="280.55972"
+         id="text4384-4-3-9"
+         transform="scale(0.65186703,1.5340552)"><tspan
+           id="tspan4382-8-0-2"
+           x="181.7791"
+           y="280.55972"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'Fira Mono for Powerline';-inkscape-font-specification:'Fira Mono for Powerline';fill:#ffffff;fill-opacity:1;stroke-width:2.66325">GA</tspan></text>
+      <rect
+         style="opacity:1;fill:#5873a7;fill-opacity:1;filter:url(#filter4388-3-6-5)"
+         id="rect4067-8-9-2"
+         width="366.86026"
+         height="145.00232"
+         x="70.186707"
+         y="181.0031" />
+      <text
+         xml:space="preserve"
+         style="font-size:98.8729px;line-height:1.25;font-family:'Space Mono';-inkscape-font-specification:'Space Mono';stroke-width:0.741547"
+         x="34.380787"
+         y="269.18494"
+         id="text1779-8-2-4"
+         transform="scale(0.94818843,1.0546427)"><tspan
+           id="tspan1777-9-5-7"
+           x="34.380787"
+           y="269.18494"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'Fira Mono for Powerline';-inkscape-font-specification:'Fira Mono for Powerline';fill:#ffffff;fill-opacity:1;stroke-width:0.741547">astro-ph</tspan></text>
+    </g>
+  </g>
+</svg>

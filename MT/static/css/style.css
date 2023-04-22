@@ -71,17 +71,17 @@
   font-weight: bold;
 }
 
-.inputLine {
-  display: flex;
-  align-items: center;
-  width: 100%;
-  /* Other styles for the input line */
-}
+/* .inputLine { */
+/*   display: flex; */
+/*   align-items: center; */
+/*   width: 100%; */
+/*   /* Other styles for the input line */ */
+/* } */
 
 .submitChatButton {
-  width: 4%;
-  height: 40px;
-  font-size: 16px;
+  /* width: 4%; */
+  /* height: 40px; */
+  /* font-size: 16px; */
   border: none;
   /* Button background color */
   background-color: #2196F3;
@@ -108,14 +108,13 @@
   box-shadow: 0 4px 8px rgba(0,0,0,0.5);
 }
 
-.queryBoxWrapper {
-  flex: 1;
-  margin-left: 2%;
-  /* Other styles for the query box wrapper */
-}
+/* .queryBoxWrapper { */
+/*   flex: 1; */
+/*   margin-left: 2%; */
+/*   /* Other styles for the query box wrapper */ */
+/* } */
 
 .queryBox {
-  width: 96%;
   border: none;
   padding: 10px;
   font-size: 16px;
@@ -462,4 +461,17 @@ input:checked + .slider:before {
 #title{
   background: linear-gradient(to bottom, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0) 100%);
   background-attachment: fixed;
+}
+.nav-link{
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #4CAF50;
+  color: white;
+  text-align: center;
+  text-decoration: none;
+  font-size: 16px;
+  border-radius: 5px;
+}
+.nav-link:hover{
+	background-color: #CED3DC;
 }

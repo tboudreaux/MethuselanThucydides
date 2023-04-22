@@ -1,6 +1,7 @@
-from MT.setup import app, TDELTLOOKUP
-from MT.models.models import Paper
+from MT.setup import app, TDELTLOOKUP, db
+from MT.models.models import Paper, Bookmark
 from MT.arxiv.queryArxiv import is_paper_posted_today
+from MT.utils.auth import token_required, auth_required
 
 from flask import jsonify
 import datetime as dt
@@ -108,3 +109,35 @@ def papers_title(title):
     papers = [paper.__dict__ for paper in papers]
     papers = [dict(filter(lambda x: x[0] != '_sa_instance_state', d.items())) for d in papers]
     return jsonify({'papers':papers})
+
+@app.route('/api/papers/bookmark/<arxiv_id>')
+@auth_required
+def papers_bookmark(current_user, arxiv_id):
+    paper = Paper.query.filter_by(arxiv_id=arxiv_id).first()
+    checkBookmark = Bookmark.query.filter(and_(Bookmark.user_uuid==current_user.uuid, Bookmark.paper_uuid==paper.uuid)).first()
+    if checkBookmark:
+        return jsonify({'message':'Already bookmarked'})
+    bookmark = Bookmark(current_user.uuid, paper.uuid);
+    db.session.add(bookmark)
+    db.session.commit()
+    return jsonify({'message':'Bookmark added'})
+
+@app.route('/api/papers/unbookmark/<arxiv_id>')
+@auth_required
+def papers_unbookmark(current_user, arxiv_id):
+    paper = Paper.query.filter_by(arxiv_id=arxiv_id).first()
+    bookmark = Bookmark.query.filter(and_(Bookmark.user_uuid==current_user.uuid, Bookmark.paper_uuid==paper.uuid)).first()
+    if not bookmark:
+        return jsonify({'message':'Not bookmarked'})
+    db.session.delete(bookmark)
+    db.session.commit()
+    return jsonify({'message':'Bookmark removed'})
+
+@app.route('/api/papers/bookmark/check/<arxiv_id>')
+@auth_required
+def papers_bookmark_check(current_user, arxiv_id):
+    paper = Paper.query.filter_by(arxiv_id=arxiv_id).first()
+    checkBookmark = Bookmark.query.filter(and_(Bookmark.user_uuid==current_user.uuid, Bookmark.paper_uuid==paper.uuid)).first()
+    if checkBookmark:
+        return jsonify({'bookmarked':True})
+    return jsonify({'bookmarked':False})
