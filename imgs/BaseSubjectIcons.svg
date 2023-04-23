@@ -1,0 +1,1361 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="10752mm"
+   height="512mm"
+   viewBox="0 0 10752 512"
+   version="1.1"
+   id="svg5"
+   sodipodi:docname="BaseSubjectIcons.svg"
+   inkscape:version="1.2.1 (9c6d41e410, 2022-07-14, custom)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview7"
+     pagecolor="#505050"
+     bordercolor="#eeeeee"
+     borderopacity="1"
+     inkscape:showpageshadow="0"
+     inkscape:pageopacity="0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#505050"
+     inkscape:document-units="mm"
+     showgrid="false"
+     inkscape:zoom="0.044552502"
+     inkscape:cx="13983.502"
+     inkscape:cy="9909.6568"
+     inkscape:window-width="2560"
+     inkscape:window-height="1371"
+     inkscape:window-x="1440"
+     inkscape:window-y="356"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer1" />
+  <defs
+     id="defs2">
+    <filter
+       x="-0.05247186"
+       y="-0.05247186"
+       width="1.1049437"
+       height="1.1049437"
+       style="color-interpolation-filters:sRGB"
+       id="filter8481">
+      <feGaussianBlur
+         result="gaussianblur1"
+         stdDeviation="10.08207"
+         id="feGaussianBlur195" />
+    </filter>
+    <filter
+       x="-0.19066744"
+       y="-0.48239441"
+       width="1.3813349"
+       height="1.9647888"
+       style="color-interpolation-filters:sRGB"
+       id="filter5795">
+      <feGaussianBlur
+         result="gaussianblur1"
+         stdDeviation="29.145129"
+         id="feGaussianBlur198" />
+    </filter>
+    <filter
+       x="-0.05247186"
+       y="-0.05247186"
+       width="1.1049437"
+       height="1.1049437"
+       style="color-interpolation-filters:sRGB"
+       id="filter4218">
+      <feGaussianBlur
+         result="gaussianblur1"
+         stdDeviation="10.08207"
+         id="feGaussianBlur201" />
+    </filter>
+    <filter
+       x="-0.10260827"
+       y="-0.25960202"
+       width="1.2052165"
+       height="1.519204"
+       style="color-interpolation-filters:sRGB"
+       id="filter3676">
+      <feGaussianBlur
+         result="gaussianblur1"
+         stdDeviation="15.68454"
+         id="feGaussianBlur204" />
+    </filter>
+    <filter
+       x="-0.05247186"
+       y="-0.05247186"
+       width="1.1049437"
+       height="1.1049437"
+       style="color-interpolation-filters:sRGB"
+       id="filter3434">
+      <feGaussianBlur
+         result="gaussianblur1"
+         stdDeviation="10.08207"
+         id="feGaussianBlur207" />
+    </filter>
+    <filter
+       x="-0.10260827"
+       y="-0.25960202"
+       width="1.2052165"
+       height="1.519204"
+       style="color-interpolation-filters:sRGB"
+       id="filter6121">
+      <feGaussianBlur
+         result="gaussianblur1"
+         stdDeviation="15.68454"
+         id="feGaussianBlur210" />
+    </filter>
+    <filter
+       x="-0.05247186"
+       y="-0.05247186"
+       width="1.1049437"
+       height="1.1049437"
+       style="color-interpolation-filters:sRGB"
+       id="filter6165">
+      <feGaussianBlur
+         result="gaussianblur1"
+         stdDeviation="10.08207"
+         id="feGaussianBlur213" />
+    </filter>
+    <filter
+       x="-0.10260827"
+       y="-0.25960202"
+       width="1.2052165"
+       height="1.519204"
+       style="color-interpolation-filters:sRGB"
+       id="filter1438">
+      <feGaussianBlur
+         result="gaussianblur1"
+         stdDeviation="15.68454"
+         id="feGaussianBlur216" />
+    </filter>
+    <filter
+       x="-0.05247186"
+       y="-0.05247186"
+       width="1.1049437"
+       height="1.1049437"
+       style="color-interpolation-filters:sRGB"
+       id="filter3779">
+      <feGaussianBlur
+         result="gaussianblur1"
+         stdDeviation="10.08207"
+         id="feGaussianBlur219" />
+    </filter>
+    <filter
+       x="-0.10260827"
+       y="-0.25960202"
+       width="1.2052165"
+       height="1.519204"
+       style="color-interpolation-filters:sRGB"
+       id="filter6445">
+      <feGaussianBlur
+         result="gaussianblur1"
+         stdDeviation="15.68454"
+         id="feGaussianBlur222" />
+    </filter>
+    <filter
+       x="-0.05247186"
+       y="-0.05247186"
+       width="1.1049437"
+       height="1.1049437"
+       style="color-interpolation-filters:sRGB"
+       id="filter2531">
+      <feGaussianBlur
+         result="gaussianblur1"
+         stdDeviation="10.08207"
+         id="feGaussianBlur225" />
+    </filter>
+    <filter
+       x="-0.10260827"
+       y="-0.25960202"
+       width="1.2052165"
+       height="1.519204"
+       style="color-interpolation-filters:sRGB"
+       id="filter5899">
+      <feGaussianBlur
+         result="gaussianblur1"
+         stdDeviation="15.68454"
+         id="feGaussianBlur228" />
+    </filter>
+    <filter
+       x="-0.05247186"
+       y="-0.05247186"
+       width="1.1049437"
+       height="1.1049437"
+       style="color-interpolation-filters:sRGB"
+       id="filter9017">
+      <feGaussianBlur
+         result="gaussianblur1"
+         stdDeviation="10.08207"
+         id="feGaussianBlur231" />
+    </filter>
+    <filter
+       x="-0.10260827"
+       y="-0.25960202"
+       width="1.2052165"
+       height="1.519204"
+       style="color-interpolation-filters:sRGB"
+       id="filter6264">
+      <feGaussianBlur
+         result="gaussianblur1"
+         stdDeviation="15.68454"
+         id="feGaussianBlur234" />
+    </filter>
+    <filter
+       x="-0.05247186"
+       y="-0.05247186"
+       width="1.1049437"
+       height="1.1049437"
+       style="color-interpolation-filters:sRGB"
+       id="filter8035">
+      <feGaussianBlur
+         result="gaussianblur1"
+         stdDeviation="10.08207"
+         id="feGaussianBlur237" />
+    </filter>
+    <filter
+       x="-0.10260827"
+       y="-0.25960202"
+       width="1.2052165"
+       height="1.519204"
+       style="color-interpolation-filters:sRGB"
+       id="filter4703">
+      <feGaussianBlur
+         result="gaussianblur1"
+         stdDeviation="15.68454"
+         id="feGaussianBlur240" />
+    </filter>
+    <filter
+       x="-0.05247186"
+       y="-0.05247186"
+       width="1.1049437"
+       height="1.1049437"
+       style="color-interpolation-filters:sRGB"
+       id="filter3243">
+      <feGaussianBlur
+         result="gaussianblur1"
+         stdDeviation="10.08207"
+         id="feGaussianBlur243" />
+    </filter>
+    <filter
+       x="-0.10260827"
+       y="-0.25960202"
+       width="1.2052165"
+       height="1.519204"
+       style="color-interpolation-filters:sRGB"
+       id="filter5605">
+      <feGaussianBlur
+         result="gaussianblur1"
+         stdDeviation="15.68454"
+         id="feGaussianBlur246" />
+    </filter>
+    <filter
+       x="-0.05247186"
+       y="-0.05247186"
+       width="1.1049437"
+       height="1.1049437"
+       style="color-interpolation-filters:sRGB"
+       id="filter7857">
+      <feGaussianBlur
+         result="gaussianblur1"
+         stdDeviation="10.08207"
+         id="feGaussianBlur249" />
+    </filter>
+    <filter
+       x="-0.10260827"
+       y="-0.25960202"
+       width="1.2052165"
+       height="1.519204"
+       style="color-interpolation-filters:sRGB"
+       id="filter7227">
+      <feGaussianBlur
+         result="gaussianblur1"
+         stdDeviation="15.68454"
+         id="feGaussianBlur252" />
+    </filter>
+    <filter
+       x="-0.05247186"
+       y="-0.05247186"
+       width="1.1049437"
+       height="1.1049437"
+       style="color-interpolation-filters:sRGB"
+       id="filter1656">
+      <feGaussianBlur
+         result="gaussianblur1"
+         stdDeviation="10.08207"
+         id="feGaussianBlur255" />
+    </filter>
+    <filter
+       x="-0.10260827"
+       y="-0.25960202"
+       width="1.2052165"
+       height="1.519204"
+       style="color-interpolation-filters:sRGB"
+       id="filter4838">
+      <feGaussianBlur
+         result="gaussianblur1"
+         stdDeviation="15.68454"
+         id="feGaussianBlur258" />
+    </filter>
+    <filter
+       x="-0.05247186"
+       y="-0.05247186"
+       width="1.1049437"
+       height="1.1049437"
+       style="color-interpolation-filters:sRGB"
+       id="filter4231">
+      <feGaussianBlur
+         result="gaussianblur1"
+         stdDeviation="10.08207"
+         id="feGaussianBlur261" />
+    </filter>
+    <filter
+       x="-0.10260827"
+       y="-0.25960202"
+       width="1.2052165"
+       height="1.519204"
+       style="color-interpolation-filters:sRGB"
+       id="filter3655">
+      <feGaussianBlur
+         result="gaussianblur1"
+         stdDeviation="15.68454"
+         id="feGaussianBlur264" />
+    </filter>
+    <filter
+       x="-0.05247186"
+       y="-0.05247186"
+       width="1.1049437"
+       height="1.1049437"
+       style="color-interpolation-filters:sRGB"
+       id="filter65">
+      <feGaussianBlur
+         result="gaussianblur1"
+         stdDeviation="10.08207"
+         id="feGaussianBlur267" />
+    </filter>
+    <filter
+       x="-0.10260827"
+       y="-0.25960202"
+       width="1.2052165"
+       height="1.519204"
+       style="color-interpolation-filters:sRGB"
+       id="filter6380">
+      <feGaussianBlur
+         result="gaussianblur1"
+         stdDeviation="15.68454"
+         id="feGaussianBlur270" />
+    </filter>
+    <filter
+       x="-0.05247186"
+       y="-0.05247186"
+       width="1.1049437"
+       height="1.1049437"
+       style="color-interpolation-filters:sRGB"
+       id="filter7138">
+      <feGaussianBlur
+         result="gaussianblur1"
+         stdDeviation="10.08207"
+         id="feGaussianBlur273" />
+    </filter>
+    <filter
+       x="-0.10260827"
+       y="-0.25960202"
+       width="1.2052165"
+       height="1.519204"
+       style="color-interpolation-filters:sRGB"
+       id="filter7596">
+      <feGaussianBlur
+         result="gaussianblur1"
+         stdDeviation="15.68454"
+         id="feGaussianBlur276" />
+    </filter>
+    <filter
+       x="-0.05247186"
+       y="-0.05247186"
+       width="1.1049437"
+       height="1.1049437"
+       style="color-interpolation-filters:sRGB"
+       id="filter2445">
+      <feGaussianBlur
+         result="gaussianblur1"
+         stdDeviation="10.08207"
+         id="feGaussianBlur279" />
+    </filter>
+    <filter
+       x="-0.10260827"
+       y="-0.25960202"
+       width="1.2052165"
+       height="1.519204"
+       style="color-interpolation-filters:sRGB"
+       id="filter3567">
+      <feGaussianBlur
+         result="gaussianblur1"
+         stdDeviation="15.68454"
+         id="feGaussianBlur282" />
+    </filter>
+    <filter
+       x="-0.05247186"
+       y="-0.05247186"
+       width="1.1049437"
+       height="1.1049437"
+       style="color-interpolation-filters:sRGB"
+       id="filter9646">
+      <feGaussianBlur
+         result="gaussianblur1"
+         stdDeviation="10.08207"
+         id="feGaussianBlur285" />
+    </filter>
+    <filter
+       x="-0.10260827"
+       y="-0.25960202"
+       width="1.2052165"
+       height="1.519204"
+       style="color-interpolation-filters:sRGB"
+       id="filter6491">
+      <feGaussianBlur
+         result="gaussianblur1"
+         stdDeviation="15.68454"
+         id="feGaussianBlur288" />
+    </filter>
+    <filter
+       x="-0.05247186"
+       y="-0.05247186"
+       width="1.1049437"
+       height="1.1049437"
+       style="color-interpolation-filters:sRGB"
+       id="filter3049">
+      <feGaussianBlur
+         result="gaussianblur1"
+         stdDeviation="10.08207"
+         id="feGaussianBlur291" />
+    </filter>
+    <filter
+       x="-0.10260827"
+       y="-0.25960202"
+       width="1.2052165"
+       height="1.519204"
+       style="color-interpolation-filters:sRGB"
+       id="filter7203">
+      <feGaussianBlur
+         result="gaussianblur1"
+         stdDeviation="15.68454"
+         id="feGaussianBlur294" />
+    </filter>
+    <filter
+       x="-0.05247186"
+       y="-0.05247186"
+       width="1.1049437"
+       height="1.1049437"
+       style="color-interpolation-filters:sRGB"
+       id="filter7135">
+      <feGaussianBlur
+         result="gaussianblur1"
+         stdDeviation="10.08207"
+         id="feGaussianBlur297" />
+    </filter>
+    <filter
+       x="-0.10260827"
+       y="-0.25960202"
+       width="1.2052165"
+       height="1.519204"
+       style="color-interpolation-filters:sRGB"
+       id="filter9992">
+      <feGaussianBlur
+         result="gaussianblur1"
+         stdDeviation="15.68454"
+         id="feGaussianBlur300" />
+    </filter>
+    <filter
+       x="-0.05247186"
+       y="-0.05247186"
+       width="1.1049437"
+       height="1.1049437"
+       style="color-interpolation-filters:sRGB"
+       id="filter3486">
+      <feGaussianBlur
+         result="gaussianblur1"
+         stdDeviation="10.08207"
+         id="feGaussianBlur303" />
+    </filter>
+    <filter
+       x="-0.10260827"
+       y="-0.25960202"
+       width="1.2052165"
+       height="1.519204"
+       style="color-interpolation-filters:sRGB"
+       id="filter4279">
+      <feGaussianBlur
+         result="gaussianblur1"
+         stdDeviation="15.68454"
+         id="feGaussianBlur306" />
+    </filter>
+  </defs>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <g
+       style="fill:#000000;stroke:none"
+       id="g322"
+       inkscape:label="CS">
+      <circle
+         cx="254.76788"
+         cy="254.76788"
+         r="230.57091"
+         style="opacity:1;mix-blend-mode:normal;fill:#5873a7;fill-opacity:1;stroke:none;filter:url(#filter8481)"
+         id="circle310" />
+      <text
+         x="181.7791"
+         y="280.55972"
+         xml:space="preserve"
+         transform="scale(0.651867,1.53406)"
+         style="font-size:355.1px;line-height:1.25;font-family:'Space Mono';-inkscape-font-specification:'Space Mono';fill:#000000;stroke:none;stroke-width:2.66325"
+         id="text314"><tspan
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'Fira Mono for Powerline';-inkscape-font-specification:'Fira Mono for Powerline';fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:2.66325"
+           x="181.7791"
+           y="280.55972"
+           id="tspan312">AI</tspan></text>
+      <rect
+         x="70.186707"
+         y="181.0031"
+         width="366.86026"
+         height="145.00232"
+         style="opacity:1;mix-blend-mode:normal;fill:#5873a7;fill-opacity:1;stroke:none;filter:url(#filter5795)"
+         id="rect316" />
+      <text
+         x="160.15225"
+         y="284.90002"
+         xml:space="preserve"
+         transform="scale(0.96726017,1.033848)"
+         style="font-size:163.786px;line-height:1.25;font-family:'Space Mono';-inkscape-font-specification:'Space Mono';fill:#000000;stroke:none;stroke-width:1.22839"
+         id="text320"><tspan
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'Fira Mono for Powerline';-inkscape-font-specification:'Fira Mono for Powerline';fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:1.22839"
+           x="160.15225"
+           y="284.90002"
+           id="tspan318">cs</tspan></text>
+    </g>
+    <g
+       style="fill:#000000;stroke:none"
+       transform="translate(512)"
+       id="g336"
+       inkscape:label="ECON">
+      <circle
+         cx="254.76788"
+         cy="254.76788"
+         r="230.57091"
+         style="opacity:1;mix-blend-mode:normal;fill:#5873a7;fill-opacity:1;stroke:none;filter:url(#filter4218)"
+         id="circle324" />
+      <text
+         x="181.7791"
+         y="280.55972"
+         xml:space="preserve"
+         transform="scale(0.651867,1.53406)"
+         style="font-size:355.1px;line-height:1.25;font-family:'Space Mono';-inkscape-font-specification:'Space Mono';fill:#000000;stroke:none;stroke-width:2.66325"
+         id="text328"><tspan
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'Fira Mono for Powerline';-inkscape-font-specification:'Fira Mono for Powerline';fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:2.66325"
+           x="181.7791"
+           y="280.55972"
+           id="tspan326">EM</tspan></text>
+      <rect
+         x="70.186707"
+         y="181.0031"
+         width="366.86026"
+         height="145.00232"
+         style="opacity:1;fill:#5873a7;fill-opacity:1;stroke:none;filter:url(#filter3676)"
+         id="rect330" />
+      <text
+         x="157.26285"
+         y="267.39825"
+         xml:space="preserve"
+         transform="scale(0.94818943,1.0546416)"
+         style="font-size:98.8728px;line-height:1.25;font-family:'Space Mono';-inkscape-font-specification:'Space Mono';fill:#000000;stroke:none;stroke-width:0.741546"
+         id="text334"><tspan
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'Fira Mono for Powerline';-inkscape-font-specification:'Fira Mono for Powerline';fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.741546"
+           x="157.26285"
+           y="267.39825"
+           id="tspan332">econ</tspan></text>
+    </g>
+    <g
+       style="fill:#000000;stroke:none"
+       transform="translate(1024)"
+       id="g350"
+       inkscape:label="MATH">
+      <circle
+         cx="254.76788"
+         cy="254.76788"
+         r="230.57091"
+         style="opacity:1;mix-blend-mode:normal;fill:#5873a7;fill-opacity:1;stroke:none;filter:url(#filter3434)"
+         id="circle338" />
+      <text
+         x="181.7791"
+         y="280.55972"
+         xml:space="preserve"
+         transform="scale(0.651867,1.53406)"
+         style="font-size:355.1px;line-height:1.25;font-family:'Space Mono';-inkscape-font-specification:'Space Mono';fill:#000000;stroke:none;stroke-width:2.66325"
+         id="text342"><tspan
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'Fira Mono for Powerline';-inkscape-font-specification:'Fira Mono for Powerline';fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:2.66325"
+           x="181.7791"
+           y="280.55972"
+           id="tspan340">AC</tspan></text>
+      <rect
+         x="70.186707"
+         y="181.0031"
+         width="366.86026"
+         height="145.00232"
+         style="opacity:1;fill:#5873a7;fill-opacity:1;stroke:none;filter:url(#filter6121)"
+         id="rect344" />
+      <text
+         x="136.37579"
+         y="269.43484"
+         xml:space="preserve"
+         transform="scale(0.94818943,1.0546416)"
+         style="font-size:98.8728px;line-height:1.25;font-family:'Space Mono';-inkscape-font-specification:'Space Mono';fill:#000000;stroke:none;stroke-width:0.741546"
+         id="text348"><tspan
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'Fira Mono for Powerline';-inkscape-font-specification:'Fira Mono for Powerline';fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.741546"
+           x="136.37579"
+           y="269.43484"
+           id="tspan346">math</tspan></text>
+    </g>
+    <g
+       style="fill:#000000;stroke:none"
+       transform="translate(1536)"
+       id="g364"
+       inkscape:label="ASTRO-PH">
+      <circle
+         cx="254.76788"
+         cy="254.76788"
+         r="230.57091"
+         style="opacity:1;mix-blend-mode:normal;fill:#5873a7;fill-opacity:1;stroke:none;filter:url(#filter6165)"
+         id="circle352" />
+      <text
+         x="181.7791"
+         y="280.55972"
+         xml:space="preserve"
+         transform="scale(0.651867,1.53406)"
+         style="font-size:355.1px;line-height:1.25;font-family:'Space Mono';-inkscape-font-specification:'Space Mono';fill:#000000;stroke:none;stroke-width:2.66325"
+         id="text356"><tspan
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'Fira Mono for Powerline';-inkscape-font-specification:'Fira Mono for Powerline';fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:2.66325"
+           x="181.7791"
+           y="280.55972"
+           id="tspan354">CO</tspan></text>
+      <rect
+         x="70.186707"
+         y="181.0031"
+         width="366.86026"
+         height="145.00232"
+         style="opacity:1;fill:#5873a7;fill-opacity:1;stroke:none;filter:url(#filter1438)"
+         id="rect358" />
+      <text
+         x="34.380787"
+         y="269.18494"
+         xml:space="preserve"
+         transform="scale(0.948188,1.05464)"
+         style="font-size:98.8729px;line-height:1.25;font-family:'Space Mono';-inkscape-font-specification:'Space Mono';fill:#000000;stroke:none;stroke-width:0.741547"
+         id="text362"><tspan
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'Fira Mono for Powerline';-inkscape-font-specification:'Fira Mono for Powerline';fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.741547"
+           x="34.380787"
+           y="269.18494"
+           id="tspan360">astro-ph</tspan></text>
+    </g>
+    <g
+       style="fill:#000000;stroke:none"
+       transform="translate(2048)"
+       id="g378"
+       inkscape:label="COND-MAT">
+      <circle
+         cx="254.76788"
+         cy="254.76788"
+         r="230.57091"
+         style="opacity:1;mix-blend-mode:normal;fill:#5873a7;fill-opacity:1;stroke:none;filter:url(#filter3779)"
+         id="circle366" />
+      <text
+         x="181.7791"
+         y="280.55972"
+         xml:space="preserve"
+         transform="scale(0.651867,1.53406)"
+         style="font-size:355.1px;line-height:1.25;font-family:'Space Mono';-inkscape-font-specification:'Space Mono';fill:#000000;stroke:none;stroke-width:2.66325"
+         id="text370"><tspan
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'Fira Mono for Powerline';-inkscape-font-specification:'Fira Mono for Powerline';fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:2.66325"
+           x="181.7791"
+           y="280.55972"
+           id="tspan368">DI</tspan></text>
+      <rect
+         x="70.186707"
+         y="181.0031"
+         width="366.86026"
+         height="145.00232"
+         style="opacity:1;fill:#5873a7;fill-opacity:1;stroke:none;filter:url(#filter6445)"
+         id="rect372" />
+      <text
+         x="34.380787"
+         y="269.18494"
+         xml:space="preserve"
+         transform="scale(0.948188,1.05464)"
+         style="font-size:98.8729px;line-height:1.25;font-family:'Space Mono';-inkscape-font-specification:'Space Mono';fill:#000000;stroke:none;stroke-width:0.741547"
+         id="text376"><tspan
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'Fira Mono for Powerline';-inkscape-font-specification:'Fira Mono for Powerline';fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.741547"
+           x="34.380787"
+           y="269.18494"
+           id="tspan374">cond-mat</tspan></text>
+    </g>
+    <g
+       style="fill:#000000;stroke:none"
+       transform="translate(2560)"
+       id="g392"
+       inkscape:label="GQ-QC">
+      <circle
+         cx="254.76788"
+         cy="254.76788"
+         r="230.57091"
+         style="opacity:1;mix-blend-mode:normal;fill:#5873a7;fill-opacity:1;stroke:none;filter:url(#filter2531)"
+         id="circle380" />
+      <text
+         x="181.7791"
+         y="280.55972"
+         xml:space="preserve"
+         transform="scale(0.651867,1.53406)"
+         style="font-size:355.1px;line-height:1.25;font-family:'Space Mono';-inkscape-font-specification:'Space Mono';fill:#000000;stroke:none;stroke-width:2.66325"
+         id="text384"><tspan
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'Fira Mono for Powerline';-inkscape-font-specification:'Fira Mono for Powerline';fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:2.66325"
+           x="181.7791"
+           y="280.55972"
+           id="tspan382" /></text>
+      <rect
+         x="70.186707"
+         y="181.0031"
+         width="366.86026"
+         height="145.00232"
+         style="opacity:1;fill:#5873a7;fill-opacity:1;stroke:none;filter:url(#filter5899)"
+         id="rect386"
+         transform="matrix(0.60961917,0,0,1,12.70448,0)" />
+      <text
+         x="33.460213"
+         y="260.39926"
+         xml:space="preserve"
+         transform="scale(0.86512829,1.1558979)"
+         style="font-size:172.327px;line-height:1.25;font-family:'Space Mono';-inkscape-font-specification:'Space Mono';fill:#000000;stroke:none;stroke-width:1.29245"
+         id="text390"><tspan
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'Fira Mono for Powerline';-inkscape-font-specification:'Fira Mono for Powerline';fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:1.29245"
+           x="33.460213"
+           y="260.39926"
+           id="tspan388">gr-qc</tspan></text>
+    </g>
+    <g
+       style="fill:#000000;stroke:none"
+       transform="translate(3072)"
+       id="g406"
+       inkscape:label="HEP-EX">
+      <circle
+         cx="254.76788"
+         cy="254.76788"
+         r="230.57091"
+         style="opacity:1;mix-blend-mode:normal;fill:#5873a7;fill-opacity:1;stroke:none;filter:url(#filter9017)"
+         id="circle394" />
+      <text
+         x="181.7791"
+         y="280.55972"
+         xml:space="preserve"
+         transform="scale(0.651867,1.53406)"
+         style="font-size:355.1px;line-height:1.25;font-family:'Space Mono';-inkscape-font-specification:'Space Mono';fill:#000000;stroke:none;stroke-width:2.66325"
+         id="text398"><tspan
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'Fira Mono for Powerline';-inkscape-font-specification:'Fira Mono for Powerline';fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:2.66325"
+           x="181.7791"
+           y="280.55972"
+           id="tspan396" /></text>
+      <rect
+         x="70.186707"
+         y="181.0031"
+         width="366.86026"
+         height="145.00232"
+         style="opacity:1;fill:#5873a7;fill-opacity:1;stroke:none;filter:url(#filter6264)"
+         id="rect400" />
+      <text
+         x="35.360924"
+         y="251.31998"
+         xml:space="preserve"
+         transform="scale(0.83339733,1.1999079)"
+         style="font-size:150.046px;line-height:1.25;font-family:'Space Mono';-inkscape-font-specification:'Space Mono';fill:#000000;stroke:none;stroke-width:1.12534"
+         id="text404"><tspan
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'Fira Mono for Powerline';-inkscape-font-specification:'Fira Mono for Powerline';fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:1.12534"
+           x="35.360924"
+           y="251.31998"
+           id="tspan402">hep-ex</tspan></text>
+    </g>
+    <g
+       style="fill:#000000;stroke:none"
+       transform="translate(3584)"
+       id="g420"
+       inkscape:label="HEP-LAT">
+      <circle
+         cx="254.76788"
+         cy="254.76788"
+         r="230.57091"
+         style="opacity:1;mix-blend-mode:normal;fill:#5873a7;fill-opacity:1;stroke:none;filter:url(#filter8035)"
+         id="circle408" />
+      <text
+         x="181.7791"
+         y="280.55972"
+         xml:space="preserve"
+         transform="scale(0.651867,1.53406)"
+         style="font-size:355.1px;line-height:1.25;font-family:'Space Mono';-inkscape-font-specification:'Space Mono';fill:#000000;stroke:none;stroke-width:2.66325"
+         id="text412"><tspan
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'Fira Mono for Powerline';-inkscape-font-specification:'Fira Mono for Powerline';fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:2.66325"
+           x="181.7791"
+           y="280.55972"
+           id="tspan410" /></text>
+      <rect
+         x="70.186707"
+         y="181.0031"
+         width="366.86026"
+         height="145.00232"
+         style="opacity:1;fill:#5873a7;fill-opacity:1;stroke:none;filter:url(#filter4703)"
+         id="rect414" />
+      <text
+         x="39.442825"
+         y="235.54845"
+         xml:space="preserve"
+         transform="scale(0.79406738,1.259339)"
+         style="font-size:134.173px;line-height:1.25;font-family:'Space Mono';-inkscape-font-specification:'Space Mono';fill:#000000;stroke:none;stroke-width:1.00629"
+         id="text418"><tspan
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'Fira Mono for Powerline';-inkscape-font-specification:'Fira Mono for Powerline';fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:1.00629"
+           x="39.442825"
+           y="235.54845"
+           id="tspan416">hep-lat</tspan></text>
+    </g>
+    <g
+       style="fill:#000000;stroke:none"
+       transform="translate(4096)"
+       id="g434"
+       inkscape:label="HEP-PH">
+      <circle
+         cx="254.76788"
+         cy="254.76788"
+         r="230.57091"
+         style="opacity:1;mix-blend-mode:normal;fill:#5873a7;fill-opacity:1;stroke:none;filter:url(#filter3243)"
+         id="circle422" />
+      <text
+         x="181.7791"
+         y="280.55972"
+         xml:space="preserve"
+         transform="scale(0.651867,1.53406)"
+         style="font-size:355.1px;line-height:1.25;font-family:'Space Mono';-inkscape-font-specification:'Space Mono';fill:#000000;stroke:none;stroke-width:2.66325"
+         id="text426"><tspan
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'Fira Mono for Powerline';-inkscape-font-specification:'Fira Mono for Powerline';fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:2.66325"
+           x="181.7791"
+           y="280.55972"
+           id="tspan424" /></text>
+      <rect
+         x="70.186707"
+         y="181.0031"
+         width="366.86026"
+         height="145.00232"
+         style="opacity:1;fill:#5873a7;fill-opacity:1;stroke:none;filter:url(#filter5605)"
+         id="rect428" />
+      <text
+         x="35.184444"
+         y="253.74739"
+         xml:space="preserve"
+         transform="scale(0.84066209,1.1895386)"
+         style="font-size:147.457px;line-height:1.25;font-family:'Space Mono';-inkscape-font-specification:'Space Mono';fill:#000000;stroke:none;stroke-width:1.10593"
+         id="text432"><tspan
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'Fira Mono for Powerline';-inkscape-font-specification:'Fira Mono for Powerline';fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:1.10593"
+           x="35.184444"
+           y="253.74739"
+           id="tspan430">hep-ph</tspan></text>
+    </g>
+    <g
+       style="fill:#000000;stroke:none"
+       transform="translate(4608)"
+       id="g448"
+       inkscape:label="HEP-TH">
+      <circle
+         cx="254.76788"
+         cy="254.76788"
+         r="230.57091"
+         style="opacity:1;mix-blend-mode:normal;fill:#5873a7;fill-opacity:1;stroke:none;filter:url(#filter7857)"
+         id="circle436" />
+      <text
+         x="181.7791"
+         y="280.55972"
+         xml:space="preserve"
+         transform="scale(0.651867,1.53406)"
+         style="font-size:355.1px;line-height:1.25;font-family:'Space Mono';-inkscape-font-specification:'Space Mono';fill:#000000;stroke:none;stroke-width:2.66325"
+         id="text440"><tspan
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'Fira Mono for Powerline';-inkscape-font-specification:'Fira Mono for Powerline';fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:2.66325"
+           x="181.7791"
+           y="280.55972"
+           id="tspan438" /></text>
+      <rect
+         x="70.186707"
+         y="181.0031"
+         width="366.86026"
+         height="145.00232"
+         style="opacity:1;fill:#5873a7;fill-opacity:1;stroke:none;filter:url(#filter7227)"
+         id="rect442" />
+      <text
+         x="34.568581"
+         y="258.71524"
+         xml:space="preserve"
+         transform="scale(0.84922713,1.1775413)"
+         style="font-size:148.58px;line-height:1.25;font-family:'Space Mono';-inkscape-font-specification:'Space Mono';fill:#000000;stroke:none;stroke-width:1.11436"
+         id="text446"><tspan
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'Fira Mono for Powerline';-inkscape-font-specification:'Fira Mono for Powerline';fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:1.11436"
+           x="34.568581"
+           y="258.71524"
+           id="tspan444">hep-th</tspan></text>
+    </g>
+    <g
+       style="fill:#000000;stroke:none"
+       transform="translate(5120)"
+       id="g462"
+       inkscape:label="MATH-PH">
+      <circle
+         cx="254.76788"
+         cy="254.76788"
+         r="230.57091"
+         style="opacity:1;mix-blend-mode:normal;fill:#5873a7;fill-opacity:1;stroke:none;filter:url(#filter1656)"
+         id="circle450" />
+      <text
+         x="181.7791"
+         y="280.55972"
+         xml:space="preserve"
+         transform="scale(0.651867,1.53406)"
+         style="font-size:355.1px;line-height:1.25;font-family:'Space Mono';-inkscape-font-specification:'Space Mono';fill:#000000;stroke:none;stroke-width:2.66325"
+         id="text454"><tspan
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'Fira Mono for Powerline';-inkscape-font-specification:'Fira Mono for Powerline';fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:2.66325"
+           x="181.7791"
+           y="280.55972"
+           id="tspan452" /></text>
+      <rect
+         x="70.186707"
+         y="181.0031"
+         width="366.86026"
+         height="145.00232"
+         style="opacity:1;fill:#5873a7;fill-opacity:1;stroke:none;filter:url(#filter4838)"
+         id="rect456" />
+      <text
+         x="40.520992"
+         y="233.57677"
+         xml:space="preserve"
+         transform="scale(0.78674254,1.2710638)"
+         style="font-size:137.104px;line-height:1.25;font-family:'Space Mono';-inkscape-font-specification:'Space Mono';fill:#000000;stroke:none;stroke-width:1.02828"
+         id="text460"><tspan
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'Fira Mono for Powerline';-inkscape-font-specification:'Fira Mono for Powerline';fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:1.02828"
+           x="40.520992"
+           y="233.57677"
+           id="tspan458">math-ph</tspan></text>
+    </g>
+    <g
+       style="fill:#000000;stroke:none"
+       transform="translate(5632)"
+       id="g476"
+       inkscape:label="NLIN">
+      <circle
+         cx="254.76788"
+         cy="254.76788"
+         r="230.57091"
+         style="opacity:1;mix-blend-mode:normal;fill:#5873a7;fill-opacity:1;stroke:none;filter:url(#filter4231)"
+         id="circle464" />
+      <text
+         x="181.7791"
+         y="280.55972"
+         xml:space="preserve"
+         transform="scale(0.651867,1.53406)"
+         style="font-size:355.1px;line-height:1.25;font-family:'Space Mono';-inkscape-font-specification:'Space Mono';fill:#000000;stroke:none;stroke-width:2.66325"
+         id="text468"><tspan
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'Fira Mono for Powerline';-inkscape-font-specification:'Fira Mono for Powerline';fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:2.66325"
+           x="181.7791"
+           y="280.55972"
+           id="tspan466">AO</tspan></text>
+      <rect
+         x="70.186707"
+         y="181.0031"
+         width="366.86026"
+         height="145.00232"
+         style="opacity:1;fill:#5873a7;fill-opacity:1;stroke:none;filter:url(#filter3655)"
+         id="rect470" />
+      <text
+         x="147.06921"
+         y="270.43329"
+         xml:space="preserve"
+         transform="scale(0.94818943,1.0546416)"
+         style="font-size:98.8728px;line-height:1.25;font-family:'Space Mono';-inkscape-font-specification:'Space Mono';fill:#000000;stroke:none;stroke-width:0.741546"
+         id="text474"><tspan
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'Fira Mono for Powerline';-inkscape-font-specification:'Fira Mono for Powerline';fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.741546"
+           x="147.06921"
+           y="270.43329"
+           id="tspan472">nlin</tspan></text>
+    </g>
+    <g
+       style="fill:#000000;stroke:none"
+       transform="translate(6144)"
+       id="g490"
+       inkscape:label="NUCL-EX">
+      <circle
+         cx="254.76788"
+         cy="254.76788"
+         r="230.57091"
+         style="opacity:1;mix-blend-mode:normal;fill:#5873a7;fill-opacity:1;stroke:none;filter:url(#filter65)"
+         id="circle478" />
+      <text
+         x="181.7791"
+         y="280.55972"
+         xml:space="preserve"
+         transform="scale(0.651867,1.53406)"
+         style="font-size:355.1px;line-height:1.25;font-family:'Space Mono';-inkscape-font-specification:'Space Mono';fill:#000000;stroke:none;stroke-width:2.66325"
+         id="text482"><tspan
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'Fira Mono for Powerline';-inkscape-font-specification:'Fira Mono for Powerline';fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:2.66325"
+           x="181.7791"
+           y="280.55972"
+           id="tspan480" /></text>
+      <rect
+         x="70.186707"
+         y="181.0031"
+         width="366.86026"
+         height="145.00232"
+         style="opacity:1;fill:#5873a7;fill-opacity:1;stroke:none;filter:url(#filter6380)"
+         id="rect484" />
+      <text
+         x="31.128134"
+         y="247.33807"
+         xml:space="preserve"
+         transform="scale(0.79174503,1.2630329)"
+         style="font-size:136.623px;line-height:1.25;font-family:'Space Mono';-inkscape-font-specification:'Space Mono';fill:#000000;stroke:none;stroke-width:1.02468"
+         id="text488"><tspan
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'Fira Mono for Powerline';-inkscape-font-specification:'Fira Mono for Powerline';fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:1.02468"
+           x="31.128134"
+           y="247.33807"
+           id="tspan486">nucl-ex</tspan></text>
+    </g>
+    <g
+       style="fill:#000000;stroke:none"
+       transform="translate(6656)"
+       id="g504"
+       inkscape:label="NUCL-TH">
+      <circle
+         cx="254.76788"
+         cy="254.76788"
+         r="230.57091"
+         style="opacity:1;mix-blend-mode:normal;fill:#5873a7;fill-opacity:1;stroke:none;filter:url(#filter7138)"
+         id="circle492" />
+      <text
+         x="181.7791"
+         y="280.55972"
+         xml:space="preserve"
+         transform="scale(0.651867,1.53406)"
+         style="font-size:355.1px;line-height:1.25;font-family:'Space Mono';-inkscape-font-specification:'Space Mono';fill:#000000;stroke:none;stroke-width:2.66325"
+         id="text496"><tspan
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'Fira Mono for Powerline';-inkscape-font-specification:'Fira Mono for Powerline';fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:2.66325"
+           x="181.7791"
+           y="280.55972"
+           id="tspan494" /></text>
+      <rect
+         x="70.186707"
+         y="181.0031"
+         width="366.86026"
+         height="145.00232"
+         style="opacity:1;fill:#5873a7;fill-opacity:1;stroke:none;filter:url(#filter7596)"
+         id="rect498" />
+      <text
+         x="37.973347"
+         y="251.40446"
+         xml:space="preserve"
+         transform="scale(0.82070667,1.2184621)"
+         style="font-size:131.709px;line-height:1.25;font-family:'Space Mono';-inkscape-font-specification:'Space Mono';fill:#000000;stroke:none;stroke-width:0.987821"
+         id="text502"><tspan
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'Fira Mono for Powerline';-inkscape-font-specification:'Fira Mono for Powerline';fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.987821"
+           x="37.973347"
+           y="251.40446"
+           id="tspan500">nucl-th</tspan></text>
+    </g>
+    <g
+       style="fill:#000000;stroke:none"
+       transform="translate(7168)"
+       id="g518"
+       inkscape:label="PHYSICS-2">
+      <circle
+         cx="254.76788"
+         cy="254.76788"
+         r="230.57091"
+         style="opacity:1;mix-blend-mode:normal;fill:#5873a7;fill-opacity:1;stroke:none;filter:url(#filter2445)"
+         id="circle506" />
+      <text
+         x="181.7791"
+         y="280.55972"
+         xml:space="preserve"
+         transform="scale(0.651867,1.53406)"
+         style="font-size:355.1px;line-height:1.25;font-family:'Space Mono';-inkscape-font-specification:'Space Mono';fill:#000000;stroke:none;stroke-width:2.66325"
+         id="text510"><tspan
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'Fira Mono for Powerline';-inkscape-font-specification:'Fira Mono for Powerline';fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:2.66325"
+           x="181.7791"
+           y="280.55972"
+           id="tspan508">AO</tspan></text>
+      <rect
+         x="70.186707"
+         y="181.0031"
+         width="366.86026"
+         height="145.00232"
+         style="opacity:1;fill:#5873a7;fill-opacity:1;stroke:none;filter:url(#filter3567)"
+         id="rect512" />
+      <text
+         x="64.433762"
+         y="268.09824"
+         xml:space="preserve"
+         transform="scale(0.94818943,1.0546416)"
+         style="font-size:98.8728px;line-height:1.25;font-family:'Space Mono';-inkscape-font-specification:'Space Mono';fill:#000000;stroke:none;stroke-width:0.741546"
+         id="text516"><tspan
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'Fira Mono for Powerline';-inkscape-font-specification:'Fira Mono for Powerline';fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.741546"
+           x="64.433762"
+           y="268.09824"
+           id="tspan514">physics</tspan></text>
+    </g>
+    <g
+       style="fill:#000000;stroke:none"
+       transform="translate(7680.0001)"
+       id="g1475"
+       inkscape:label="PHYSICS-3">
+      <circle
+         cx="254.76788"
+         cy="254.76788"
+         r="230.57091"
+         style="opacity:1;mix-blend-mode:normal;fill:#5873a7;fill-opacity:1;stroke:none;filter:url(#filter2445)"
+         id="circle1463" />
+      <text
+         x="222.75264"
+         y="232.09076"
+         xml:space="preserve"
+         transform="scale(0.53925004,1.8544273)"
+         style="font-size:278.719px;line-height:1.25;font-family:'Space Mono';-inkscape-font-specification:'Space Mono';fill:#000000;stroke:none;stroke-width:2.09039"
+         id="text1467"><tspan
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'Fira Mono for Powerline';-inkscape-font-specification:'Fira Mono for Powerline';fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:2.09039"
+           x="222.75264"
+           y="232.09076"
+           id="tspan1465">ATM</tspan></text>
+      <rect
+         x="70.186707"
+         y="181.0031"
+         width="366.86026"
+         height="145.00232"
+         style="opacity:1;fill:#5873a7;fill-opacity:1;stroke:none;filter:url(#filter3567)"
+         id="rect1469" />
+      <text
+         x="59.605301"
+         y="267.86227"
+         xml:space="preserve"
+         transform="scale(0.94818943,1.0546416)"
+         style="font-size:98.8728px;line-height:1.25;font-family:'Space Mono';-inkscape-font-specification:'Space Mono';fill:#000000;stroke:none;stroke-width:0.741546"
+         id="text1473"><tspan
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'Fira Mono for Powerline';-inkscape-font-specification:'Fira Mono for Powerline';fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.741546"
+           x="59.605301"
+           y="267.86227"
+           id="tspan1471">physics</tspan></text>
+    </g>
+    <g
+       style="fill:#000000;stroke:none"
+       transform="translate(8192.0001)"
+       id="g1461"
+       inkscape:label="PHYSICS-4">
+      <circle
+         cx="254.76788"
+         cy="254.76788"
+         r="230.57091"
+         style="opacity:1;mix-blend-mode:normal;fill:#5873a7;fill-opacity:1;stroke:none;filter:url(#filter2445)"
+         id="circle1449" />
+      <text
+         x="281.71262"
+         y="189.69679"
+         xml:space="preserve"
+         transform="scale(0.44049522,2.2701722)"
+         style="font-size:229.989px;line-height:1.25;font-family:'Space Mono';-inkscape-font-specification:'Space Mono';fill:#000000;stroke:none;stroke-width:1.72492"
+         id="text1453"><tspan
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'Fira Mono for Powerline';-inkscape-font-specification:'Fira Mono for Powerline';fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:1.72492"
+           x="281.71262"
+           y="189.69679"
+           id="tspan1451">SPAC</tspan></text>
+      <rect
+         x="70.186707"
+         y="181.0031"
+         width="366.86026"
+         height="145.00232"
+         style="opacity:1;fill:#5873a7;fill-opacity:1;stroke:none;filter:url(#filter3567)"
+         id="rect1455" />
+      <text
+         x="65.055626"
+         y="261.50784"
+         xml:space="preserve"
+         transform="scale(0.94818943,1.0546416)"
+         style="font-size:98.8728px;line-height:1.25;font-family:'Space Mono';-inkscape-font-specification:'Space Mono';fill:#000000;stroke:none;stroke-width:0.741546"
+         id="text1459"><tspan
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'Fira Mono for Powerline';-inkscape-font-specification:'Fira Mono for Powerline';fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.741546"
+           x="65.055626"
+           y="261.50784"
+           id="tspan1457">physics</tspan></text>
+    </g>
+    <g
+       style="fill:#000000;stroke:none"
+       transform="translate(8704)"
+       id="g532"
+       inkscape:label="QUANT-PH">
+      <circle
+         cx="254.76788"
+         cy="254.76788"
+         r="230.57091"
+         style="opacity:1;mix-blend-mode:normal;fill:#5873a7;fill-opacity:1;stroke:none;filter:url(#filter9646)"
+         id="circle520" />
+      <text
+         x="181.7791"
+         y="280.55972"
+         xml:space="preserve"
+         transform="scale(0.651867,1.53406)"
+         style="font-size:355.1px;line-height:1.25;font-family:'Space Mono';-inkscape-font-specification:'Space Mono';fill:#000000;stroke:none;stroke-width:2.66325"
+         id="text524"><tspan
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'Fira Mono for Powerline';-inkscape-font-specification:'Fira Mono for Powerline';fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:2.66325"
+           x="181.7791"
+           y="280.55972"
+           id="tspan522" /></text>
+      <rect
+         x="70.186707"
+         y="181.0031"
+         width="366.86026"
+         height="145.00232"
+         style="opacity:1;fill:#5873a7;fill-opacity:1;stroke:none;filter:url(#filter6491)"
+         id="rect526" />
+      <text
+         x="34.380787"
+         y="269.18494"
+         xml:space="preserve"
+         transform="scale(0.948188,1.05464)"
+         style="font-size:98.8729px;line-height:1.25;font-family:'Space Mono';-inkscape-font-specification:'Space Mono';fill:#000000;stroke:none;stroke-width:0.741547"
+         id="text530"><tspan
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'Fira Mono for Powerline';-inkscape-font-specification:'Fira Mono for Powerline';fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.741547"
+           x="34.380787"
+           y="269.18494"
+           id="tspan528">quant-ph</tspan></text>
+    </g>
+    <g
+       style="fill:#000000;stroke:none"
+       transform="translate(9216)"
+       id="g546"
+       inkscape:label="Q-BIO">
+      <circle
+         cx="254.76788"
+         cy="254.76788"
+         r="230.57091"
+         style="opacity:1;mix-blend-mode:normal;fill:#5873a7;fill-opacity:1;stroke:none;filter:url(#filter3049)"
+         id="circle534" />
+      <text
+         x="181.7791"
+         y="280.55972"
+         xml:space="preserve"
+         transform="scale(0.651867,1.53406)"
+         style="font-size:355.1px;line-height:1.25;font-family:'Space Mono';-inkscape-font-specification:'Space Mono';fill:#000000;stroke:none;stroke-width:2.66325"
+         id="text538"><tspan
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'Fira Mono for Powerline';-inkscape-font-specification:'Fira Mono for Powerline';fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:2.66325"
+           x="181.7791"
+           y="280.55972"
+           id="tspan536">BM</tspan></text>
+      <rect
+         x="70.186707"
+         y="181.0031"
+         width="366.86026"
+         height="145.00232"
+         style="opacity:1;fill:#5873a7;fill-opacity:1;stroke:none;filter:url(#filter7203)"
+         id="rect540" />
+      <text
+         x="130.13608"
+         y="269.12042"
+         xml:space="preserve"
+         transform="scale(0.94818943,1.0546416)"
+         style="font-size:98.8728px;line-height:1.25;font-family:'Space Mono';-inkscape-font-specification:'Space Mono';fill:#000000;stroke:none;stroke-width:0.741546"
+         id="text544"><tspan
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'Fira Mono for Powerline';-inkscape-font-specification:'Fira Mono for Powerline';fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.741546"
+           x="130.13608"
+           y="269.12042"
+           id="tspan542">q-bio</tspan></text>
+    </g>
+    <g
+       style="fill:#000000;stroke:none"
+       transform="translate(9728)"
+       id="g560"
+       inkscape:label="Q-FIN">
+      <circle
+         cx="254.76788"
+         cy="254.76788"
+         r="230.57091"
+         style="opacity:1;mix-blend-mode:normal;fill:#5873a7;fill-opacity:1;stroke:none;filter:url(#filter7135)"
+         id="circle548" />
+      <text
+         x="181.7791"
+         y="280.55972"
+         xml:space="preserve"
+         transform="scale(0.651867,1.53406)"
+         style="font-size:355.1px;line-height:1.25;font-family:'Space Mono';-inkscape-font-specification:'Space Mono';fill:#000000;stroke:none;stroke-width:2.66325"
+         id="text552"><tspan
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'Fira Mono for Powerline';-inkscape-font-specification:'Fira Mono for Powerline';fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:2.66325"
+           x="181.7791"
+           y="280.55972"
+           id="tspan550">CP</tspan></text>
+      <rect
+         x="70.186707"
+         y="181.0031"
+         width="366.86026"
+         height="145.00232"
+         style="opacity:1;fill:#5873a7;fill-opacity:1;stroke:none;filter:url(#filter9992)"
+         id="rect554" />
+      <text
+         x="117.90282"
+         y="269.93576"
+         xml:space="preserve"
+         transform="scale(0.94818943,1.0546416)"
+         style="font-size:98.8728px;line-height:1.25;font-family:'Space Mono';-inkscape-font-specification:'Space Mono';fill:#000000;stroke:none;stroke-width:0.741546"
+         id="text558"><tspan
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'Fira Mono for Powerline';-inkscape-font-specification:'Fira Mono for Powerline';fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.741546"
+           x="117.90282"
+           y="269.93576"
+           id="tspan556">q-fin</tspan></text>
+    </g>
+    <g
+       style="fill:#000000;stroke:none"
+       transform="translate(10240)"
+       id="g574"
+       inkscape:label="STAT">
+      <circle
+         cx="254.76788"
+         cy="254.76788"
+         r="230.57091"
+         style="opacity:1;mix-blend-mode:normal;fill:#5873a7;fill-opacity:1;stroke:none;filter:url(#filter3486)"
+         id="circle562" />
+      <text
+         x="181.7791"
+         y="280.55972"
+         xml:space="preserve"
+         transform="scale(0.651867,1.53406)"
+         style="font-size:355.1px;line-height:1.25;font-family:'Space Mono';-inkscape-font-specification:'Space Mono';fill:#000000;stroke:none;stroke-width:2.66325"
+         id="text566"><tspan
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'Fira Mono for Powerline';-inkscape-font-specification:'Fira Mono for Powerline';fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:2.66325"
+           x="181.7791"
+           y="280.55972"
+           id="tspan564">AP</tspan></text>
+      <rect
+         x="70.186707"
+         y="181.0031"
+         width="366.86026"
+         height="145.00232"
+         style="opacity:1;fill:#5873a7;fill-opacity:1;stroke:none;filter:url(#filter4279)"
+         id="rect568" />
+      <text
+         x="144.68654"
+         y="270.80042"
+         xml:space="preserve"
+         transform="scale(0.94818943,1.0546416)"
+         style="font-size:98.8728px;line-height:1.25;font-family:'Space Mono';-inkscape-font-specification:'Space Mono';fill:#000000;stroke:none;stroke-width:0.741546"
+         id="text572"><tspan
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'Fira Mono for Powerline';-inkscape-font-specification:'Fira Mono for Powerline';fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.741546"
+           x="144.68654"
+           y="270.80042"
+           id="tspan570">stat</tspan></text>
+    </g>
+  </g>
+</svg>
