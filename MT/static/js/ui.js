@@ -60,7 +60,6 @@ async function format_all_bookmarks(){
 	}
 }
 
-
 ////////////////////////
 // Sidebar formatting //
 ////////////////////////
@@ -71,37 +70,40 @@ async function formatCategoryButtonList() {
 	let categories = Object.keys(stateInfo['paperInfo']);
 	let categoryMenu = document.getElementById('cat-menu');
 	
-	let homeButtonContainer = document.createElement('li');
-	homeButtonContainer.classList.add('nav-item');
-	homeButtonContainer.id = "navItem_home";
-	let homeButton = document.createElement('a');
-	homeButton.classList.add('nav-link');
-	// homeButton.classList.add('categoryButton');
-	homeButton.href = "#home";
-	homeButton.classList.add('px-0');
-	homeButton.classList.add('align-middle');
-	homeButton.id = "categoryButton_home";
-	homeButton.addEventListener('click', function(event) { formatHomePage(); });
-	homeButtonIcon = document.createElement('i');
-	homeButtonIcon.classList.add('bi');
-	homeButtonIcon.classList.add('bi-house');
-	homeButtonIcon.style.fontSize = "3rem";
-	homeButtonName = document.createElement('span');
-	homeButtonName.innerHTML = " Home";
-	homeButtonName.classList.add('ms-1');
-	homeButtonName.classList.add('d-none');
-	homeButtonName.classList.add('d-sm-inline');
-	homeButton.appendChild(homeButtonIcon);
-	homeButton.appendChild(homeButtonName);
-	
-	homeButtonContainer.appendChild(homeButton);
+	homeButtonContainer = await format_home_button();
 	categoryMenu.appendChild(homeButtonContainer);
-
 
 	for (let i = 0; i < categories.length; i++) {
 		navItem = await formatSingleCatButton(categories[i], categories[i]);
 		categoryMenu.appendChild(navItem);
 	}
+}
+
+async function format_home_button(){
+/**
+ * Formats the home button.
+ *
+ * @return {object} - The home button.
+ */
+	let buttonTemplate = document.getElementById('category-button-template');
+	let homeButtonContainer = await buttonTemplate.content.cloneNode(true).querySelector('.nav-item');
+	homeButtonContainer.id = "navItem_home";
+
+	let homeButton = homeButtonContainer.querySelector('.nav-link');
+	homeButton.href = "#home";
+	homeButton.id = "categoryButton_home";
+	homeButton.addEventListener('click', function(event) { formatHomePage(); });
+
+	let homeButtonIcon = homeButton.querySelector('.bi');
+	homeButtonIcon.classList.add('bi-house');
+	homeButtonIcon.style.fontSize = "3rem";
+
+	homeButtonName = homeButton.querySelector('.category-name');
+	homeButtonName.innerHTML = " Home";
+
+	console.log(homeButtonContainer);
+
+	return homeButtonContainer;
 }
 
 async function formatSingleCatButton(key, name) {
@@ -113,44 +115,23 @@ async function formatSingleCatButton(key, name) {
  *
  * @return {object} - The category button.
  */
-	let navItem = document.createElement('li');
-	navItem.classList.add('nav-item');
+	let buttonTemplate = document.getElementById('category-button-template');
+	let navItem = await buttonTemplate.content.cloneNode(true).querySelector('.nav-item');
 	navItem.id = "navItem_" + key;
 
-	let button = document.createElement('a');
-	// button.classList.add('categoryButton');
-	button.classList.add('px-0');
-	button.classList.add('align-middle');
-	button.classList.add('nav-link');
+	let button = navItem.querySelector('.nav-link');
 	button.id = "categoryButton_" + key;
 	button.href="#" + key;
-	
 	button.addEventListener('click', function(event) { openCat(event, key); });
 
-	let iconNameContainer = document.createElement('span');
-
-	let icon = document.createElement('img');
-	icon.classList.add('img-fluid');
+	let icon = button.querySelector('.icon-img');
 	icon.src = "/static/icons/" + key + ".webp";
 	icon.alt = key;
 	icon.style.maxHeight = "3rem";
+	icon.style.display = "inline-block";
 
-	iconNameContainer.appendChild(icon);
-
-
-
-	let navNameContainer = document.createElement('span');
-	navNameContainer.classList.add('ms-1');
-	navNameContainer.classList.add('d-none');
-	navNameContainer.classList.add('d-sm-inline');
-	// navNameContainer.classList.add('col-md-10');
+	let navNameContainer = button.querySelector('.category-name');
 	navNameContainer.innerHTML = key;
-
-
-	iconNameContainer.appendChild(navNameContainer);
-	button.appendChild(iconNameContainer);
-	navItem.appendChild(button);
-
 	return navItem;
 }
 

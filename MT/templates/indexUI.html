@@ -14,7 +14,7 @@
 		<link rel="stylesheet", href="static/css/style.css">
 		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
 
-		<link rel="icon" type="image/png" href="static/icons/MTMain.svg">
+		<link rel="icon" type="image/png" href="static/icons/MTLogoFullColorV3.png">
 
 		<!-- Local Scripts -->
 		<script src="/static/js/bootstrapOverlay.js"></script>
@@ -58,7 +58,7 @@
 							</div>
 						</div>
 						<div class="col-10">
-							<button class="advancedMode-btn float-end">
+							<button class="btn btn-primary float-end">
 							</button>
 						</div>
 					</div>
@@ -79,10 +79,10 @@
 					</div>
 					<div class="inputLine row">
 						<div class="queryBoxWrapper col-10 col-md-11">
-							<input type="text" class="queryBox" placeholder="Ask a question about this paper..." style="width:100%">
+							<input type="text" class="form-control-lg" placeholder="Ask a question about this paper..." style="width:100%">
 						</div>
 						<div class="submitButtonWeapper col-2 col-md-1">
-							<button type="submit" value="Ask" class="submitChatButton float-end">
+							<button type="submit" value="Ask" class="btn btn-primary float-end">
 								<i class="fa fa-paper-plane"></i>
 								<i class="spinner-grow" role="status" style="display: none;"></i>
 							</button>
@@ -92,6 +92,22 @@
 			</div>
 		</div>
 	</div>
+</template>
+
+<template id="category-button-template">
+	<li class="nav-item">
+		<a class="nav-link px-0 align-center" href="#">
+			<div class="row" style="display: inline-block;">
+				<div class="col-lg-2 align-middle" style="display: inline;">
+					<i class="bi align-middle" style="display: inline-grid;"></i>
+					<img style="display: none;" class="icon-img img-fluid">
+				</div>
+				<div class="col-lg-10 d-none d-md-inline align-middle">
+					<span class="category-name ms-1"></span>
+				</div>
+			</div>
+			<span></span>
+		</a>
 </template>
 
 		<div class="container-fluid">
@@ -112,11 +128,39 @@
 							document.getElementById("primary-title").innerHTML = "Daily Paper Summary for " + today.toDateString();
 						</script>
 				  </div>
-				  <div class="row">
-					  <div class="col">
-						  <div id="home">
+				  <div class="col-auto">
+					  <div class="row" id="search-container">
+						<div class="col-md-7 d-none d-sm-none d-md-block">
+							<div class="btn-group" role="group" aria-label="Basic example">
+								<button type="button" class="btn btn-primary" id="all">All</button>
+								<button type="button" class="btn btn-primary" id="bookmarked">Bookmarked</button>
+							</div>
+						</div>
+						<div class="col-12 col-md-4">
+							<input type="text" class="form-control float-end" id="search" placeholder="Search">
+						</div>
+						<div class="col-1 d-none d-sm-none d-md-block">
+							<button type="button" class="btn btn-primary float-end" id="search-button">
+								<i class="fa fa-search"></i>
+							</button>
+						</div>
+					  </div>
+					  <div class="row" id="small-screen-search-container">
+						  <div class="col-12 d-block d-sm-block d-md-none">
+							  <div class="d-grid">
+								  <button type="button" class="btn btn-primary" id="search-button" placeholder="Search">
+									  <i class="fa fa-search"></i>
+								  </button>
+							  </div>
 						  </div>
-						  <div id="paperList">
+					  </div>
+					  <hl>
+					  <div class="row">
+						  <div class="col">
+							  <div id="home">
+							  </div>
+							  <div id="paperList">
+							  </div>
 						  </div>
 					  </div>
 				  </div>
