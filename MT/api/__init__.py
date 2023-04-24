@@ -6,3 +6,4 @@ from .auth import *
 from .authors import *
 from .utils import *
 from .query import *
+from .search import *

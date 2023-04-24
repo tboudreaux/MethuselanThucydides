@@ -133,6 +133,25 @@ class User(db.Model):
         self.admin = admin
         self.enabled = enabled
 
+    def to_dict(self):
+        return {
+            'uuid': self.uuid,
+            'username': self.username,
+            'email': self.email,
+            'created_at': self.created_at,
+            'last_login': self.last_login,
+            'last_ip': self.last_ip,
+            'last_user_agent': self.last_user_agent,
+            'last_country': self.last_country,
+            'last_city': self.last_city,
+            'last_timezone': self.last_timezone,
+            'num_logins': self.num_logins,
+            'num_queries': self.num_queries,
+            'can_query': self.can_query,
+            'enabled': self.enabled,
+            'admin': self.admin
+        }
+
     def hash_plain_password(self, plain_password, salt=None):
         if not salt:
             salt = bcrypt.gensalt().decode('utf-8')
@@ -155,6 +174,13 @@ class Author(db.Model):
     def __init__(self, full_name, first_name):
         self.full_name = full_name
         self.first_name = first_name
+
+    def to_dict(self):
+        return {
+            'uuid': self.uuid,
+            'full_name': self.full_name,
+            'first_name': self.first_name
+        }
 
     def __repr__(self):
         return f'<Author: {" ".join(self.full_name)}>'
