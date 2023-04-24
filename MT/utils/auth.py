@@ -24,6 +24,24 @@ def token_required(f):
        return f(current_user, *args, **kwargs)
    return decorator
 
+def token_requested(f):
+    @wraps(f)
+    def decorator(*args, **kwargs):
+        token = None
+        current_user = None
+        if 'x-access-tokens' in request.headers:
+            token = request.headers['x-access-tokens']
+        else:
+            print("No Token")
+        try:
+            data = jwt.decode(token, app.config['SECRET_KEY'], algorithms=["HS256"])
+            current_user = User.query.filter_by(username=data['public_id']).first()
+        except:
+            print("Invalid token")
+
+        return f(current_user, *args, **kwargs)
+    return decorator
+
 def key_required(f):
     @wraps(f)
     def decorator(*args, **kwargs):
@@ -44,6 +62,29 @@ def key_required(f):
             print("Invalid key")
             return jsonify({'message': 'key is invalid', 'auth': False}), 401
         current_user = db.session.query(User).filter_by(uuid=key.user_uuid).first()
+
+        return f(current_user, *args, **kwargs)
+    return decorator
+
+def key_requested(f):
+    @wraps(f)
+    def decorator(*args, **kwargs):
+        key = None
+        current_user = None
+        if 'x-access-key' in request.headers:
+            key = request.headers['x-access-key']
+            keyUUID = key.split(":")[0]
+            keyPlain = key.split(":")[1]
+            key = db.session.query(Key).filter_by(uuid=keyUUID).first()
+            if not key:
+                print("Invalid key")
+                return f(current_user, *args, **kwargs)
+            if not key.check_key(keyPlain):
+                print("Invalid key")
+                return f(current_user, *args, **kwargs)
+            current_user = db.session.query(User).filter_by(uuid=key.user_uuid).first()
+        else:
+            print("No key")
 
         return f(current_user, *args, **kwargs)
     return decorator
@@ -76,6 +117,35 @@ def user_pass_required(f):
         return f(current_user, *args, **kwargs)
     return decorator
 
+def user_pass_requested(f):
+    @wraps(f)
+    def decorator(*args, **kwargs):
+        user = None
+        password = None
+        current_user = None
+        if 'x-access-user' in request.headers:
+            user = request.headers['x-access-user']
+        if 'x-access-pass' in request.headers:
+            password = request.headers['x-access-pass']
+
+        if not user:
+            print("No user")
+            return f(current_user, *args, **kwargs)
+        if not password:
+            print("No password")
+            return f(current_user, *args, **kwargs)
+        user = db.session.query(User).filter_by(username=user).first()
+        if not user:
+            print("Invalid user")
+            return f(current_user, *args, **kwargs)
+        if not user.check_password(password):
+            print("Invalid password")
+            return f(current_user, *args, **kwargs)
+        current_user = user
+
+        return f(current_user, *args, **kwargs)
+    return decorator
+
 def auth_required(f):
     @wraps(f)
     def decorator(*args, **kwargs):
@@ -88,4 +158,18 @@ def auth_required(f):
         else:
             print("No auth")
             return jsonify({'message': 'a valid auth is missing', 'auth': False}), 401
+    return decorator
+
+def auth_requested(f):
+    @wraps(f)
+    def decorator(*args, **kwargs):
+        if 'x-access-tokens' in request.headers:
+            return token_requested(f)(*args, **kwargs)
+        elif 'x-access-key' in request.headers:
+            return key_requested(f)(*args, **kwargs)
+        elif 'x-access-user' in request.headers and 'x-access-pass' in request.headers:
+            return user_pass_requested(f)(*args, **kwargs)
+        else:
+            print("No auth")
+        return f(None, *args, **kwargs)
     return decorator

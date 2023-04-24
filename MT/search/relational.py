@@ -26,7 +26,7 @@ async def search_author(plainTextQuery):
         )).all()
     return result
 
-async def distribute_search(plainTextQuery):
+async def distribute_search(plainTextQuery, searchUser=False):
     result = await asyncio.gather(
             search_user(plainTextQuery),
             search_paper(plainTextQuery),
