@@ -34,22 +34,22 @@
      inkscape:deskcolor="#d1d1d1"
      showgrid="true"
      showguides="true"
-     inkscape:zoom="1.4864623"
-     inkscape:cx="524.73581"
-     inkscape:cy="478.65324"
+     inkscape:zoom="0.89148934"
+     inkscape:cx="477.85204"
+     inkscape:cy="500.84727"
      inkscape:window-width="2560"
      inkscape:window-height="1371"
      inkscape:window-x="1440"
      inkscape:window-y="356"
      inkscape:window-maximized="1"
-     inkscape:current-layer="svg18">
+     inkscape:current-layer="g26">
     <inkscape:page
        x="0"
        y="0"
        id="page24"
        width="1000"
        height="1000"
-       inkscape:export-filename="MTLogoV4.svg"
+       inkscape:export-filename="../../../../Thomas/Programming/MethuselanThucydides/imgs/MTLogoV4.png"
        inkscape:export-xdpi="96"
        inkscape:export-ydpi="96" />
   </sodipodi:namedview>
@@ -62,6 +62,13 @@
        id="g28"
        transform="translate(125.0001,-124.99979)"
        style="stroke:none;stroke-opacity:1">
+      <circle
+         style="stroke:none;stroke-opacity:1;opacity:1;fill:#aed2d6;fill-opacity:1"
+         id="path3147"
+         cx="500"
+         cy="500"
+         r="467.43042"
+         transform="matrix(0.75000002,0,0,-0.75000002,-125.0001,624.99981)" />
       <g
          id="g30"
          clip-path="url(#clipPath34)"
@@ -86,8 +93,8 @@
        r="3.7292361e-06"
        transform="scale(1,-1)" />
     <path
-       style="fill:#ffffff;fill-opacity:1;stroke:#ffffff;stroke-width:0.075;stroke-dasharray:none;stroke-opacity:1"
-       d="m 297.97119,230.32476 7.49135,-5.81723 0.90358,-0.37129 1.25223,-1.0769 2.26064,-2.55444 2.5429,-1.98524 0.69627,-0.65014 12.05918,-9.93147 1.60501,-1.38352 2.12823,-2.03489 0.92543,-0.6548 -0.25354,-25.36204 -2.02522,-1.06715 -0.8618,-0.9353 -0.82012,-0.46608 -0.21908,0.21791 c -6.15053,5.99324 -11.91503,11.62323 -18.06557,17.70258 -0.44586,0.4407 -1.00657,1.01003 -1.45244,1.45288 z"
+       style="fill:#aed2d6;fill-opacity:1;stroke:none;stroke-width:0.075;stroke-dasharray:none;stroke-opacity:1"
+       d="m 297.97119,230.32476 7.49135,-5.81723 0.90358,-0.37129 1.25223,-1.0769 2.26064,-2.55444 2.5429,-1.98524 0.69627,-0.65014 12.05918,-9.93147 1.60501,-1.38352 2.12823,-2.03489 0.92543,-0.6548 -0.25354,-25.36204 -2.02522,-1.06715 -0.8618,-0.9353 -1.05646,-0.64307 -0.21921,0.21594 c -6.15053,5.99324 -11.67856,11.80219 -17.8291,17.88154 -0.44586,0.4407 -1.00657,1.01003 -1.45244,1.45288 z"
        id="path2424"
        sodipodi:nodetypes="ccccccccccccccccscc" />
   </g>
@@ -131,7 +138,7 @@
      id="path3388"
      transform="matrix(1.3333333,0,0,-1.3333333,0,666.66667)" />
   <path
-     style="fill:#ffffff;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;fill-opacity:1"
+     style="fill:#aed2d6;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;fill-opacity:1"
      d="m 399.34886,602.73305 -31.08552,31.03162 21.86062,14.24479 43.58234,-37.40622 z"
      id="path2967" />
   <path
