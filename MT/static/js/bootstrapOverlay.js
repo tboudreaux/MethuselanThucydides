@@ -26,6 +26,13 @@ async function launchGenerateAPIKeyModal(){
 	modal.show();
 }
 
+async function launchSearchResultsModel(){
+	modal = new bootstrap.Modal(document.getElementById("displayPaperResults"), {
+		keyboard: false
+	});
+	modal.show();
+}
+
 async function clear_api_key_modal(){
 	APIKeyp = document.getElementById("APIKey");
 	APIKeyp.innerHTML = "";

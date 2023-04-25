@@ -15,6 +15,7 @@ async function formatAuthorList(paper_id){
 }
 
 async function format_paper_new(paper, userQueries){
+	console.log(paper);
 	let paper_template = document.getElementById('paper-template');
 	let paper_div_container = await paper_template.content.cloneNode(true).querySelector('.paper-container');
 	let paper_div = paper_div_container.querySelector('.paper');
@@ -25,7 +26,7 @@ async function format_paper_new(paper, userQueries){
 	let bookmark = paperHeader.getElementsByClassName('bookmark')[0];
 	bookmark.id = paper.arxiv_id + '_bookmark';
 
-	let advancedModeBtn = paperHeader.getElementsByClassName('advancedMode-btn')[0];
+	let advancedModeBtn = paperHeader.getElementsByClassName('btn')[0];
 	advancedModeBtn.id = paper.arxiv_id + '_advancedMode';
 
 	advancedModeBtn.addEventListener('click', async () => {
@@ -76,11 +77,12 @@ async function format_paper_new(paper, userQueries){
 	inputLine.id = paper.arxiv_id + '_inputLine';
 
 	let queryBoxWrapper = paper_div.getElementsByClassName('queryBoxWrapper')[0];
-	let queryBox = queryBoxWrapper.getElementsByClassName('queryBox')[0];
+	let queryBox = queryBoxWrapper.getElementsByClassName('form-control-lg')[0];
 	queryBox.id = paper.arxiv_id + '_queryBox';
 
-	let submitButton = inputLine.getElementsByClassName('submitChatButton')[0];
+	let submitButton = inputLine.getElementsByClassName('btn')[0];
 	submitButton.onclick = await function() {submitQuery(paper.arxiv_id)};
+	submitButton.id = paper.arxiv_id + '_submitButton';
 
 	let planeIcon = submitButton.getElementsByClassName('fa')[0];
 	planeIcon.id = paper.arxiv_id + '_ask_icon';

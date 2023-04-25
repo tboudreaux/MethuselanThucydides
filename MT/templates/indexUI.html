@@ -96,7 +96,8 @@
 </template>
 
 <template id="search-result-template">
-	<li class="search-result-item">
+	<li class="search-result-item dropdown-item">
+		<a class="btn btn-secondary search-result-link"></a>
 	</li>
 </template>
 
@@ -143,11 +144,13 @@
 							</div>
 						</div>
 						<div class="col-12 col-md-4">
-							<div class="container mt-3 d-flex justify-content-end">
+							<div class="row">
 								<input type="text" class="form-control float-end" id="search-query" placeholder="Search">
+							</div>
+							<div class="row">
 								<div class="dropdown" id="search-results">
-									<a data-bs-toggle="dropdown" style="display: none;" id="search-result-toggler"></a>
-									<ul class="dropdown-menu w-100" aria-labelledby="dropdown-menu" id='search-results-list'>
+									<a data-bs-toggle="dropdown" id="search-result-toggler"></a>
+									<ul class="dropdown-menu dropdown-menu-start" aria-labelledby="dropdown-menu" id='search-results-list'>
 									</ul>
 								</div>
 							</div>

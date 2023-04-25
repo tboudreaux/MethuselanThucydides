@@ -243,3 +243,15 @@ async function formatUserButton(){
 	}
 	await formatUserMeanu();
 }
+
+/////////////////////////////
+// Single Paper Formatting //
+/////////////////////////////
+async function display_single_paper(arxiv_id){
+	paper = await get_paper(arxiv_id);
+	paperDiv = await format_paper_new(paper, stateInfo['userQueries']);
+	searchResultsContainer = document.getElementById("search-results-container");
+	searchResultsContainer.innerHTML = "";
+	searchResultsContainer.appendChild(paperDiv);
+	launchSearchResultsModel();
+}

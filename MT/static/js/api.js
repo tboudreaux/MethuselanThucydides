@@ -140,6 +140,19 @@ async function getDailyCategorySummaries() {
   return summaries;
 }
 
+async function get_paper(paper_id){
+/**
+ * Gets the paper from the server.
+ *
+ * @param {string} paper_id The id of the paper to get.
+ *
+ * @return {object} The paper.
+ */
+	let response = await fetch('/api/papers/id/' + paper_id);
+	let data = await response.json();
+	return data['paper'];
+}
+
 
 ////////////////////
 // Info API Calls //

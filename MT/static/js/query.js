@@ -39,7 +39,7 @@ function format_single_paper_chat_log(chat, queries) {
 
 async function submitQuery(arxivID) {
 	token = localStorage.getItem('token');
-	if (token === null) {
+	if (! await logged_in()) {
 		alert ("You must be logged in to ask questions");
 		return;
 	}
@@ -84,17 +84,9 @@ async function submitQuery(arxivID) {
 		responseMessage.classList.add('bot');
 		chat.appendChild(responseMessage);
 		let currentState = [[query, responseOBJ['answer']]];
-		if (qamap.has(arxivID)) {
-			let fullState = qamap.get(arxivID).push(currentState);
-		}
-		else {
-			qamap.set(arxivID, currentState);
-		}
 		waitSpinner.style.display = 'none';
 		askIcon.style.display = 'block';
 		submitQueryButton.classList.remove('disabled');
-
-
     }
 
 

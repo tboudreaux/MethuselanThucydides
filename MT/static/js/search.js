@@ -20,28 +20,45 @@ async function fill_search_results(event) {
 	
 	let query = document.getElementById('search-query').value;
 	if (query.length > 3) {
-		console.log("======================")
 		resultsBox.innerHTML = '';
 		searchResultDropdown.show();
 		let searchReulst = await get_search_results(query);
 		for (var key in searchReulst['results']){
 			var results = searchReulst['results'][key];
+			sectionHeaderKey = key + "_search_section_header";
+			if (!resultsBox.querySelector("#" + sectionHeaderKey)) {
+				let sectionHeader = document.createElement('li');
+				sectionHeader.innerHTML = key;
+				sectionHeader.id = sectionHeaderKey;
+				let seperator = document.createElement('hr');
+				seperator.classList.add('dropdown-divider');
+				sectionHeader.classList.add('dropdown-header');
+				resultsBox.appendChild(sectionHeader);
+			}
 			for (let i = 0; i < results.length; i++) {
 				let resultTemplateClone = resultTemplate.content.cloneNode(true);
 				let resultItem = resultTemplateClone.querySelector('.search-result-item');
+
+				let resultLink = resultItem.querySelector('.search-result-link');
+
 				resultItem.id = key + "_" + results[i]['uuid'];
 				if (resultsBox.querySelector("#" + resultItem.id)) {
 					continue;
 				}
+
 				let result = results[i];
-				console.log(result);
 				if (key === "papers") {
-					resultItem.innerHTML = result['title'];
+					resultLink.innerHTML = result['title'];
 				} else if (key === "authors") {
-					resultItem.innerHTML = result['full_name'].join(' ');
+					resultLink.innerHTML = result['full_name'].join(' ');
 				} else if (key === "users") {
-					resultItem.innerHTML = result['username'];
+					resultLink.innerHTML = result['username'];
 				}
+				resultLink.addEventListener('click', async() => {
+					if (key === "papers") {
+						await display_single_paper(result['arxiv_id']);
+					}
+				});
 				resultsBox.appendChild(resultItem);
 			}
 		}
