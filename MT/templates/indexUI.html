@@ -26,6 +26,7 @@
 		<script src="/static/js/ui.js"></script>
 		<script src="/static/js/api.js"></script>
 		<script src="/static/js/utils.js"></script>
+		<script src="/static/js/search.js"></script>
 
 		<script>
 			const stateInfo = {};
@@ -94,6 +95,11 @@
 	</div>
 </template>
 
+<template id="search-result-template">
+	<li class="search-result-item">
+	</li>
+</template>
+
 <template id="category-button-template">
 	<li class="nav-item">
 		<a class="nav-link px-0 align-center" href="#">
@@ -137,7 +143,14 @@
 							</div>
 						</div>
 						<div class="col-12 col-md-4">
-							<input type="text" class="form-control float-end" id="search" placeholder="Search">
+							<div class="container mt-3 d-flex justify-content-end">
+								<input type="text" class="form-control float-end" id="search-query" placeholder="Search">
+								<div class="dropdown" id="search-results">
+									<a data-bs-toggle="dropdown" style="display: none;" id="search-result-toggler"></a>
+									<ul class="dropdown-menu w-100" aria-labelledby="dropdown-menu" id='search-results-list'>
+									</ul>
+								</div>
+							</div>
 						</div>
 						<div class="col-1 d-none d-sm-none d-md-block">
 							<button type="button" class="btn btn-primary float-end" id="search-button">

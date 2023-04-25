@@ -231,6 +231,51 @@ async function is_admin(){
 	}
 }
 
+async function get_search_results(query, category=null, sort=null, order=null, author=null, year=null, month=null, day=null, limit=null){
+/**
+ * Gets the search results for a query.
+ *
+ * @param {string} query The query to search for.
+ * @param {string} category The category to search in.
+ * @param {string} sort The sort method to use.
+ * @param {string} order The order to sort in.
+ * @param {string} author The author to search for.
+ * @param {string} year The year to search for.
+ * @param {string} month The month to search for.
+ * @param {string} day The day to search for.
+ * @param {string} limit The number of results to return.
+ *
+ * @return {object} The search results.
+ *
+ * @throws {string} If the query is empty.
+ */
+	if (query == "") {
+		throw new Error("Query cannot be empty");
+	}
+	let endpoint = '/search'
+	let payload = {
+		"query": query,
+		"category": category,
+		"sort": sort,
+		"order": order,
+		"author": author,
+		"year": year,
+		"month": month,
+		"day": day,
+		"limit": limit,
+	}
+	let response = await fetch(endpoint, {
+		method: 'POST',
+		headers: {
+			'Content-Type': 'application/json',
+		},
+		body: JSON.stringify(payload),
+	});
+	let data = await response.json();
+	return data;
+}
+
+
 /////////////////////////
 // Set State API Calls //
 /////////////////////////

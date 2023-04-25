@@ -31,6 +31,10 @@ async function formatHomePage() {
 			homepageDiv.appendChild(summaryDivClone);
 		}
 	}
+	let searchBox = document.getElementById('search-query');
+	searchBox.addEventListener('keyup', async (event) => {
+		fill_search_results(event);
+	});
 }
 
 

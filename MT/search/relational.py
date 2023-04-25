@@ -2,6 +2,7 @@ from MT.models.models import User, Paper, Category, Query, Summary, Author
 
 from sqlalchemy import or_
 from sqlalchemy import func
+import re
 
 import asyncio
 
@@ -23,10 +24,11 @@ async def search_paper(plainTextQuery):
 async def search_author(plainTextQuery):
     result = Author.query.filter(or_(
             Author.first_name.match(plainTextQuery),
+            # re.search(plainTextQuery, ' '.join(Author.full_name)) != None,
         )).all()
     return result
 
-async def distribute_search(plainTextQuery, searchUser=False):
+async def distribute_search(plainTextQuery):
     result = await asyncio.gather(
             search_user(plainTextQuery),
             search_paper(plainTextQuery),
