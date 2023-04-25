@@ -1,6 +1,6 @@
 # Methuselan Thucydides
 <p align="center">
-	<img width="460" height="300" src="/imgs/MTLogoV4.png">
+	<img width="460" height="560" src="/imgs/MTLogoNew.png">
 </p>
 A more feature rich implementation of Paper.GPT. This is a webserver which
 summarizes ever paper in arxiv categories every morning and allows you to ask
