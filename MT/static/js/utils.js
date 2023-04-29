@@ -21,7 +21,7 @@ function return_to_fragment(){
 	if (window.location.hash){
 		let hash = window.location.hash;
 		let catID = hash.split('#')[1];
-		if (catID != "home"){
+		if (catID != "home-page"){
 			openCat(catID);
 		}
 	}

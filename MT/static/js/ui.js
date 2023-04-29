@@ -22,6 +22,7 @@ async function formatHomePage() {
 		let summaryDivClone = summaryDiv.cloneNode(true);
 		if (summaries['subjectSummaries'].hasOwnProperty(category)) {
 			summaryDivClone.id = category + '-summary-container';
+			summaryDivClone.classList.add('scrollFade');
 			// Get the category name
 			console.log("Adding category: " + category + " to homepage");
 			summaryDivClone.getElementsByClassName('card-title')[0].innerHTML = category;

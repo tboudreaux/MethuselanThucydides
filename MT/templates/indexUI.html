@@ -12,6 +12,7 @@
 
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 		<link rel="stylesheet", href="static/css/style.css">
+		<link rel="stylesheet", href="static/css/scroll-fade/main.css">
 		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
 
 		<link rel="icon" type="image/png" href="static/icons/MTLogoFullColorV3.png">
@@ -27,6 +28,7 @@
 		<script src="/static/js/api.js"></script>
 		<script src="/static/js/utils.js"></script>
 		<script src="/static/js/search.js"></script>
+		<!-- <script src="/static/js/scroll-fade/scrollfade.js"></script> -->
 
 		<script>
 			const stateInfo = {};
@@ -172,14 +174,14 @@
 							  </div>
 						  </div>
 					  </div>
-					  <div class="container vh-100 d-flex flex-column">
-						  <div class="row h-75 overflow-auto">
+					  <div class="container vh-100 d-flex flex-column pt-3">
+						  <div class="row h-75 overflow-auto pb-3" id="main-content-container">
 							  <div id="home">
 							  </div>
 							  <div id="paperList">
 							  </div>
 						  </div>
-						  <div class="row h-25">
+						  <div class="row h-25 pt-3">
 							<nav aria-label="...">
 								<ul class="pagination">
 									<li class="page-item disabled">

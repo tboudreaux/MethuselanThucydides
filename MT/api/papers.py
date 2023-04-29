@@ -6,6 +6,7 @@ from MT.utils.auth import token_required, auth_required
 from flask import jsonify
 import datetime as dt
 from sqlalchemy import and_
+import numpy as np
 
 @app.route('/api/papers/all')
 def papers_all():
@@ -47,6 +48,47 @@ def papers_date_latest():
     papers = [paper.__dict__ for paper in papers]
     papers = [dict(filter(lambda x: x[0] != '_sa_instance_state', d.items())) for d in papers]
     return jsonify({'papers':papers})
+
+@app.route('/api/papers/page/<page>/<perPage>')
+def papers_date_latest_p_pp(page, perPage):
+    """
+    Return all the pagess in the databse on a given page if 
+    there are perPage papers per page
+    """
+    papersOnPage = db.paginate(db.select(Paper).order_by(Paper.published_date), page=int(page), per_page=int(perPage), error_out=True)
+    return jsonify({'results':[paper.to_dict() for paper in papersOnPage]})
+
+@app.route('/api/papers/page/category/<category>/<page>/<perPage>')
+def papers_category_p_pp(category, page, perPage):
+    """
+    Return all the pagess in the databse on a given page if
+    there are perPage papers per page and in a given category
+    """
+    papersOnPage = db.paginate(db.select(Paper).where(Paper.subjects==category).order_by(Paper.published_date), page=int(page), per_page=int(perPage), error_out=True)
+    return jsonify({'results':[paper.to_dict() for paper in papersOnPage]})
+
+@app.route('/api/papers/page/category/<category>/<perPage>/numPages')
+def papers_category_num(category, perPage):
+    """
+    Return the number of pages in the database for a given category
+    """
+    papers = Paper.query.filter_by(subjects=category).all()
+    return jsonify({
+        'numPages':
+        int(np.ceil(len(papers)/int(perPage)))
+        })
+
+@app.route('/api/papers/page/<perPage>/numPages')
+def papers_num(perPage):
+    """
+    Return the number of pages in the database
+    """
+    papers = Paper.query.all()
+    return jsonify({
+        'numPages':
+        int(np.ceil(len(papers)/int(perPage)))
+        })
+
 
 @app.route('/api/papers/category/<category>')
 def papers_category(category):
