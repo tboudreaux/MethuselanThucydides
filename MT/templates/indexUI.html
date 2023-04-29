@@ -148,10 +148,12 @@
 								<input type="text" class="form-control float-end" id="search-query" placeholder="Search">
 							</div>
 							<div class="row">
+								<div class="col-md-4">
 								<div class="dropdown" id="search-results">
 									<a data-bs-toggle="dropdown" id="search-result-toggler"></a>
 									<ul class="dropdown-menu dropdown-menu-start" aria-labelledby="dropdown-menu" id='search-results-list'>
 									</ul>
+								</div>
 								</div>
 							</div>
 						</div>
@@ -170,16 +172,31 @@
 							  </div>
 						  </div>
 					  </div>
-					  <hl>
-					  <div class="row">
-						  <div class="col">
+					  <div class="container vh-100 d-flex flex-column">
+						  <div class="row h-75 overflow-auto">
 							  <div id="home">
 							  </div>
 							  <div id="paperList">
 							  </div>
 						  </div>
+						  <div class="row h-25">
+							<nav aria-label="...">
+								<ul class="pagination">
+									<li class="page-item disabled">
+										<a class="page-link">Previous</a>
+									</li>
+									<li class="page-item"><a class="page-link" href="#">1</a></li>
+										<li class="page-item active" aria-current="page">
+									<a class="page-link" href="#">2</a>
+									</li>
+									<li class="page-item"><a class="page-link" href="#">3</a></li>
+									<li class="page-item">
+										<a class="page-link" href="#">Next</a>
+									</li>
+								</ul>
+							</nav>
+						  </div>
 					  </div>
-				  </div>
 				</div>
             </div>
 		</div>

@@ -287,15 +287,15 @@ to {transform: rotate(360deg);}
   padding: 20px;
 }
 
-#paperList {
-	height: 90vh;
-	overflow-y: auto;
-}
-
-#home{
-	height: 90vh;
-	overflow-y: auto;
-}
+/* #paperList { */
+/* 	/* height: 90vh; */ */
+/* 	overflow-y: auto; */
+/* } */
+/*  */
+/* #home{ */
+/* 	/* height: 90vh; */ */
+/* 	overflow-y: auto; */
+/* } */
 .sidebar {
 position: fixed;
 top: 0;

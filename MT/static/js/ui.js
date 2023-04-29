@@ -94,7 +94,7 @@ async function format_home_button(){
 	homeButtonContainer.id = "navItem_home";
 
 	let homeButton = homeButtonContainer.querySelector('.nav-link');
-	homeButton.href = "#home";
+	homeButton.href = "#home-page";
 	homeButton.id = "categoryButton_home";
 	homeButton.addEventListener('click', function(event) { formatHomePage(); });
 

@@ -1,11 +1,18 @@
 <div class="col-auto col-md-3 col-xl-2 px-sm-2 px-0 bg-dark d-none d-sm-block">
-	<div class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white min-vh-100">
-		<a href="/" class="d-flex align-items-center pb-3 mb-md-0 me-md-auto text-white text-decoration-none">
-			<span class="fs-5 d-none d-sm-inline">arXiv Categories</span>
-		</a>
-	<ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start" id="cat-menu">
+	<div class="container vh-100 w-100 p-0">
+	<div class="row" style="height:5%">
+		<div class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white min-vh-100">
+			<a href="/" class="d-flex align-items-center pb-3 mb-md-0 me-md-auto text-white text-decoration-none">
+				<span class="fs-5 d-none d-sm-inline">arXiv Categories</span>
+			</a>
+		</div>
+	</div>
+	<div class="row overflow-auto" style="height: 90%;">
+	<ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start overflow-auto" id="cat-menu">
 	</ul>
-	<hr>
+	</div>
+	<div class="row">
+	<!-- <hr> -->
 	<div class="dropdown pb-4">
 		<a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
 			<i class="bi bi-person-circle"></i>
@@ -13,6 +20,7 @@
 		</a>
 		<ul class="dropdown-menu dropdown-menu-dark text-small shadow" id="usr-meanu">
 		</ul>
+	</div>
 	</div>
 	</div>
 </div>
