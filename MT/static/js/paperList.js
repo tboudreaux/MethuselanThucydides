@@ -15,7 +15,6 @@ async function formatAuthorList(paper_id){
 }
 
 async function format_paper_new(paper, userQueries){
-	console.log(paper);
 	let paper_template = document.getElementById('paper-template');
 	let paper_div_container = await paper_template.content.cloneNode(true).querySelector('.paper-container');
 	let paper_div = paper_div_container.querySelector('.paper');

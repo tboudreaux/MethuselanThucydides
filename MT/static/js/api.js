@@ -153,6 +153,35 @@ async function get_paper(paper_id){
 	return data['paper'];
 }
 
+async function get_total_pages_in_category(category, resultsPerPage){
+/**
+ * Gets the total number of pages in a category.
+ * 
+ * @param {string} category The category to get the number of pages of.
+ * @param {int} resultsPerPage The number of results per page.
+ *
+ * @return {int} The total number of pages in the category.
+ */
+	let response = await fetch('/api/papers/page/category/' + category + '/' + resultsPerPage + '/numPages');
+	let data = await response.json();
+	return data['numPages'];
+}
+
+async function get_papers_in_category_page(category, page, resultsPerPage){
+/**
+ * Gets the papers in a category for a given page.
+ *
+ * @param {string} category The category to get the papers of.
+ * @param {int} page The page to get the papers of.
+ * @param {int} resultsPerPage The number of results per page.
+ *
+ * @return {object} The papers in the category for the given page.
+ */
+	let response = await fetch('/api/papers/page/category/' + category + '/' + page + '/' + resultsPerPage);
+	let data = await response.json();
+	return data['results'];
+}
+
 
 ////////////////////
 // Info API Calls //

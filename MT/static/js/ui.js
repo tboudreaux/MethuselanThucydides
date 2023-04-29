@@ -16,7 +16,6 @@ async function formatHomePage() {
 
 	// Get the daily category summaries
 	let summaries = await getDailyCategorySummaries();
-	console.log(summaries);
 
 	for (var category in summaries['subjectSummaries']) {
 		let summaryDivClone = summaryDiv.cloneNode(true);
@@ -143,9 +142,15 @@ async function formatSingleCatButton(key, name) {
 async function openCat(evt, catID) {
 	const homescreen = document.getElementById("home");
 	homescreen.style.display = "none";
-	const paperList = document.getElementById("paperList");
+	const paperListContainer = document.getElementById("paperList");
+	const paperList = document.getElementById("paperListMain");
+	const paperListPages = document.getElementById("paperListPages");
+	const numPages = await get_total_pages_in_category(catID, 10);
+	paperListContainer.style.display = "block";
 	paperList.innerHTML = "";
-	paperList.style.display = "block";
+	paperListPages.innerHTML = "";
+	let pageSelector = await format_page_selector(catID, numPages, 1);
+	paperListPages.appendChild(pageSelector);
 	for (var arxiv_id in stateInfo['paperInfo'][catID]) {
 		if (stateInfo['paperInfo'][catID].hasOwnProperty(arxiv_id)) {
 			let paper = stateInfo['paperInfo'][catID][arxiv_id];
@@ -157,6 +162,28 @@ async function openCat(evt, catID) {
 			}
 		}
 	}
+}
+
+async function format_page_selector(catID, numPages, currentPage){
+	let pageSelectorTemplate = document.getElementById('page-selector-template');
+	let pageSelector = pageSelectorTemplate.content.cloneNode(true).querySelector('.page-selector');
+
+	let pageSelectorList = pageSelector.querySelector('.page-selector-list');
+
+	for (let i = 1; i <= numPages; i++){
+		let pageSelectorItem = document.createElement('li');
+		pageSelectorItem.classList.add('page-selector-item');
+		if (i === currentPage){
+			pageSelectorItem.classList.add('active');
+		}
+		pageLink = document.createElement('a');
+		pageLink.classList.add('page-selector-link');
+		pageLink.href = "#" + catID + "_" + i;
+		pageLink.innerHTML = i;
+		pageSelectorItem.appendChild(pageLink);
+		pageSelectorList.appendChild(pageSelectorItem);
+	}
+	return pageSelector;
 }
 
 ////////////////////////////

@@ -475,3 +475,28 @@ input:checked + .slider:before {
 .nav-link:hover{
 	background-color: #CED3DC;
 }
+
+.paperListMain {
+	height: 90%;
+}
+.paperListPages {
+	height: 10%;
+}
+
+@media (max-height: 1560px) {
+	.paperListMain {
+		height: 80%;
+	}
+	.paperListPages {
+		height: 20%;
+	}
+}
+
+@media (max-height: 1360px) {
+	.paperListMain {
+		height: 70%;
+	}
+	.paperListPages {
+		height: 30%;
+	}
+}
