@@ -119,6 +119,24 @@
 		</a>
 </template>
 
+<template id="page-selector-template">
+	<nav class="page-selector" aria-label="Page navigation example">
+	  <ul class="pagination">
+		<li class="page-item">
+		  <a class="page-link" href="#" aria-label="Previous">
+			<span aria-hidden="true">&laquo;</span>
+		  </a>
+		</li>
+		<div class="page-selector-list">
+		</div>
+		  <a class="page-link" href="#" aria-label="Next">
+			<span aria-hidden="true">&raquo;</span>
+		  </a>
+		</li>
+	  </ul>
+	</nav>
+</template>
+
 		<div class="container-fluid">
 			<div class="row flex-nowrap">
 
@@ -174,31 +192,34 @@
 							  </div>
 						  </div>
 					  </div>
-					  <div class="container vh-100 d-flex flex-column pt-3">
-						  <div class="row h-75 overflow-auto pb-3" id="main-content-container">
-							  <div id="home">
-							  </div>
-							  <div id="paperList">
-							  </div>
-						  </div>
-						  <div class="row h-25 pt-3">
-							<nav aria-label="...">
-								<ul class="pagination">
-									<li class="page-item disabled">
-										<a class="page-link">Previous</a>
-									</li>
-									<li class="page-item"><a class="page-link" href="#">1</a></li>
-										<li class="page-item active" aria-current="page">
-									<a class="page-link" href="#">2</a>
-									</li>
-									<li class="page-item"><a class="page-link" href="#">3</a></li>
-									<li class="page-item">
-										<a class="page-link" href="#">Next</a>
-									</li>
-								</ul>
-							</nav>
-						  </div>
-					  </div>
+					<div class="container vh-100 d-flex flex-column">
+						<div class="row flex-grow-1 overflow-auto" id="main-content-container">
+							<div id="home" style="width: 100%;">
+							</div>
+							<div id="paperList" style="width: 100%;">
+								<div id="paperListMain" class="row overflow-auto">
+								....
+								</div>
+							</div>
+						</div>
+						<div class="row">
+							<div id="paperListPages" class="d-flex justify-content-center">
+							....
+							</div>
+						</div>
+					</div>
+					  <!-- <div class="container vh-100 d-flex flex-column pt-3"> -->
+						<!--   <div class="row h-100 overflow-auto pb-3" id="main-content-container"> -->
+						<!-- 	  <div id="home"> -->
+						<!-- 	  </div> -->
+						<!-- 	  <div id="paperList" style="height: 100%;"> -->
+						<!-- 		  <div id="paperListMain" class="row overflow-auto"> -->
+						<!-- 		  </div> -->
+						<!-- 		  <div id="paperListPages" class="row" style="height: 30px;"> -->
+						<!-- 		  </div> -->
+						<!-- 	  </div> -->
+						<!--   </div> -->
+					  <!-- </div> -->
 				</div>
             </div>
 		</div>
