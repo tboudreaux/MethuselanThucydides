@@ -61,14 +61,14 @@ async function submitQuery(arxivID) {
 	var GPTResponseBTN = responseDiv.querySelector('.GPTResponseBTN');
 	var paperTextBTN = responseDiv.querySelector('.paperTextBTN');
 
-	GPTResponseBTN.setAttribute('data-mdb-target', '#' + arxivID + '_GPTResponseTXT');
-	paperTextBTN.setAttribute('data-mdb-target', '#' + arxivID + '_paperTextTXT');
+	GPTResponseBTN.setAttribute('href', '#' + arxivID.replace('\.','') + '_GPTResponseTXT');
+	paperTextBTN.setAttribute('href', '#' + arxivID.replace('\.','') + '_paperTextTXT');
 
 	var GPTResponseTextContainer = responseDiv.querySelector('.GPTResponseTXT');
 	var paperTextContainer = responseDiv.querySelector('.paperTextTXT');
 
-	GPTResponseTextContainer.setAttribute('id', arxivID + '_GPTResponseTXT');
-	paperTextContainer.setAttribute('id', arxivID + '_paperTextTXT');
+	GPTResponseTextContainer.setAttribute('id', arxivID.replace('\.','') + '_GPTResponseTXT');
+	paperTextContainer.setAttribute('id', arxivID.replace('\.','') + '_paperTextTXT');
 
     http.open("POST", endpoint, true);
     http.setRequestHeader("Content-type","application/x-www-form-urlencoded");
