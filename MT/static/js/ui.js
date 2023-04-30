@@ -126,7 +126,7 @@ async function formatSingleCatButton(key, name) {
 	let button = navItem.querySelector('.nav-link');
 	button.id = "categoryButton_" + key;
 	button.href="#" + key;
-	button.addEventListener('click', function(event) { openCat(event, key); });
+	// button.addEventListener('click', function(event) { openCat(key, 1); });
 
 	let icon = button.querySelector('.icon-img');
 	icon.src = "/static/icons/" + key + ".webp";
@@ -139,27 +139,38 @@ async function formatSingleCatButton(key, name) {
 	return navItem;
 }
 
-async function openCat(evt, catID) {
+async function openCat(catID, currentPage) {
 	const homescreen = document.getElementById("home");
 	homescreen.style.display = "none";
+
+	const footer = document.getElementById("main-content-footer");
 	const paperListContainer = document.getElementById("paperList");
 	const paperList = document.getElementById("paperListMain");
 	const paperListPages = document.getElementById("paperListPages");
 	const numPages = await get_total_pages_in_category(catID, 10);
+	console.log("Number of pages: " + numPages);
+
+	if (numPages <= 1) {
+		footer.classList.add("invisibe");
+	}
+	else {
+		footer.classList.remove("invisible");
+		footer.classList.add("visible");
+	}
+
 	paperListContainer.style.display = "block";
 	paperList.innerHTML = "";
 	paperListPages.innerHTML = "";
-	let pageSelector = await format_page_selector(catID, numPages, 1);
+	let pageSelector = await format_page_selector(catID, numPages, currentPage);
+	let papers = await get_papers_in_category_page(catID, currentPage, 10);
 	paperListPages.appendChild(pageSelector);
-	for (var arxiv_id in stateInfo['paperInfo'][catID]) {
-		if (stateInfo['paperInfo'][catID].hasOwnProperty(arxiv_id)) {
-			let paper = stateInfo['paperInfo'][catID][arxiv_id];
-			paperDiv = await format_paper_new(paper, stateInfo['userQueries']);
-			if (paperDiv != null) {
-				paperList.appendChild(paperDiv);
-			} else {
-				console.log("paperDiv is null");
-			}
+	for (let i = 0; i < papers.length; i++) {
+		let paper = papers[i];
+		let paperDiv = await format_paper_new(paper, stateInfo['userQueries']);
+		if (paperDiv != null) {
+			paperList.appendChild(paperDiv);
+		} else {
+			console.log("paperDiv is null");
 		}
 	}
 }
@@ -168,20 +179,40 @@ async function format_page_selector(catID, numPages, currentPage){
 	let pageSelectorTemplate = document.getElementById('page-selector-template');
 	let pageSelector = pageSelectorTemplate.content.cloneNode(true).querySelector('.page-selector');
 
-	let pageSelectorList = pageSelector.querySelector('.page-selector-list');
+	let nextPage = pageSelector.querySelector('#next-page');
+	let prevPage = pageSelector.querySelector('#prev-page');
+	
+	let pagation = pageSelector.querySelector('.pagination');
+
+	let nextPageLink = nextPage.querySelector('.page-link');
+	let prevPageLink = prevPage.querySelector('.page-link');
+
+	nextPageLink.href = "#" + catID + "_" + (currentPage + 1);
+	prevPageLink.href = "#" + catID + "_" + (currentPage - 1);
+
+	if (currentPage === 1){
+		prevPage.classList.add('disabled');
+	} else {
+		prevPage.classList.remove('disabled');
+	}
+	if (currentPage === numPages){
+		nextPage.classList.add('disabled');
+	} else {
+		nextPage.classList.remove('disabled');
+	}
 
 	for (let i = 1; i <= numPages; i++){
 		let pageSelectorItem = document.createElement('li');
-		pageSelectorItem.classList.add('page-selector-item');
+		pageSelectorItem.classList.add('page-item');
 		if (i === currentPage){
 			pageSelectorItem.classList.add('active');
 		}
 		pageLink = document.createElement('a');
-		pageLink.classList.add('page-selector-link');
+		pageLink.classList.add('page-link');
 		pageLink.href = "#" + catID + "_" + i;
 		pageLink.innerHTML = i;
 		pageSelectorItem.appendChild(pageLink);
-		pageSelectorList.appendChild(pageSelectorItem);
+		pagation.insertBefore(pageSelectorItem, nextPage);
 	}
 	return pageSelector;
 }

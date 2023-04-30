@@ -120,19 +120,10 @@
 </template>
 
 <template id="page-selector-template">
-	<nav class="page-selector" aria-label="Page navigation example">
+	<nav class="page-selector" aria-label="Page navigation">
 	  <ul class="pagination">
-		<li class="page-item">
-		  <a class="page-link" href="#" aria-label="Previous">
-			<span aria-hidden="true">&laquo;</span>
-		  </a>
-		</li>
-		<div class="page-selector-list">
-		</div>
-		  <a class="page-link" href="#" aria-label="Next">
-			<span aria-hidden="true">&raquo;</span>
-		  </a>
-		</li>
+		<li class="page-item" id="prev-page"><a class="page-link">Previous</a></li>
+		<li class="page-item" id="next-page"><a class="page-link">Next</a></li>
 	  </ul>
 	</nav>
 </template>
@@ -145,6 +136,8 @@
 
 				<!-- Main -->
 				<div class="col py-3">
+				<div class="container vh-100 d-flex flex-column">
+				  <!-- Title -->
 				  <div class="row" id="title">
 					  <h1 id="primary-title"></h1>
 					  <h2 id="category-title"></h2>
@@ -155,74 +148,74 @@
 							document.getElementById("primary-title").innerHTML = "Daily Paper Summary for " + today.toDateString();
 						</script>
 				  </div>
-				  <div class="col-auto">
-					  <div class="row" id="search-container">
-						<div class="col-md-7 d-none d-sm-none d-md-block">
-							<div class="btn-group" role="group" aria-label="Basic example">
-								<button type="button" class="btn btn-primary" id="all">All</button>
-								<button type="button" class="btn btn-primary" id="bookmarked">Bookmarked</button>
-							</div>
-						</div>
-						<div class="col-12 col-md-4">
-							<div class="row">
-								<input type="text" class="form-control float-end" id="search-query" placeholder="Search">
-							</div>
-							<div class="row">
-								<div class="col-md-4">
-								<div class="dropdown" id="search-results">
-									<a data-bs-toggle="dropdown" id="search-result-toggler"></a>
-									<ul class="dropdown-menu dropdown-menu-start" aria-labelledby="dropdown-menu" id='search-results-list'>
-									</ul>
-								</div>
-								</div>
-							</div>
-						</div>
-						<div class="col-1 d-none d-sm-none d-md-block">
-							<button type="button" class="btn btn-primary float-end" id="search-button">
-								<i class="fa fa-search"></i>
-							</button>
-						</div>
-					  </div>
-					  <div class="row" id="small-screen-search-container">
-						  <div class="col-12 d-block d-sm-block d-md-none">
-							  <div class="d-grid">
-								  <button type="button" class="btn btn-primary" id="search-button" placeholder="Search">
-									  <i class="fa fa-search"></i>
-								  </button>
-							  </div>
-						  </div>
-					  </div>
-					<div class="container vh-100 d-flex flex-column">
-						<div class="row flex-grow-1 overflow-auto" id="main-content-container">
-							<div id="home" style="width: 100%;">
-							</div>
-							<div id="paperList" style="width: 100%;">
-								<div id="paperListMain" class="row overflow-auto">
-								....
-								</div>
-							</div>
-						</div>
-						<div class="row">
-							<div id="paperListPages" class="d-flex justify-content-center">
-							....
-							</div>
+
+				  <!-- Large Screen Search Bar -->
+				  <div class="row" id="search-container">
+
+					<div class="col-md-7 d-none d-sm-none d-md-block">
+						<div class="btn-group" role="group" aria-label="Basic example">
+							<button type="button" class="btn btn-primary" id="all">All</button>
+							<button type="button" class="btn btn-primary" id="bookmarked">Bookmarked</button>
 						</div>
 					</div>
-					  <!-- <div class="container vh-100 d-flex flex-column pt-3"> -->
-						<!--   <div class="row h-100 overflow-auto pb-3" id="main-content-container"> -->
-						<!-- 	  <div id="home"> -->
-						<!-- 	  </div> -->
-						<!-- 	  <div id="paperList" style="height: 100%;"> -->
-						<!-- 		  <div id="paperListMain" class="row overflow-auto"> -->
-						<!-- 		  </div> -->
-						<!-- 		  <div id="paperListPages" class="row" style="height: 30px;"> -->
-						<!-- 		  </div> -->
-						<!-- 	  </div> -->
-						<!--   </div> -->
-					  <!-- </div> -->
+
+					<div class="col-12 col-md-4">
+
+						<div class="row">
+							<input type="text" class="form-control float-end" id="search-query" placeholder="Search">
+						</div>
+
+						<div class="row">
+							<div class="col-md-4">
+							<div class="dropdown" id="search-results">
+								<a data-bs-toggle="dropdown" id="search-result-toggler"></a>
+								<ul class="dropdown-menu dropdown-menu-start" aria-labelledby="dropdown-menu" id='search-results-list'>
+								</ul>
+							</div>
+							</div>
+						</div>
+
+					</div>
+
+					<div class="col-1 d-none d-sm-none d-md-block">
+						<button type="button" class="btn btn-primary float-end" id="search-button">
+							<i class="fa fa-search"></i>
+						</button>
+					</div>
+
+				  </div>
+
+				  <!-- Small Screen Search Bar -->
+				  <div class="row" id="small-screen-search-container">
+					  <div class="col-12 d-block d-sm-block d-md-none">
+						  <div class="d-grid">
+							  <button type="button" class="btn btn-primary" id="search-button" placeholder="Search">
+								  <i class="fa fa-search"></i>
+							  </button>
+						  </div>
+					  </div>
+				  </div>
+
+				  <!-- Main Content -->
+				  <div class="row h-100 overflow-auto" id="main-content-container">
+
+				  	  <div id="home" style="width: 100%;"></div>
+
+					  <div id="paperList" style="width: 100%;">
+						  <div id="paperListMain" class="row overflow-auto"></div>
+					  </div>
+
+				  </div>
+
+				  <!-- Page Selector + footer-->
+				  <div class="row" id="main-content-footer">
+				      <div id="paperListPages" class="d-flex justify-content-center"></div>
+				  </div>
+
 				</div>
             </div>
 		</div>
+
 	<!-- Scripts -->
 	<script>
 		async function setup_page () {
@@ -236,6 +229,9 @@
 			return_to_fragment();
 		};
 		setup_page();
+		window.onhashchange = function() {
+			return_to_fragment();
+		}
 	</script>
 
 	<!--Modals-->
