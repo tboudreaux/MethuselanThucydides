@@ -232,6 +232,25 @@ SCHEMA_V1 = [
     ("created_at", FieldSchema(name="created_at", dtype=DataType.INT64), -1),
     (
         "author",
+        FieldSchema(name="author", dtype=DataType.VARCHAR, max_length=65535),
+        "",
+    ),
+    (
+        "subject",
+        FieldSchema(name="subject", dtype=DataType.VARCHAR, max_length=65535),
+        "",
+    ),
+    (
+        "file",
+        FieldSchema(name="file", dtype=DataType.VARCHAR, max_length=65535),
+        "",
+    ),
+    (
+        "source_url",
+        FieldSchema(name="source_url", dtype=DataType.VARCHAR, max_length=65535),
+        "",
+    ),
+]
 ```
 
 then modify the file models/models.py with the following updated classes (If I havn't listed a class here then leave it the same).
