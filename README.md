@@ -26,6 +26,11 @@ docker you will need
 	2) postgresql
 	3) GPT-Retrival-API
 
+Note that you will have to modify the GPT-Retrival-API milvus datastore to include
+the field document-id. This requires some small modifications to the source files for that. See the bottom of the readme for details.
+
+ 
+
 Place the configuration information for these in the config.py file before
 building the docker container. Once those are setup you can run the following
 commands to build and deploy Methuselan Thucydides
@@ -177,3 +182,84 @@ gpt for summarization. Another API call can be scheduled for that:
 	- Ability to follow references chains and bring additional papers down those chains in for further context (long term)
 	- config option to switch between gpt-3.5-turbo and gpt-4 (waiting till I get gpt-4 api access)
 	- Auto build the schema on first setup so that the schema does not have to be manually built
+
+
+## Modifying the Retrival API.
+First modify the file in datastore/providers called milvus_datastore.py to change the SCHEMA_V1 list to the following: 
+
+```python
+SCHEMA_V1 = [
+    (
+        "pk",
+        FieldSchema(name="pk", dtype=DataType.INT64, is_primary=True, auto_id=True),
+        Required,
+    ),
+    (
+        EMBEDDING_FIELD,
+        FieldSchema(name=EMBEDDING_FIELD, dtype=DataType.FLOAT_VECTOR, dim=OUTPUT_DIM),
+        Required,
+    ),
+    (
+        "text",
+        FieldSchema(name="text", dtype=DataType.VARCHAR, max_length=65535),
+        Required,
+    ),
+    (
+        "document_id",
+        FieldSchema(name="document_id", dtype=DataType.VARCHAR, max_length=65535),
+        "",
+    ),
+    (
+        "source_id",
+        FieldSchema(name="source_id", dtype=DataType.VARCHAR, max_length=65535),
+        "",
+    ),
+    (
+        "id",
+        FieldSchema(
+            name="id",
+            dtype=DataType.VARCHAR,
+            max_length=65535,
+        ),
+        "",
+    ),
+    (
+        "source",
+        FieldSchema(name="source", dtype=DataType.VARCHAR, max_length=65535),
+        "",
+    ),
+    ("url", FieldSchema(name="url", dtype=DataType.VARCHAR, max_length=65535), ""),
+    ("created_at", FieldSchema(name="created_at", dtype=DataType.INT64), -1),
+    (
+        "author",
+```
+
+then modify the file models/models.py with the following updated classes (If I havn't listed a class here then leave it the same).
+
+```python 
+class DocumentMetadata(BaseModel):
+    source: Optional[str] = None
+    source_id: Optional[str] = None
+    url: Optional[str] = None
+    created_at: Optional[str] = None
+    author: Optional[str] = None
+    subject: Optional[str] = None
+    file: Optional[str] = None
+    source_url: Optional[str] = None
+
+
+class DocumentChunkMetadata(DocumentMetadata):
+    document_id: Optional[str] = None
+
+class DocumentMetadataFilter(BaseModel):
+    document_id: Optional[str] = None
+    source: Optional[Source] = None
+    source_id: Optional[str] = None
+    author: Optional[str] = None
+    start_date: Optional[str] = None  # any date string format
+    end_date: Optional[str] = None  # any date string format
+    url: Optional[str] = None
+    subject: Optional[str] = None
+    file: Optional[str] = None
+    source_url: Optional[str] = None
+```
