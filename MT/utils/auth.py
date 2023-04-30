@@ -1,8 +1,19 @@
 from MT.models.models import User, Key
 from MT.setup import app, db
+
 from flask import jsonify, request
 from functools import wraps
 import jwt
+import datetime
+
+def update_current_user(current_user):
+    current_user.last_ip = request.remote_addr
+    current_user.last_login = datetime.datetime.now()
+    current_user.num_logins += 1
+    current_user.last_user_agent = request.user_agent.string
+
+    db.session.commit()
+
 
 def token_required(f):
    @wraps(f)
@@ -20,6 +31,7 @@ def token_required(f):
        except:
            print("Invalid token")
            return jsonify({'message': 'token is invalid', 'auth': False}), 401
+       update_current_user(current_user)
 
        return f(current_user, *args, **kwargs)
    return decorator
@@ -39,6 +51,7 @@ def token_requested(f):
         except:
             print("Invalid token")
 
+        update_current_user(current_user)
         return f(current_user, *args, **kwargs)
     return decorator
 
@@ -62,6 +75,7 @@ def key_required(f):
             print("Invalid key")
             return jsonify({'message': 'key is invalid', 'auth': False}), 401
         current_user = db.session.query(User).filter_by(uuid=key.user_uuid).first()
+        update_current_user(current_user)
 
         return f(current_user, *args, **kwargs)
     return decorator
@@ -86,6 +100,7 @@ def key_requested(f):
         else:
             print("No key")
 
+        update_current_user(current_user)
         return f(current_user, *args, **kwargs)
     return decorator
 
@@ -113,6 +128,7 @@ def user_pass_required(f):
             print("Invalid user")
             return jsonify({'message': 'user is invalid', 'auth': False}), 401
         current_user = user
+        update_current_user(current_user)
 
         return f(current_user, *args, **kwargs)
     return decorator
@@ -142,6 +158,7 @@ def user_pass_requested(f):
             print("Invalid password")
             return f(current_user, *args, **kwargs)
         current_user = user
+        update_current_user(current_user)
 
         return f(current_user, *args, **kwargs)
     return decorator

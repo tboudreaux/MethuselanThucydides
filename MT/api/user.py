@@ -1,5 +1,5 @@
 from MT.setup import app, db
-from MT.utils.auth import token_required
+from MT.utils.auth import token_required, auth_required
 from MT.models.models import User, Key
 
 from flask import jsonify, request
@@ -37,8 +37,6 @@ def enroll_user_endpoint(current_user):
 @app.route('/api/user/enroll_user/secret', methods=['POST'])
 def enroll_user_with_secret():
     payload = request.get_json()
-    print(payload)
-    print(app.config['MT_NEW_USER_SECRET'])
     if app.config['MT_NEW_USER_SECRET'] is None:
         return jsonify({'message':'No secret set'}), 401
     if payload['new_user_secret'] == app.config['MT_NEW_USER_SECRET']:
@@ -74,7 +72,7 @@ def enroll_user_with_secret():
         return jsonify({'message':'Invalid secret'}), 401
 
 @app.route('/api/user/is_admin', methods=['GET'])
-@token_required
+@auth_required
 def is_admin_endpoint(current_user):
     return jsonify({'admin':current_user.admin}), 200
 
@@ -88,3 +86,68 @@ def genkey_endpoint(current_user):
     db.session.add(key)
     db.session.commit()
     return jsonify({'key':unhashedKey, 'uuid':key.uuid}), 200
+
+@app.route('/api/user/update/username/<username>', methods=['POST'])
+@auth_required
+def update_username_endpoint(current_user, username):
+    payload = request.get_json()
+    user = current_user
+    if 'alternate_user' in payload and current_user.admin:
+        user = User.query.filter_by(username=payload['alternate_user']).first()
+    elif 'alternate_user' in payload and not current_user.admin:
+        return jsonify({'message':'User is not an admin'}), 401
+    if current_user.username == username:
+        return jsonify({'message':'Username is the same'}), 409
+    checkUser = User.query.filter_by(username=username).first()
+    if checkUser:
+        return jsonify({'message':'Username already exists'}), 409
+    user.update_username(username)
+    db.session.commit()
+    return jsonify({'success':True}), 200
+
+@app.route('/api/user/update/email/<email>', methods=['POST'])
+@auth_required
+def update_email_endpoint(current_user, email):
+    payload = request.get_json()
+    user = current_user
+    if 'alternate_user' in payload and current_user.admin:
+        user = User.query.filter_by(username=payload['alternate_user']).first()
+    elif 'alternate_user' in payload and not current_user.admin:
+        return jsonify({'message':'User is not an admin'}), 401
+    if current_user.email == email:
+        return jsonify({'message':'Email is the same'}), 409
+    user.update_email(email)
+    db.session.commit()
+    return jsonify({'success':True}), 200
+
+@app.route('/api/user/update/password', methods=['POST'])
+@auth_required
+def update_password_endpoint(current_user):
+    payload = request.get_json()
+    user = current_user
+    if 'alternate_user' in payload and current_user.admin:
+        user = User.query.filter_by(username=payload['alternate_user']).first()
+    elif 'alternate_user' in payload and not current_user.admin:
+        return jsonify({'message':'User is not an admin'}), 401
+    if not user.check_password(payload['old_password']):
+        return jsonify({'message':'Old password is incorrect'}), 401
+    user.update_password(payload['old_password'], payload['new_password'])
+    db.session.commit()
+    return jsonify({'success':True}), 200
+
+@app.route('/api/user/update/display_name', methods=['POST'])
+@auth_required
+def update_display_name_endpoint(current_user):
+    payload = request.get_json()
+    user = current_user
+    if 'alternate_user' in payload and current_user.admin:
+        user = User.query.filter_by(username=payload['alternate_user']).first()
+    elif 'alternate_user' in payload and not current_user.admin:
+        return jsonify({'message':'User is not an admin'}), 401
+    if current_user.display_name == payload['display_name']:
+        return jsonify({'message':'Display name is the same'}), 409
+    user.update_display_name(payload['display_name'])
+    db.session.commit()
+    return jsonify({'success':True}), 200
+
+

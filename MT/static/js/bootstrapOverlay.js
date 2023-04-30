@@ -33,6 +33,13 @@ async function launchSearchResultsModel(){
 	modal.show();
 }
 
+async function launchProfileModal(){
+	modal = new bootstrap.Modal(document.getElementById("profile"), {
+		keyboard: false
+	});
+	modal.show();
+}
+
 async function clear_api_key_modal(){
 	APIKeyp = document.getElementById("APIKey");
 	APIKeyp.innerHTML = "";

@@ -1,7 +1,7 @@
 from MT.setup import db
 
 import uuid
-from sqlalchemy.dialects.postgresql import TEXT, ARRAY
+from sqlalchemy.dialects.postgresql import TEXT, ARRAY, JSON
 from sqlalchemy.ext.hybrid import hybrid_method, hybrid_property
 from sqlalchemy.sql import func
 import bcrypt
@@ -98,6 +98,8 @@ class User(db.Model):
     __tablename__ = 'users'
     uuid = db.Column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4)
     username = db.Column(db.String(100), nullable=False)
+    display_name = db.Column(TEXT)
+    ui_settings = db.Column(JSON)
     password = db.Column(db.String(1000), nullable=False)
     email = db.Column(db.String(100), nullable=False)
     created_at = db.Column(db.DateTime(timezone=True), default=func.now(), nullable=False)
@@ -119,10 +121,7 @@ class User(db.Model):
     bookmarks = db.relationship('Bookmark', backref='user', lazy=True)
 
     def __init__(self, username, email, password, ip=None, user_agent=None, country=None, city=None, timezone=None, admin=False, enabled=True):
-        checkUser = User.query.filter_by(username=username).first()
-        if checkUser:
-            raise EnvironmentError('Username already exists')
-        self.username = username
+        self.update_username(username)
         self.email = email
         self.password, self.salt = self.hash_plain_password(password)
         self.last_ip = ip
@@ -137,6 +136,8 @@ class User(db.Model):
         return {
             'uuid': self.uuid,
             'username': self.username,
+            'display_name': self.display_name,
+            'ui_settings': self.ui_settings,
             'email': self.email,
             'created_at': self.created_at,
             'last_login': self.last_login,
@@ -160,6 +161,44 @@ class User(db.Model):
 
     def check_password(self, plain_password):
         return self.hash_plain_password(plain_password, salt=self.salt)[0] == self.password
+
+    def update_password(self, plain_password, new_password):
+        if self.check_password(plain_password):
+            self.password, self.salt = self.hash_plain_password(new_password)
+            return True
+        return False
+
+    def update_last_login(self, ip, user_agent, country, city, timezone):
+        self.last_login = func.now()
+        self.last_ip = ip
+        self.last_user_agent = user_agent
+        self.last_country = country
+        self.last_city = city
+        self.last_timezone = timezone
+        self.num_logins += 1
+
+    def update_username(self, new_username):
+        # Check if any other users have the same username
+        checkUser = User.query.filter_by(username=new_username).first()
+        if checkUser:
+            return False
+        self.username = new_username
+        return True
+
+    def update_display_name(self, new_display_name):
+        self.display_name = new_display_name
+        return True
+
+    def update_email(self, new_email):
+        self.email = new_email
+        return True
+
+    def update_enabled(self, new_enabled):
+        self.enabled = new_enabled
+        return True
+
+    def disable(self):
+        return self.update_enabled(False)
 
     def __repr__(self):
         return f'<User: {self.username}>'

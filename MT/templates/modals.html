@@ -16,7 +16,7 @@
 </div>
 
 
-
+<!-- Login Modal-->
 <div class="modal fade" id="login" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="login" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
@@ -26,18 +26,14 @@
       </div>
       <div class="modal-body">
 		  <div id="loginForm">
-			  <div class="container">
-				  <div class="column">
-					  <div class="row">
-			  <input type="text" id="username" placeholder="Username" class="queryBox">
-					  </div>
-					  <div class="row">
-					  </div>
-					  <div class="row">
-			  <input type="password" id="password" placeholder="Password" class="queryBox">
-					  </div>
-				  </div>
-			  </div>
+			<div class="mb-3">
+				<label for="Username" class="form-label">Username</label>
+				<input type="text" class="form-control" id="username" placeholder="Username...">
+			</div>
+			<div class="mb-3">
+				<label for="Password" class="form-label">Password</label>
+				<input type="password" class="form-control" id="password" placeholder="Password...">
+			</div>
 		  </div>
       </div>
       <div class="modal-footer">
@@ -178,4 +174,23 @@
       </div>
     </div>
   </div>
+</div>
+
+
+<!-- User Profile Modal-->
+<!-- This modal is used for users to view their profile and change their password -->
+<div class="modal fade" id="profile" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="profile" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h1 class="modal-title fs-5" id="profileTitle">Profile</h1>
+				<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+			</div>
+			<div class="modal-body" id="profile-info-container">
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-primary" data-bs-dismiss="modal">Close</button>
+			</div>
+		</div>
+	</div>
 </div>

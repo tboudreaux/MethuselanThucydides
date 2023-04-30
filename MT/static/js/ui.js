@@ -229,7 +229,7 @@ async function formatUserMeanu(){
 
 		ProfileContainer = document.createElement("li");
 		ProfileLink = document.createElement("a");
-		ProfileLink.setAttribute("onclick", "editProfile(); return false;");
+		ProfileLink.setAttribute("onclick", "launchProfileModal(); return false;");
 		ProfileLink.innerHTML = "Profile";
 		ProfileLink.classList.add("dropdown-item");
 		ProfileContainer.appendChild(ProfileLink);
@@ -313,4 +313,15 @@ async function display_single_paper(arxiv_id){
 	searchResultsContainer.innerHTML = "";
 	searchResultsContainer.appendChild(paperDiv);
 	launchSearchResultsModel();
+}
+
+
+async function format_user_profile_settings(){
+	if (await logged_in() === false){
+		return;
+	}
+	let user = await get_user_from_token();
+	// let userSettings = await get_user_settings(user);
+	let userSettingsDiv = document.getElementById('profile-info-container');
+	userSettingsDiv.innerHTML = "Test";
 }
