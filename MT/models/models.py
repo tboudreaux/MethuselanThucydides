@@ -232,13 +232,15 @@ class Query(db.Model):
     query = db.Column(TEXT, nullable=False)
     order_id = db.Column(db.Integer, nullable=False)
     response = db.Column(TEXT, nullable=False)
+    chunks = db.Column(ARRAY(TEXT))
     created_at = db.Column(db.DateTime(timezone=True), default=func.now(), nullable=False)
 
-    def __init__(self, user_uuid, paper_uuid, query, response):
+    def __init__(self, user_uuid, paper_uuid, query, response, chunks):
         self.user_uuid = user_uuid
         self.paper_uuid = paper_uuid
         self.query = query
         self.response = response
+        self.chunks = chunks
 
         # get the order_id
         last_query = db.session.query(Query).filter_by(user_uuid=user_uuid, paper_uuid=paper_uuid).count()
@@ -254,7 +256,8 @@ class Query(db.Model):
             'query': self.query,
             'response': self.response,
             'order_id': self.order_id,
-            'created_at': self.created_at
+            'created_at': self.created_at,
+            'chunks': self.chunks
         }
 
 

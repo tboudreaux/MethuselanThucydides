@@ -29,14 +29,14 @@ def summarize(arxiv_id):
         return jsonify({'summary':paper.gpt_summary_short})
     else:
         query = f"Please summarize, in 1-2 sentences, the paper titled {paper.title}."
-        gptResponse = ask(query, document_id=arxiv_id)
+        gptResponse, _ = ask(query, document_id=arxiv_id)
         if paper.full_page_text is None:
             paper.gpt_summary_short = gptResponse
         else:
             paper.gpt_summary_long = gptResponse
             paper.gpt_summary_short = gptResponse
         db.session.commit()
-        return jsonify({'summary':ask(query)})
+        return jsonify({'summary':gptResponse})
 
 @app.route('/api/gpt/summarize/all')
 @key_required
@@ -54,7 +54,7 @@ def summarize_all(current_user):
             continue
         else:
             query = f"Please summarize, in 1-2 sentences, the paper titled {paper.title}."
-            gptResponse = ask(query, document_id=paper.arxiv_id)
+            gptResponse, _ = ask(query, document_id=paper.arxiv_id)
             if paper.full_page_text is None:
                 paper.gpt_summary_short = gptResponse
             else:
@@ -88,7 +88,7 @@ def summarize_latest(current_user):
                 totalSummarized += 1
                 summarized.append(paper.arxiv_id)
                 query = f"Please summarize, in 1-2 sentences, the paper titled {paper.title}."
-                gptResponse = ask(query, document_id=paper.arxiv_id)
+                gptResponse, _ = ask(query, document_id=paper.arxiv_id)
                 if paper.full_page_text is None:
                     paper.gpt_summary_short = gptResponse
                 else:
@@ -113,7 +113,7 @@ def summarize_missing(current_user):
             continue
         else:
             query = f"Please summarize, in 1-2 sentences, the paper titled {paper.title}."
-            gptResponse = ask(query, document_id=paper.arxiv_id)
+            gptResponse, _ = ask(query, document_id=paper.arxiv_id)
             if paper.full_page_text is None:
                 paper.gpt_summary_short = gptResponse
             else:
@@ -133,14 +133,14 @@ def summarize_force(current_user, arxiv_id):
     paper = Paper.query.filter_by(arxiv_id=arxiv_id).first()
 
     query = f"Please summarize, in 1-2 sentences, the paper titled {paper.title}."
-    gptResponse = ask(query)
+    gptResponse, _ = ask(query)
     if paper.full_page_text is None:
         paper.gpt_summary_short = gptResponse
     else:
         paper.gpt_summary_long = gptResponse
         paper.gpt_summary_short = gptResponse
     db.session.commit()
-    return jsonify({'summary':ask(query)})
+    return jsonify({'summary':gptResponse})
 
 @app.route('/api/gpt/summarize/<arxiv_id>/clear')
 @token_required
@@ -163,18 +163,17 @@ def query_simple(current_user, arxiv_id):
     Will not fetch the full page text if it has not been fetched before.
     """
     question = request.form['query']
-    user = User.query.filter_by(uuid=current_user.uuid).first()
-    user.num_queries += 1
+    current_user.num_queries += 1
     paper = Paper.query.filter_by(arxiv_id=arxiv_id).first()
-    query = f"Please the most recent question about the following question about the paper titled {paper.title}. Previous questions and answers have been provided as context for you. {question}"
+    query = f"Please answer the following question about the paper titled {paper.title}. {question}"
     paper.last_used = dt.datetime.now().date()
-    answer = ask(query, document_id=arxiv_id)
+    answer, chunks = ask(query, document_id=arxiv_id)
 
-    query = Query(user.uuid, paper.uuid, question, answer)
+    query = Query(current_user.uuid, paper.uuid, question, answer, chunks)
     db.session.add(query)
     db.session.commit()
 
-    return jsonify({'query': question, 'answer':answer})
+    return jsonify({'query': question, 'answer':answer, 'chunks':chunks})
 
 @app.route('/api/gpt/query/complex/<arxiv_id>', methods=['POST'])
 @token_required
@@ -185,17 +184,16 @@ def query_complex(current_user, arxiv_id):
     """
     fetch_arxiv_long_api(arxiv_id)
     paper = Paper.query.filter_by(arxiv_id=arxiv_id).first()
-    user = User.query.filter_by(uuid=current_user.uuid).first()
-    user.num_queries += 1
+    current_user.num_queries += 1
     question = request.form['query']
-    query = f"Please the most recent question about the following question about the paper titled {paper.title}. Previous questions and answers have been provided as context for you. {question}"
+    query = f"Please answer the following question about the paper titled {paper.title}. {question}"
     paper.last_used = dt.datetime.now().date()
 
-    answer = ask(query, document_id=arxiv_id)
-    query = Query(user.uuid, paper.uuid, question, answer)
+    answer, chunks = ask(query, document_id=arxiv_id)
+    query = Query(current_user.uuid, paper.uuid, question, answer, chunks)
     db.session.add(query)
     db.session.commit()
-    return jsonify({'query': question, 'answer':answer})
+    return jsonify({'query': question, 'answer':answer, 'chunks':chunks})
 
 @app.route('/api/gpt/summarize/categories/latest')
 def homepage():

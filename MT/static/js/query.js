@@ -53,6 +53,23 @@ async function submitQuery(arxivID) {
 		endpoint = '/api/gpt/query/complex/' + arxivID;
 	}
     var http = new XMLHttpRequest();
+
+	var responseTemplate = document.getElementById('response-template').content.cloneNode(true);
+	console.log(responseTemplate);
+	var responseDiv = responseTemplate.getElementById('responseMessage');
+	console.log(responseDiv);
+	var GPTResponseBTN = responseDiv.querySelector('.GPTResponseBTN');
+	var paperTextBTN = responseDiv.querySelector('.paperTextBTN');
+
+	GPTResponseBTN.setAttribute('data-mdb-target', '#' + arxivID + '_GPTResponseTXT');
+	paperTextBTN.setAttribute('data-mdb-target', '#' + arxivID + '_paperTextTXT');
+
+	var GPTResponseTextContainer = responseDiv.querySelector('.GPTResponseTXT');
+	var paperTextContainer = responseDiv.querySelector('.paperTextTXT');
+
+	GPTResponseTextContainer.setAttribute('id', arxivID + '_GPTResponseTXT');
+	paperTextContainer.setAttribute('id', arxivID + '_paperTextTXT');
+
     http.open("POST", endpoint, true);
     http.setRequestHeader("Content-type","application/x-www-form-urlencoded");
 	http.setRequestHeader("x-access-tokens", token);
@@ -82,8 +99,25 @@ async function submitQuery(arxivID) {
 		responseMessage.classList.add('chatElement');
 		responseMessage.innerHTML = '<i class="fa fa-server" aria-hidden="true"></i>  ' + responseOBJ['answer'];
 		responseMessage.classList.add('bot');
-		chat.appendChild(responseMessage);
-		let currentState = [[query, responseOBJ['answer']]];
+	
+		let sourceData = document.createElement('div');
+		sourceData.classList.add('sourceData');
+		let chunkList = document.createElement('ul');
+		chunkList.classList.add('chunkList');
+		for (let i = 0; i < responseOBJ['chunks'].length; i++) {
+			let chunk = document.createElement('li');
+			chunk.classList.add('chunk');
+			chunk.innerHTML = responseOBJ['chunks'][i];
+			chunkList.appendChild(chunk);
+		}
+		sourceData.appendChild(chunkList);
+
+		GPTResponseTextContainer.appendChild(responseMessage);
+		paperTextContainer.appendChild(sourceData);
+		chat.appendChild(responseDiv);
+
+		// chat.appendChild(responseMessage);
+		// let currentState = [[query, responseOBJ['answer']]];
 		waitSpinner.style.display = 'none';
 		askIcon.style.display = 'block';
 		submitQueryButton.classList.remove('disabled');

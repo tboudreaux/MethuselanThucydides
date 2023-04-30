@@ -97,6 +97,25 @@
 	</div>
 </template>
 
+<template id="response-template">
+	<div id="responseMessage">
+		<ul class="nav nav-tabs mb-3" role="tablist">
+			<li class="nav-item" role="presentation">
+				<button class="nav-link active GPTResponseBTN" data-mdb-toggle="tab" role="tab" type="button" aria-controls="response" aria-selected="true">Response</button>
+			</li>
+			<li class="nav-item" role="presentation">
+				<button class="nav-link paperTextBTN" data-mdb-toggle="tab" role="tab" type="button" aria-controls="referenced text" aria-selected="true">Referenced Text</button>
+			</li>
+		</ul>
+		<div class="tab-content">
+			<div class="tab-pane fade show active GPTResponseTXT" role="response">
+			</div>
+			<div class="tab-pane fade paperTextTXT" role="paperText">
+			</div>
+		</div>
+	</div>
+</template>
+
 <template id="search-result-template">
 	<li class="search-result-item dropdown-item">
 		<a class="btn btn-secondary search-result-link"></a>

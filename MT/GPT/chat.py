@@ -1,5 +1,5 @@
 from MT.config import retrivalAPI_IP, retrivalAPI_Port
-from typing import Any, List, Dict
+from typing import Any, List, Dict, Tuple
 import openai
 import requests
 import logging
@@ -75,7 +75,7 @@ def call_chatgpt_api(user_question: str, chunks: List[str]) -> Dict[str, Any]:
     return response
 
 
-def ask(user_question: str, document_id: str = None) -> Dict[str, Any]:
+def ask(user_question: str, document_id: str = None) -> Tuple[Dict[str, Any], list[str]]:
     """
     Handle user's questions.
     """
@@ -92,7 +92,7 @@ def ask(user_question: str, document_id: str = None) -> Dict[str, Any]:
     response = call_chatgpt_api(user_question, chunks)
     logging.info("Response: %s", response)
 
-    return response["choices"][0]["message"]["content"]
+    return response["choices"][0]["message"]["content"], chunks
 
 def direct_ask(questions):
     messageBody = [
