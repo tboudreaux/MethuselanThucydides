@@ -40,6 +40,23 @@ async function launchProfileModal(){
 	modal.show();
 }
 
+async function launchAuthorResultsModal(author, papers){
+	console.log("Papers: ", papers);
+	modalDiv = document.getElementById("author");
+	modalAuthorName = document.getElementById("author-page-display-name");
+	modalAuthorName.innerHTML = author;
+	paperList = document.getElementById("author-papers-container");
+	for (let i = 0; i < papers.length; i++){
+		paper = papers[i];
+		paperDiv = await format_paper_new(paper, stateInfo['userQueries']);
+		paperList.appendChild(paperDiv);
+	}
+	modal = new bootstrap.Modal(document.getElementById("author"), {
+		keyboard: false
+	});
+	modal.show();
+}
+
 async function clear_api_key_modal(){
 	APIKeyp = document.getElementById("APIKey");
 	APIKeyp.innerHTML = "";

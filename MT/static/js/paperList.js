@@ -9,7 +9,11 @@ async function formatAuthorList(paper_id){
 	let authors = await getPaperAuthors(paper_id);
 	let fullAuthorNames = [];
 	for (let i = 0; i < authors.authors.length; i++) {
-		fullAuthorNames.push(authors.authors[i].fullname);
+		let authorPageLink = document.createElement('a');
+		console.log(authors.authors[i].uuid);
+		authorPageLink.href = '#' + 'Author-' + authors.authors[i].uuid;
+		authorPageLink.innerHTML = authors.authors[i].fullname;
+		fullAuthorNames.push(authorPageLink.outerHTML);
 	}
 	return fullAuthorNames.join(', ');
 }

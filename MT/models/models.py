@@ -209,6 +209,7 @@ class Author(db.Model):
     uuid = db.Column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4)
     full_name = db.Column(ARRAY(TEXT), nullable=False)
     first_name = db.Column(db.String(100), nullable=False)
+    papers = db.relationship('Paper', secondary="authors_papers")
 
     def __init__(self, full_name, first_name):
         self.full_name = full_name

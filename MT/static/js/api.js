@@ -182,6 +182,22 @@ async function get_papers_in_category_page(category, page, resultsPerPage){
 	return data['results'];
 }
 
+//////////////////////
+// Author API Calls //
+//////////////////////
+async function get_author(author_id) {
+/**
+ * Gets the author from the server.
+ *
+ * @param {string} author_id The id of the author to get.
+ *
+ * @return {object} The author.
+ */
+	let response = await fetch('/api/authors/uuid/' + author_id);
+	let data = await response.json();
+	return data;
+}
+
 
 ////////////////////
 // Info API Calls //

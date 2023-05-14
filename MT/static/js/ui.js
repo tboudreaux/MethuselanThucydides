@@ -325,3 +325,12 @@ async function format_user_profile_settings(){
 	let userSettingsDiv = document.getElementById('profile-info-container');
 	userSettingsDiv.innerHTML = "Test";
 }
+
+///////////////////////////////////
+// Author Result Page Formatting //
+///////////////////////////////////
+async function format_author_page(author, papers){
+	// let authorDiv = await format_author(author, page);
+	searchResultsContainer = document.getElementById("search-results-container");
+	launchAuthorResultsModal(author['full_name'].join(' '), papers);
+}
